@@ -1,0 +1,123 @@
+capabilitySets:
+  - id: core
+    description: Core Capabilities and Value Chains
+    domains:
+      - id: learning_and_teaching
+        description: Learning & Teaching
+        valueChain:
+          - id: learning_and_teaching.design
+            description: Design
+          - id: learning_and_teaching.recruit
+            description: Recruit
+          - id: learning_and_teaching.enrol
+            description: Enrol
+          - id: learning_and_teaching.deliver
+            description: Deliver
+          - id: learning_and_teaching.graduate
+            description: Graduate
+          - id: learning_and_teaching.improve
+            description: Improve
+      - id: research
+        description: Research
+        valueChain:
+          - id: research.plan
+            description: Plan
+          - id: research.fund
+            description: Fund
+          - id: research.conduct
+            description: Conduct
+          - id: research.impact
+            description: Impact
+          - id: research.improve
+            description: Improve
+capabilities:
+  - id: curriculum_creation
+    description: Curriculum Creation
+    valueChainItems:
+      - learning_and_teaching.design
+  - id: student_recruitment
+    description: Student Recruitment
+    valueChainItems:
+      - learning_and_teaching.recruit
+  - id: student_admission
+    description: Student Admission
+    valueChainItems:
+      - learning_and_teaching.recruit
+  - id: student_administration
+    description: Student Administration
+    valueChainItems:
+      - learning_and_teaching.recruit  
+      - learning_and_teaching.enrol
+      - learning_and_teaching.deliver
+      - learning_and_teaching.graduate
+  - id: student_support_services
+    description: Student Support Services
+    valueChainItems:
+      - learning_and_teaching.recruit  
+      - learning_and_teaching.enrol
+      - learning_and_teaching.deliver
+      - learning_and_teaching.graduate      
+  - id: student_enrolment
+    description: Student Enrolment
+    valueChainItems:
+      - learning_and_teaching.enrol
+  - id: learning_and_teaching_delivery
+    description: Learning & Teaching Delivery
+    valueChainItems:
+      - learning_and_teaching.deliver
+  - id: student_assessment
+    description: Student Assessment
+    valueChainItems:
+      - learning_and_teaching.deliver
+  - id: student_graduation
+    description: Student Graduation
+    valueChainItems:
+      - learning_and_teaching.graduate
+  - id: student_graduation
+    description: Alumni Engagement
+    valueChainItems:
+      - learning_and_teaching.graduate
+  - id: curriculum_improvement
+    description: Curriculum Improvement
+    valueChainItems:
+      - learning_and_teaching.improve
+  - id: curriculum_disestablishment
+    description: Curriculum Disestablishment
+    valueChainItems:
+      - learning_and_teaching.improve
+  - id: research_opportunities_and_planning
+    description: Research Opportunities & Planning
+    valueChainItems:
+      - research.plan
+  - id: research_support
+    description: Research Support
+    valueChainItems:
+      - research.plan
+      - research.fund
+      - research.conduct
+      - research.impact
+      - research.improve
+  - id: research_funding
+    description: Research Funding
+    valueChainItems:
+      - research.fund
+  - id: research_delivery
+    description: Research Delivery
+    valueChainItems:
+      - research.conduct
+  - id: research_training
+    description: Research Training
+    valueChainItems:
+      - research.conduct
+  - id: research_publication
+    description: Research Publication
+    valueChainItems:
+      - research.impact
+  - id: research_impact
+    description: Research Impact
+    valueChainItems:
+      - research.impact
+  - id: research_improvement
+    description: Research Improvement
+    valueChainItems:
+      - research.improve

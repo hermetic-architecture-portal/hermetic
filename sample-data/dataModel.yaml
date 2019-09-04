@@ -1,0 +1,231 @@
+dataAccessRoles:
+  - dataAccessRoleId: DAR-001
+    name: Master
+    rank: 1
+  - dataAccessRoleId: DAR-002
+    name: Reader
+    rank: 3
+  - dataAccessRoleId: DAR-003
+    name: Writer
+    rank: 2        
+dataTopicTypes:
+  - dataTopicTypeId: DTT-001
+    name: Business
+  - dataTopicTypeId: DTT-002
+    name: Operational
+dataTopics:
+  - dataTopicId: DT-001
+    name: People and Organisations
+    dataTopicTypeId: DTT-001
+  - dataTopicId: DT-002
+    name: Locations
+    dataTopicTypeId: DTT-001    
+  - dataTopicId: DT-003
+    name: Financials
+    dataTopicTypeId: DTT-001  
+  - dataTopicId: DT-004
+    name: Relationships
+    dataTopicTypeId: DTT-001      
+  - dataTopicId: DT-005
+    name: Monitoring
+    dataTopicTypeId: DTT-002     
+  - dataTopicId: DT-006
+    name: Services
+    dataTopicTypeId: DTT-002      
+dataEntities:
+  - dataEntityId: DE-001
+    name: Person
+    dataTopicId: DT-001
+  - dataEntityId: DE-002
+    name: Customer
+    parentDataEntityId: DE-001
+    dataTopicId: DT-001
+    technologies:
+      - technologyId: T-005
+        dataAccessRoleId: DAR-001
+      - technologyId: T-003
+        dataAccessRoleId: DAR-002        
+        description: Debtor details
+  - dataEntityId: DE-003
+    name: Prospect
+    parentDataEntityId: DE-001
+    dataTopicId: DT-001 
+    description: A Prospect is a possible future customer 
+    technologies:
+      - technologyId: T-005
+        dataAccessRoleId: DAR-001   
+  - dataEntityId: DE-004
+    name: Employee
+    parentDataEntityId: DE-001
+    dataTopicId: DT-001   
+    technologies:
+      - technologyId: T-004
+        dataAccessRoleId: DAR-001 
+      - technologyId: T-003
+        dataAccessRoleId: DAR-003
+        description: Pay rates                   
+  - dataEntityId: DE-005
+    name: Organisation
+    dataTopicId: DT-001                   
+  - dataEntityId: DE-006
+    name: Regulator
+    parentDataEntityId: DE-005
+    dataTopicId: DT-001    
+    description: A Regulator is an organisation that imposes regulatory or compliance obligations on the business
+  - dataEntityId: DE-007
+    name: Customer Organisation
+    parentDataEntityId: DE-005
+    dataTopicId: DT-001 
+    technologies:
+      - technologyId: T-005
+        dataAccessRoleId: DAR-001
+      - technologyId: T-003
+        dataAccessRoleId: DAR-002        
+        description: Debtor details   
+  - dataEntityId: DE-008
+    name: Prospect Organisation
+    parentDataEntityId: DE-005
+    dataTopicId: DT-001      
+    technologies:
+      - technologyId: T-005
+        dataAccessRoleId: DAR-001
+  - dataEntityId: DE-009
+    name: Supplier
+    parentDataEntityId: DE-005
+    dataTopicId: DT-001 
+    technologies:
+      - technologyId: T-003
+        dataAccessRoleId: DAR-001          
+  - dataEntityId: DE-010
+    name: Country
+    dataTopicId: DT-002   
+  - dataEntityId: DE-011
+    name: City
+    dataTopicId: DT-002  
+  - dataEntityId: DE-012
+    name: Room
+    dataTopicId: DT-002    
+  - dataEntityId: DE-013
+    name: Rack
+    description: A Rack is an equipment rack in the datacentre
+    dataTopicId: DT-002                         
+  - dataEntityId: DE-014
+    name: Account
+    dataTopicId: DT-003
+  - dataEntityId: DE-015
+    name: Debtor
+    dataTopicId: DT-003    
+    parentDataEntityId: DE-014
+    technologies:
+      - technologyId: T-003
+        dataAccessRoleId: DAR-001  
+      - technologyId: T-005
+        dataAccessRoleId: DAR-003          
+  - dataEntityId: DE-016
+    name: Creditor
+    dataTopicId: DT-003    
+    parentDataEntityId: DE-014   
+    technologies:
+      - technologyId: T-003
+        dataAccessRoleId: DAR-001       
+  - dataEntityId: DE-017
+    name: Invoice
+    dataTopicId: DT-003  
+    technologies:
+      - technologyId: T-003
+        dataAccessRoleId: DAR-001            
+  - dataEntityId: DE-018
+    name: Transaction
+    dataTopicId: DT-003    
+    technologies:
+      - technologyId: T-003
+        dataAccessRoleId: DAR-001                  
+  - dataEntityId: DE-019
+    name: Interaction
+    dataTopicId: DT-004  
+  - dataEntityId: DE-020
+    name: Outbounding Contact
+    dataTopicId: DT-004      
+    parentDataEntityId: DE-019
+    technologies:
+      - technologyId: T-005
+        dataAccessRoleId: DAR-001  
+  - dataEntityId: DE-021
+    name: Job Ticket
+    dataTopicId: DT-004      
+    parentDataEntityId: DE-019 
+    technologies:
+      - technologyId: T-005
+        dataAccessRoleId: DAR-001  
+      - technologyId: T-007
+        dataAccessRoleId: DAR-003     
+  - dataEntityId: DE-022
+    name: Event
+    dataTopicId: DT-005  
+    technologies:
+      - technologyId: T-108
+        dataAccessRoleId: DAR-001      
+  - dataEntityId: DE-023
+    name: Alert
+    dataTopicId: DT-005 
+    parentDataEntityId: DE-022  
+    technologies:
+      - technologyId: T-108
+        dataAccessRoleId: DAR-001                  
+  - dataEntityId: DE-024
+    name: Log Message
+    dataTopicId: DT-005 
+    parentDataEntityId: DE-022   
+    technologies:
+      - technologyId: T-108
+        dataAccessRoleId: DAR-001             
+  - dataEntityId: DE-025
+    name: Metric
+    dataTopicId: DT-005 
+    description: A Metric measures the performance of a system
+    technologies:
+      - technologyId: T-108
+        dataAccessRoleId: DAR-001     
+  - dataEntityId: DE-026
+    name: Threshold
+    dataTopicId: DT-005    
+    description: A Threshold is a defined benchmark which, if exceeded will trigger an alert
+    technologies:
+      - technologyId: T-108
+        dataAccessRoleId: DAR-001     
+  - dataEntityId: DE-027
+    name: Tenant
+    dataTopicId: DT-006
+    description: A Tenant is a registered, isolated space in the cloud services platform
+    technologies:
+      - technologyId: T-008
+        dataAccessRoleId: DAR-001      
+  - dataEntityId: DE-028
+    name: Service
+    dataTopicId: DT-006
+    description: A Service is a product offering which is allocated to a Tenant
+    technologies:
+      - technologyId: T-008
+        dataAccessRoleId: DAR-001  
+  - dataEntityId: DE-029
+    name: Customisation
+    dataTopicId: DT-006
+    description: A Customisation is a non-standard feature applied to a Service for a Tenant
+    technologies:
+      - technologyId: T-008
+        dataAccessRoleId: DAR-001      
+  - dataEntityId: DE-030
+    name: Allocation
+    dataTopicId: DT-006
+    description: An Allocation represents the resources allocated to a Tenancy's Service
+    technologies:
+      - technologyId: T-008
+        dataAccessRoleId: DAR-001         
+  - dataEntityId: DE-031
+    name: Environment
+    dataTopicId: DT-006
+    description: An Environment represents an isolated space within a Tenancy (e.g. Test/Production)
+    technologies:
+      - technologyId: T-008
+        dataAccessRoleId: DAR-001  
+       

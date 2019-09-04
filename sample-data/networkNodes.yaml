@@ -1,0 +1,245 @@
+networkNodes: 
+  - nodeId: pg-inscope
+    isAbstractNode: true
+    nodeType: Database
+    locationId: NL-006
+    technologies:
+      - technologyId: T-003
+      - technologyId: T-101
+  - nodeId: pg-inscope-test
+    isAbstractNode: false
+    implementsNodes:
+      - nodeId: pg-inscope
+    environmentId: E-002
+  - nodeId: pg-inscope-prod
+    isAbstractNode: false
+    environmentId: E-001    
+    implementsNodes:
+      - nodeId: pg-inscope    
+  - nodeId: inscope-web
+    isAbstractNode: true
+    nodeType: Cluster
+    locationId: NL-005
+    technologies:
+      - technologyId: T-102
+      - technologyId: T-003
+  - nodeId: srv-is-web-01
+    isAbstractNode: false
+    environmentId: E-001   
+    implementsNodes:
+      - nodeId: inscope-web
+  - nodeId: srv-is-web-02
+    isAbstractNode: false
+    environmentId: E-001   
+    implementsNodes:
+      - nodeId: inscope-web    
+  - nodeId: srv-is-webtest-01
+    isAbstractNode: false
+    environmentId: E-002  
+    implementsNodes:
+      - nodeId: inscope-web
+  - nodeId: inscope-load-balancer
+    nodeType: Load Balancer Alias
+    isAbstractNode: true
+    locationId: NL-004
+    technologies:
+      - technologyId: T-003
+  - nodeId: lb-inscope.acme.example.com
+    isAbstractNode: false
+    environmentId: E-001 
+    implementsNodes:
+      - nodeId: inscope-load-balancer    
+  - nodeId: lb-inscope-test.acme.example.com
+    isAbstractNode: false
+    environmentId: E-002 
+    implementsNodes:
+      - nodeId: inscope-load-balancer    
+  - nodeId: inscope-user
+    nodeType: Desktop
+    isAbstractNode: true
+    locationId: NL-007
+  - nodeId: peoplestar-cloud
+    locationId: NL-007  
+    nodeType: Cluster
+    isAbstractNode: true
+    technologies:
+      - technologyId: T-004    
+  - nodeId: zipcrm-cloud
+    locationId: NL-007  
+    nodeType: Cluster
+    isAbstractNode: true 
+    technologies:
+      - technologyId: T-005             
+
+  - nodeId: portal-front-end
+    isAbstractNode: true
+    nodeType: Cluster
+    locationId: NL-002
+    technologies:
+      - technologyId: T-008
+  - nodeId: portal-services
+    isAbstractNode: true
+    nodeType: Cluster
+    locationId: NL-003
+    technologies:
+      - technologyId: T-008
+  - nodeId: portal-load-balancer
+    isAbstractNode: true
+    nodeType: Load Balancer Alias
+    locationId: NL-001
+    technologies:
+      - technologyId: T-008   
+  - nodeId: cs-manage-db
+    isAbstractNode: true
+    nodeType: Database
+    locationId: NL-003
+    technologies:
+      - technologyId: T-008
+  - nodeId: cs-elastic
+    isAbstractNode: true
+    nodeType: Cluster
+    locationId: NL-003
+    technologies:
+      - technologyId: T-008
+  - nodeId: cs-kibana              
+    isAbstractNode: true
+    nodeType: Cluster
+    locationId: NL-002
+    technologies:
+      - technologyId: T-008
+
+  - nodeId: lb-portal-beta.acme.example.com
+    isAbstractNode: false
+    environmentId: E-002
+    implementsNodes:
+      - nodeId: portal-load-balancer
+  - nodeId: lb-portal.acme.example.com
+    isAbstractNode: false
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: portal-load-balancer 
+  - nodeId: srv-portal-fe1
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: portal-front-end      
+  - nodeId: srv-portal-fe2
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: portal-front-end    
+  - nodeId: srv-portal-fe3
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: portal-front-end    
+  - nodeId: srv-portal-fe4
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: portal-front-end    
+  - nodeId: srv-portal-fe-test1
+    environmentId: E-002
+    implementsNodes:
+      - nodeId: portal-front-end      
+  - nodeId: srv-portal-fe-test2
+    environmentId: E-002
+    implementsNodes:
+      - nodeId: portal-front-end    
+  - nodeId: srv-cs-kib-test1
+    environmentId: E-002
+    implementsNodes:
+      - nodeId: cs-kibana
+  - nodeId: srv-cs-kib1
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: cs-kibana
+  - nodeId: srv-cs-kib2
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: cs-kibana
+  - nodeId: srv-cs-portal-svc1
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: portal-services
+  - nodeId: srv-cs-portal-svc2
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: portal-services
+  - nodeId: srv-cs-portal-svc-test1
+    environmentId: E-002
+    implementsNodes:
+      - nodeId: portal-services      
+  - nodeId: srv-cs-elastic1
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: cs-elastic
+  - nodeId: srv-cs-elastic2
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: cs-elastic
+  - nodeId: srv-cs-elastic3
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: cs-elastic
+  - nodeId: srv-cs-elastic-test1
+    environmentId: E-002
+    implementsNodes:
+      - nodeId: cs-elastic    
+  - nodeId: srv-cs-cassdb1
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: cs-manage-db     
+  - nodeId: srv-cs-cassdb2
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: cs-manage-db   
+  - nodeId: srv-cs-cassdb3
+    environmentId: E-001
+    implementsNodes:
+      - nodeId: cs-manage-db   
+  - nodeId: srv-cs-cassdb-test1
+    environmentId: E-002
+    implementsNodes:
+      - nodeId: cs-manage-db                          
+networkConnections:
+  - fromNodeId: inscope-user
+    toNodeId: inscope-load-balancer
+    protocol: HTTPS
+    port: 443
+  - fromNodeId: inscope-load-balancer
+    toNodeId: inscope-web
+    protocol: HTTP
+    port: 8080
+  - fromNodeId: inscope-web
+    toNodeId: pg-inscope
+    protocol: TCP
+    port: 5432    
+  - fromNodeId: inscope-web
+    toNodeId: zipcrm-cloud
+    protocol: HTTPS
+    port: 443
+  - fromNodeId: inscope-web
+    toNodeId: peoplestar-cloud
+    protocol: HTTPS
+    port: 4443    
+  - fromNodeId: portal-load-balancer
+    toNodeId: portal-front-end
+    protocol: HTTP
+    port: 80
+  - fromNodeId: portal-load-balancer
+    toNodeId: cs-kibana
+    protocol: HTTP
+    port: 8080
+  - fromNodeId: cs-kibana
+    toNodeId: cs-elastic
+    protocol: HTTP
+    port: 9200
+  - fromNodeId: portal-front-end
+    toNodeId: portal-services
+    protocol: gRPC
+    port: 8000
+  - fromNodeId: portal-services
+    toNodeId: cs-elastic
+    protocol: HTTP
+    port: 9200
+  - fromNodeId: portal-services
+    toNodeId: cs-manage-db
+    protocol: TCP
+    port: 9160    

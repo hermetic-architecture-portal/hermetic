@@ -1,0 +1,166 @@
+capabilityMetricAssessments:
+  - capabilityId: C-001
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 2
+      - metricId: M-102
+        score: 1     
+      - metricId: M-103
+        score: 3     
+      - metricId: M-104
+        score: 2                  
+  - capabilityId: C-002
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 1
+      - metricId: M-102
+        score: 1     
+      - metricId: M-103
+        score: 4     
+      - metricId: M-104
+        score: 2           
+  - capabilityId: C-003
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 4
+      - metricId: M-102
+        score: 4     
+      - metricId: M-103
+        score: 4     
+      - metricId: M-104
+        score: 2    
+  - capabilityId: C-004
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 2
+      - metricId: M-102
+        score: 4     
+      - metricId: M-103
+        score: 3     
+      - metricId: M-104
+        score: 2    
+  - capabilityId: C-005
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 2
+      - metricId: M-102
+        score: 1     
+      - metricId: M-103
+        score: 1     
+      - metricId: M-104
+        score: 2  
+  - capabilityId: C-006
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 1
+      - metricId: M-102
+        score: 1     
+      - metricId: M-103
+        score: 1     
+      - metricId: M-104
+        score: 0     
+  - capabilityId: C-007
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 3
+      - metricId: M-102
+        score: 4     
+      - metricId: M-103
+        score: 2     
+      - metricId: M-104
+        score: 4   
+  - capabilityId: C-008
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 4
+      - metricId: M-102
+        score: 4     
+      - metricId: M-103
+        score: 1     
+      - metricId: M-104
+        score: 2    
+  - capabilityId: C-009
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 2
+      - metricId: M-102
+        score: 4     
+      - metricId: M-103
+        score: 3     
+      - metricId: M-104
+        score: 3  
+  - capabilityId: C-010
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 4
+      - metricId: M-102
+        score: 4     
+      - metricId: M-103
+        score: 2     
+      - metricId: M-104
+        score: 3       
+  - capabilityId: C-011
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 4
+      - metricId: M-102
+        score: 4     
+      - metricId: M-103
+        score: 3     
+      - metricId: M-104
+        score: 3    
+  - capabilityId: C-201
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 4
+      - metricId: M-102
+        score: 3     
+      - metricId: M-103
+        score: 2     
+      - metricId: M-104
+        score: 3     
+  - capabilityId: C-202
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 2
+      - metricId: M-102
+        score: 4     
+      - metricId: M-103
+        score: 1     
+      - metricId: M-104
+        score: 3   
+  - capabilityId: C-203
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 3
+      - metricId: M-102
+        score: 3     
+      - metricId: M-103
+        score: 2     
+      - metricId: M-104
+        score: 2    
+  - capabilityId: C-204
+    metricSetId: MS-002
+    assessments: 
+      - metricId: M-101
+        score: 4
+      - metricId: M-102
+        score: 3     
+      - metricId: M-103
+        score: 4     
+      - metricId: M-104
+        score: 3                                                                               

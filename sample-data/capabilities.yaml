@@ -1,0 +1,398 @@
+capabilityTypes:
+  - capabilityTypeId: CT-001
+    name: Core Business
+  - capabilityTypeId: CT-002
+    name: Supporting
+valueChains:
+  - valueChainId: VC-001
+    capabilityTypeId: CT-001
+    name: Acme Cloud Services Value Chain
+    valueChainSegments:
+      - valueChainSegmentId: VCS-001
+        name: Research
+        displayOrder: 1
+      - valueChainSegmentId: VCS-002
+        name: Development
+        displayOrder: 2   
+      - valueChainSegmentId: VCS-003
+        name: Marketing
+        displayOrder: 3  
+      - valueChainSegmentId: VCS-004
+        name: Professional Services
+        displayOrder: 3    
+      - valueChainSegmentId: VCS-005
+        name: Operations
+        displayOrder: 4                      
+capabilities:
+  - capabilityId: C-001
+    capabilityTypeId: CT-001
+    name: Market Research
+    description: The Market Research capability is concerned with identifying business opportunities and risks
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-001
+  - capabilityId: C-001.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-001
+    description: Customer Outreach is capability for obtaining market intelligence from existing customers through surveys, workshops and informal contacts
+    name: Customer Outreach
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-001                     
+  - capabilityId: C-002
+    capabilityTypeId: CT-001
+    name: R&D
+    description: R&D is the Research and Development capability which leads to the development of technical innovations 
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-001
+  - capabilityId: C-002.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-002
+    name: Fundamental Research
+    description: The Fundamental Research capability delivers innovation through computer science research that is not directly aligned to a product or service
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-001
+  - capabilityId: C-002.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-002
+    name: Proofs of Concept
+    description: Proofs of Concept (PoCs) demonstrate the viability of innovative technologies and approaches
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-001        
+  - capabilityId: C-002.3
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-002
+    name: Competitor Analysis
+    description: Competitor Analysis is the capability to discover new opportunities by analysing competing services and products
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-001     
+  - capabilityId: C-003
+    capabilityTypeId: CT-001
+    name: Technical Sales
+    description: The Technical Sales capability engages with prospective customers to provide expert pre-sales advice and analysis
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-003   
+  - capabilityId: C-003.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-003
+    description: The Customer Proof of Concept capability enables the business to demonstrate the viability and advantages of our product to customers
+    name: Customer PoC
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-003   
+  - capabilityId: C-003.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-003
+    name: Licence Costing
+    description: The Licence Costing capability analyses the customer environment and requirements to provide accurate cost estimates and quotes
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-003                       
+  - capabilityId: C-004
+    capabilityTypeId: CT-001
+    name: Advertising
+    description: The Advertising capability promotes our products and services to prospective customers
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-003    
+  - capabilityId: C-004.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-004
+    name: Analytics
+    description: The Analytics capability processes data on customer engagement with advertising to enable optimally targeted advertising spend
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-003  
+  - capabilityId: C-004.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-004
+    name: Portfolio Management
+    description: The Portfolio Management capability manages the advertising placement and spend across a range of media
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-003                       
+  - capabilityId: C-005
+    capabilityTypeId: CT-001
+    name: Prospect Outreach
+    description: The Prospect Outreach capability engages directly with prospective customers via direct email, phone calls and vendor conference booths
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-003           
+  - capabilityId: C-006
+    capabilityTypeId: CT-001
+    name: Implementation
+    description: The Implementation capability works with customers to on-board them to the cloud services platform
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-004
+  - capabilityId: C-006.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-006
+    name: Integration
+    description: The Integration capability integrates cloud services with the customers' exising environment
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-004  
+  - capabilityId: C-006.3
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-006
+    name: Migration
+    description: The Migration capability is concerned with importing existing customer data and services into the cloud services platform
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-004                 
+  - capabilityId: C-007
+    capabilityTypeId: CT-001
+    name: Consulting
+    description: The Consulting capability provides paid services to individual customers, as compared to the platform services shared by all customers
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-004        
+  - capabilityId: C-007.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-007
+    name: Troubleshooting
+    description: The Troubleshooting capability investigates customer integration and customisation issues which are outside of mainstream product support
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-004         
+  - capabilityId: C-007.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-007
+    name: Customisation
+    description: The Customisation capability provides customers with the ability to modify and adapt the platform services to their needs
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-004    
+  - capabilityId: C-007.3
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-007
+    name: Ad-hoc Reports
+    description: The Ad-hoc Reports capability provides customers with the ability to obtain custom data extracts and reports
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-004            
+  - capabilityId: C-008
+    capabilityTypeId: CT-001
+    name: Hosting
+    description: The Hosting capability is concerned with running the deployed platform services
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005  
+  - capabilityId: C-008.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-008
+    name: Datacentre Management
+    description: The Datacentre Management capability is concerned with ensuring the performance and stability of the physical buildings and equipment of the datacentres
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005 
+  - capabilityId: C-008.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-008
+    name: Virtualisation
+    description: The Virtualisation capability is concerned with managing the virtualised hardware and networking which provides tenant services
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005   
+  - capabilityId: C-008.3
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-008
+    name: Security
+    description: The Security capability ensures the physical security of the datacentre and cybersecurity of the platform services
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005      
+  - capabilityId: C-008.4
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-008
+    name: Monitoring
+    description: The Monitoring capability uses logs and analytics to ensure the continuing smooth operation of the platform services
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005                                   
+  - capabilityId: C-009
+    capabilityTypeId: CT-001
+    name: Support
+    description: The Support capability is concerned with providing customer support for the platform services
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005                     
+  - capabilityId: C-009.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-009
+    name: Incoming Calls
+    description: The Incoming Calls capability provides Tier-1 support for incoming fault reports via a range of channels
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005         
+  - capabilityId: C-009.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-009
+    name: Fault Analysis
+    description: The Fault Analysis capability performs root cause analysis, triage and escalation for issue reports
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005          
+  - capabilityId: C-009.3
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-009
+    name: Refund Claims
+    description: The Refund Claims capability validates claims for refunds for breach of contract or SLA and processes account credits
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005              
+  - capabilityId: C-009.4
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-009
+    name: SLA Management
+    description: The SLA Management capability tracks platform performance and uptime against the contractual SLA metrics and escalates potential issues
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-005        
+  - capabilityId: C-010
+    capabilityTypeId: CT-001
+    name: Infrastructure Design
+    description: The Infrastructure Design capability plans, specifies and procures the physical server hardware for the platform
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002
+  - capabilityId: C-010.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-010
+    name: Network Design
+    description: The Network Design capability is concerned with designing the optimal physical and virtual network topology for the platform
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002 
+  - capabilityId: C-010.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-010
+    name: Datacentre Planning
+    description: The Datacentre Planning capability is concerned with analysing datacentre capacity, disaster resilience and planning for future needs
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002                 
+  - capabilityId: C-011
+    capabilityTypeId: CT-001
+    name: Software
+    description: The Software capability designs and develops the software that runs the cloud services platform
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002      
+  - capabilityId: C-011.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-011
+    name: Requirements Analysis
+    description: The Requirements Analysis capability interacts with customers to determine the solution requirements
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002     
+  - capabilityId: C-011.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-011
+    name: Solution Architecture
+    description: The Solution Architecture capability defines and describes the architecure in the context of particular solutions
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002              
+  - capabilityId: C-011.3
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-011
+    name: Software Development
+    description: The Software Development capability is concerned with coding the software for the platform services
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002         
+  - capabilityId: C-011.4
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-011
+    name: QA
+    description: The QA (Quality Assurance) capability is concerned with ensuring that software meets expected quality standards
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002         
+  - capabilityId: C-011.4.1
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-011.4
+    name: Manual Test
+    description: The Manual Test capability refers to investigatory and manual scripted testing of solutions
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002
+  - capabilityId: C-011.4.2
+    capabilityTypeId: CT-001
+    parentCapabilityId: C-011.4
+    name: Automated Test
+    description: The Automated Test capability refers to the ability to automatically perform scripted tests
+    valueChainSegments:
+      - valueChainId: VC-001
+        valueChainSegmentId: VCS-002
+  - capabilityId: C-201
+    capabilityTypeId: CT-002
+    name: Regulatory
+    description: The Regulatory capability is concerned with compliance with legal and regulatory constraints
+  - capabilityId: C-201.1
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-201
+    name: Legal
+    description: The Legal capability provides expert advice on legal compliance
+  - capabilityId: C-201.2
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-201
+    name: Privacy
+    description: The Privacy capability ensures compliance with privacy regulations and laws
+  - capabilityId: C-201.3
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-201
+    name: Investigations
+    description: The Investigations capability assists with legally mandated investigations of customer data
+  - capabilityId: C-202
+    capabilityTypeId: CT-002
+    name: Finance
+    description: The Finance capability is concerned with the management of the business' finances
+  - capabilityId: C-202.1
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-202
+    name: Accounts Receivable
+    description: The Accounts Receivable capability manages the receipt of payments to the business         
+  - capabilityId: C-202.2
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-202
+    name: Accounts Payable
+    description: The Accounts Receivable capability manages payment of invoices
+  - capabilityId: C-203
+    capabilityTypeId: CT-002
+    name: Human Resources
+    description: The Human Resources capability is concerned with managing the employees and prospective employees of the organisation
+  - capabilityId: C-203.1
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-203
+    name: Recruiting
+    description: The Recruiting capability is concerned with identifying prospective employees and managing the interviewing and hiring process
+  - capabilityId: C-203.2
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-203
+    name: Induction
+    description: The Induction capability is concerned with onboarding new employeess and ensuring they understand their responsibilities
+  - capabilityId: C-204
+    capabilityTypeId: CT-002
+    name: Strategy
+    description: The Recruiting capability is concerned with identifying prospective employees and managing the interviewing and hiring process
+  - capabilityId: C-204.1
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-204
+    name: Vision
+    description: The Vision capability is concerned with developing the strategic corporate vision
+  - capabilityId: C-204.2
+    capabilityTypeId: CT-002
+    parentCapabilityId: C-204
+    name: Strategic Planning
+    description: The Strategic Planning capability is concerned with developing roadmaps for the strategic development of the corporation
+     
+       

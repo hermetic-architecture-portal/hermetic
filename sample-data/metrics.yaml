@@ -1,0 +1,145 @@
+metrics:
+  - metricId: M-001
+    name: Functional Fit
+    description: This metric shows the degree to which the technology is a good functional fit for the business' requirements
+    category: Fit
+    minScore: 0
+    maxScore: 4
+  - metricId: M-002
+    name: Non-functional Fit
+    description: This metric shows the degree to which the technology is a good fit for the business' non-functional requirements
+    category: Fit
+    minScore: 0
+    maxScore: 4    
+  - metricId: M-003
+    name: Support documentation
+    description: This metric reflects the coverage and quality of support documentation held by the business for the technology
+    category: Support
+    minScore: 0
+    maxScore: 4        
+  - metricId: M-004
+    name: Staff cover
+    description: This metric reflects the degree of redundancy in staff who are able to support the product
+    category: Support
+    minScore: 0
+    maxScore: 4    
+
+  - metricId: M-101
+    name: Staffing Level
+    description: This metric reflects the adequacy or otherwise of the staffing level
+    category: Staff
+    minScore: 0
+    maxScore: 4
+  - metricId: M-102
+    name: Staffing Training
+    description: This metric reflects the degree to which staff are adequately trained
+    category: Staff
+    minScore: 0
+    maxScore: 4
+  - metricId: M-103
+    name: Process Documentation
+    description: This metric reflects the degree to which processes are documented
+    category: Process
+    minScore: 0
+    maxScore: 4
+  - metricId: M-104
+    name: Process Efficiency
+    description: This metric reflects the assessed efficiency of processses
+    category: Process
+    minScore: 0
+    maxScore: 4
+
+  - metricId: M-201
+    name: Completeness
+    category: Overall
+    description: This metric measures how complete the artifact is
+    minScore: 0
+    maxScore: 4
+  - metricId: M-202
+    name: Currency
+    category: Overall
+    description: This metric measures how up to date the artifact is
+    minScore: 0
+    maxScore: 4    
+        
+
+technologyMetricSets:
+  - metricSetId: MS-001
+    name: Technology
+    metrics:
+      - metricId: M-001
+      - metricId: M-002
+      - metricId: M-003
+      - metricId: M-004
+
+technologyMetricBands:
+  - bandId: TMB-001
+    name: Poor
+    minPercent: 0
+    maxPercentExclusive: 33.33
+    levelNumber: 1
+  - bandId: TMB-002
+    name: Fair
+    minPercent: 33.33
+    maxPercentExclusive: 66.67
+    levelNumber: 2 
+  - bandId: TMB-003
+    name: Good
+    minPercent: 66.67
+    maxPercentExclusive: 101
+    levelNumber: 3   
+
+capabilityMetricSets:
+  - metricSetId: MS-002
+    name: Capability
+    metrics:
+      - metricId: M-101
+      - metricId: M-102
+      - metricId: M-103
+      - metricId: M-104
+
+capabilityMetricBands:
+  - bandId: CMB-001
+    name: Poor
+    minPercent: 0
+    maxPercentExclusive: 25
+    levelNumber: 1
+  - bandId: CMB-002
+    name: Fair
+    minPercent: 25
+    maxPercentExclusive: 50
+    levelNumber: 2 
+  - bandId: CMB-003
+    name: Good
+    minPercent: 50
+    maxPercentExclusive: 75
+    levelNumber: 3   
+  - bandId: CMB-004
+    name: Excellent
+    minPercent: 75
+    maxPercentExclusive: 101
+    levelNumber: 4     
+
+eaArtifactMetricSets:
+  - metricSetId: MS-003
+    name: EA
+    metrics:
+      - metricId: M-201
+      - metricId: M-202
+   
+eaArtifactMetricBands:
+  - bandId: EMB-001
+    name: Poor
+    minPercent: 0
+    maxPercentExclusive: 33.33
+    levelNumber: 1
+  - bandId: EMB-002
+    name: Fair
+    minPercent: 33.33
+    maxPercentExclusive: 66.67
+    levelNumber: 2 
+  - bandId: EMB-003
+    name: Good
+    minPercent: 66.67
+    maxPercentExclusive: 101
+    levelNumber: 3  

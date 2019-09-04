@@ -1,0 +1,118 @@
+businessUnits:
+  - businessUnitId: BU-001
+    name: Legal Services
+    description: The Legal Services department provides legal advice and oversight to the business
+    capabilities:
+      - capabilityId: C-009.3
+      - capabilityId: C-201.1
+      - capabilityId: C-201.2
+      - capabilityId: C-201.3
+    links: 
+      - url: http://example.com/legalservices
+        text: Home Page
+  - businessUnitId: BU-002
+    name: Privacy Office
+    description: The Privacy Office is responsible for development and enforcement of privacy policy
+    capabilities:
+      - capabilityId: C-201.2
+  - businessUnitId: BU-003
+    name: Financial Services
+    description: The Financial Services department provides financial management and accounting services to the business
+    capabilities:
+      - capabilityId: C-202.1
+      - capabilityId: C-202.2
+      - capabilityId: C-009.3
+      - capabilityId: C-003.2
+      - capabilityId: C-201.3
+  - businessUnitId: BU-004
+    name: HR Services
+    description: The HR Services department manages employment and recruiting activity
+    capabilities:
+      - capabilityId: C-203.1
+      - capabilityId: C-203.2
+  - businessUnitId: BU-005
+    name: Sales & Marketing Team
+    description: The Sales & Marketing Team is responsible for promoting the business and engaging with customers and prospective customers to drive sales
+    capabilities:
+      - capabilityId: C-003.1
+      - capabilityId: C-003.2
+      - capabilityId: C-004.1
+      - capabilityId: C-004.2
+      - capabilityId: C-005
+      - capabilityId: C-001.1
+  - businessUnitId: BU-006
+    name: CTO Office
+    description: The office of the Chief Technology Officer is responsible for the technical strategy of the business
+    capabilities:
+      - capabilityId: C-204.1
+      - capabilityId: C-204.2
+      - capabilityId: C-002.3
+      - capabilityId: C-010.2
+      - capabilityId: C-011.2
+  - businessUnitId: BU-007
+    name: Business Analysis Team
+    description: The Business Analysis is responsible for engaging with customers to establish their requirements
+    capabilities:
+      - capabilityId: C-001.1
+      - capabilityId: C-011.1
+      - capabilityId: C-003.1
+      - capabilityId: C-005
+      - capabilityId: C-006.2
+      - capabilityId: C-011.2
+  - businessUnitId: BU-008
+    name: QA Team
+    description: The QA Team is responsible for managing the quality of the platform services product
+    capabilities:
+      - capabilityId: C-009.4
+      - capabilityId: C-011.4.1
+      - capabilityId: C-011.4.2
+  - businessUnitId: BU-009
+    name: Infrastructure Team
+    description: The QA Team is responsible the physical and virtual computing infrastructure of the business
+    capabilities:
+      - capabilityId: C-002.1
+      - capabilityId: C-002.2
+      - capabilityId: C-010.1
+      - capabilityId: C-010.2      
+      - capabilityId: C-011.2
+      - capabilityId: C-006.2
+      - capabilityId: C-007.1
+      - capabilityId: C-008.1
+      - capabilityId: C-008.2
+      - capabilityId: C-008.3
+      - capabilityId: C-008.4
+  - businessUnitId: BU-010
+    name: Development Team
+    description: The Development Team is responsible for developing the software for the platform services product
+    capabilities:
+      - capabilityId: C-002.1
+      - capabilityId: C-002.2
+      - capabilityId: C-002.3
+      - capabilityId: C-011.2
+      - capabilityId: C-011.3
+      - capabilityId: C-006.2
+      - capabilityId: C-007.1
+      - capabilityId: C-007.2
+  - businessUnitId: BU-011
+    name: Professional Services Team
+    description: The Professional Services Team provides personalised support and assistance to customers
+    capabilities:
+      - capabilityId: C-003.1
+      - capabilityId: C-003.2
+      - capabilityId: C-005
+      - capabilityId: C-006.2
+      - capabilityId: C-006.3
+      - capabilityId: C-007.1
+      - capabilityId: C-007.2
+      - capabilityId: C-007.3
+  - businessUnitId: BU-012
+    name: Customer Support Team
+    description: The Customer Support Team is responsible for handling and escalating customer enquiries and fault reports
+    capabilities:
+      - capabilityId: C-009.1
+      - capabilityId: C-009.2
+      - capabilityId: C-009.3
+      - capabilityId: C-201.3
+      - capabilityId: C-201.2
+  
+ 

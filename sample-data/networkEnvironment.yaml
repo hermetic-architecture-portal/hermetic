@@ -1,0 +1,20 @@
+networkLocations:
+  - locationId: NL-001
+    name: Customer DMZ
+  - locationId: NL-002
+    name: Customer Front End Zone
+  - locationId: NL-003
+    name: Customer Back End Zone    
+  - locationId: NL-004
+    name: Back-office DMZ
+  - locationId: NL-005
+    name: Back-office Front End Zone
+  - locationId: NL-006
+    name: Back-office Back End Zone  
+  - locationId: NL-007
+    name: Internet    
+deploymentEnvironments:
+  - environmentId: E-001
+    name: Production    
+  - environmentId: E-002
+    name: Test       

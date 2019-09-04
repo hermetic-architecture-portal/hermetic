@@ -1,0 +1,62 @@
+technicalReferenceModelLayers:
+  - trmLayerId: TRML-001
+    name: Product
+  - trmLayerId: TRML-002
+    name: Back Office Applications
+  - trmLayerId: TRML-003
+    name: Supporting Systems       
+  - trmLayerId: TRML-004
+    name: Operating Systems and Virtualisation   
+technicalReferenceModelCategories:
+  - trmCategoryId: TRMC-001
+    name: Acme Cloud Services
+    trmLayerId: TRML-001
+    technologies: 
+      - technologyId: T-001
+      - technologyId: T-002
+      - technologyId: T-008
+  - trmCategoryId: TRMC-002
+    name: Administrative Applications
+    trmLayerId: TRML-002
+    technologies: 
+      - technologyId: T-003
+      - technologyId: T-004    
+      - technologyId: T-005
+  - trmCategoryId: TRMC-003
+    name:  Technical Applications
+    trmLayerId: TRML-002
+    technologies: 
+      - technologyId: T-006
+      - technologyId: T-007    
+      - technologyId: T-108     
+  - trmCategoryId: TRMC-004
+    name:  Databases
+    trmLayerId: TRML-003
+    technologies: 
+      - technologyId: T-104
+      - technologyId: T-101   
+  - trmCategoryId: TRMC-005
+    name:  Web Servers
+    trmLayerId: TRML-003
+    technologies: 
+      - technologyId: T-102
+      - technologyId: T-103                
+  - trmCategoryId: TRMC-006
+    name:  Desktop OSes
+    trmLayerId: TRML-004
+    technologies: 
+      - technologyId: T-109
+      - technologyId: T-110       
+  - trmCategoryId: TRMC-007
+    name:  Server OSes
+    trmLayerId: TRML-004
+    technologies: 
+      - technologyId: T-106
+      - technologyId: T-107          
+  - trmCategoryId: TRMC-008
+    name: Cluster Management
+    trmLayerId: TRML-004
+    technologies: 
+      - technologyId: T-105
+        
+      

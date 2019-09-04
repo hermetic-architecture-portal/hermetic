@@ -1,0 +1,85 @@
+components:
+  - componentId: portal-user
+    actor: true
+    technologies:
+      - technologyId: T-008
+  - componentId: portal-view-engine
+    technologies:
+      - technologyId: T-008
+    interfaces:
+      - interfaceId: html
+  - componentId: portal-chart-engine
+    technologies:
+      - technologyId: T-008
+    interfaces:
+      - interfaceId: html
+  - componentId: portal-svc-bridge
+    interfaces:
+      - interfaceId: api-proxy
+    technologies:
+      - technologyId: T-008    
+  - componentId: log-datastore
+    interfaces:
+      - interfaceId: read  
+    technologies:
+      - technologyId: T-008   
+  - componentId: portal-svc-api
+    interfaces:
+      - interfaceId: gRPC
+    technologies:
+      - technologyId: T-008   
+  - componentId: portal-business-logic
+    interfaces:
+      - interfaceId: read
+      - interfaceId: update  
+    technologies:
+      - technologyId: T-008
+  - componentId: portal-repository
+    interfaces:
+      - interfaceId: read
+      - interfaceId: update  
+    technologies:
+      - technologyId: T-008    
+  - componentId: portal-datastore
+    interfaces:
+      - interfaceId: read
+      - interfaceId: update  
+    technologies:
+      - technologyId: T-008                       
+componentConnections:
+  - fromComponentId: portal-user
+    toComponentId: portal-view-engine
+    toInterfaceId: html
+  - fromComponentId: portal-user
+    toComponentId: portal-chart-engine
+    toInterfaceId: html
+  - fromComponentId: portal-view-engine
+    toComponentId: portal-svc-bridge
+    toInterfaceId: api-proxy
+  - fromComponentId: portal-chart-engine
+    toComponentId: log-datastore
+    toInterfaceId: read
+  - fromComponentId: portal-svc-bridge
+    toComponentId: portal-svc-api
+    toInterfaceId: gRPC
+  - fromComponentId: portal-svc-api
+    toComponentId: portal-business-logic
+    toInterfaceId: read    
+  - fromComponentId: portal-svc-api
+    toComponentId: portal-business-logic
+    toInterfaceId: update    
+  - fromComponentId: portal-business-logic
+    toComponentId: portal-repository
+    toInterfaceId: read
+  - fromComponentId: portal-business-logic
+    toComponentId: portal-repository
+    toInterfaceId: update    
+  - fromComponentId: portal-repository
+    toComponentId: log-datastore
+    toInterfaceId: read
+  - fromComponentId: portal-repository
+    toComponentId: portal-datastore
+    toInterfaceId: read    
+  - fromComponentId: portal-repository
+    toComponentId: portal-datastore
+    toInterfaceId: update        

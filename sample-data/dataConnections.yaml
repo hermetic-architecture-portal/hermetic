@@ -1,0 +1,10 @@
+dataConnections:
+  - fromTechnologyId: T-005
+    toTechnologyId: T-003
+    summary: Customer Identity
+  - fromTechnologyId: T-003
+    toTechnologyId: T-005
+    summary: Debtor Standing   
+  - fromTechnologyId: T-003
+    toTechnologyId: T-004
+    summary: Pay Rates      

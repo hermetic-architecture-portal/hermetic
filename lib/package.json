@@ -1,0 +1,12 @@
+{
+  "name": "hermetic-common",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "cd hermetic-common && npm run test",
+    "install": "cd hermetic-common && npm install",
+    "build": "cd hermetic-common && npm run build"
+  },
+  "author": ""
+}

@@ -1,0 +1,4 @@
+build/*
+# this file comes from the template and will probably not be changed by us
+src/registerServiceWorker.js
+src/setupTests.js

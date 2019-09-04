@@ -1,0 +1,18 @@
+{
+  "name": "hermetic",
+  "version": "1.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "cd lib && npm install && cd ../client && npm install && cd ../server && npm install",
+    "build": "cd lib && npm run build && cd ../client && npm run build && cd ../server && npm run build",
+    "start": "cd server && npm run start-deployed",
+    "test": "export CI=true&&cd lib && npm run test && cd ../client && npm run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:hermetic-architecture-portal/hermetic.git"
+  },
+  "author": "",
+  "dependencies": {}
+}

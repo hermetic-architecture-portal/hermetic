@@ -1,0 +1,190 @@
+technicalStandardLevels:
+  - levelId: TS-001
+    name: Preferred
+    levelNumber: 3
+  - levelId: TS-002
+    name: Restricted
+    levelNumber: 2
+  - levelId: TS-003
+    name: Deprecated
+    levelNumber: 1
+    
+technologies:
+  - technologyId: T-001
+    name: ACS Identity
+    userApplication: true
+    purpose: ACS Identity is a component of Acme Cloud Services which provides identity and access management services
+    aka: ACSId
+    disasterRecovery: Geo-redundant HA
+    technologyType: SaaS
+    slaLevel: 1
+    standardLevelId: TS-001
+    supportingTechnologies: 
+      - technologyId: T-102
+      - technologyId: T-104
+      - technologyId: T-105
+      - technologyId: T-106
+    capabilities: []
+  - technologyId: T-002
+    name: ACS Data Management
+    userApplication: true
+    purpose: ACS Data Management is a component of Acme Cloud Services which provides data management including data cleansing and master data management
+    aka: ACSDM
+    disasterRecovery: Geo-redundant HA
+    technologyType: SaaS
+    slaLevel: 1
+    standardLevelId: TS-001
+    supportingTechnologies: 
+      - technologyId: T-103
+      - technologyId: T-104
+      - technologyId: T-105  
+      - technologyId: T-107
+    capabilities: []  
+  - technologyId: T-003
+    name: InScope Financials
+    userApplication: true
+    purpose: InScope Financials supports financial management and accounting activities
+    disasterRecovery: Active/Passive Manual failover
+    technologyType: Client/server
+    slaLevel: 3
+    standardLevelId: TS-001
+    supportingTechnologies: 
+      - technologyId: T-101
+      - technologyId: T-102
+    capabilities: 
+      - capabilityId: C-202.1   
+      - capabilityId: C-202.2
+      - capabilityId: C-009.3
+  - technologyId: T-004
+    name: PeopleStar
+    userApplication: true
+    purpose: PeopleStar supports the Human Resources function
+    disasterRecovery: Geo-redundant HA
+    technologyType: SaaS
+    slaLevel: 2
+    standardLevelId: TS-001
+    supportingTechnologies: []
+    capabilities: 
+      - capabilityId: C-203.1  
+      - capabilityId: C-203.2     
+  - technologyId: T-005
+    name: Zip CRM
+    userApplication: true
+    purpose: ZIP CRM tracks and manages customer relationships for the business
+    disasterRecovery: Geo-redundant HA
+    technologyType: SaaS
+    slaLevel: 2
+    standardLevelId: TS-001
+    supportingTechnologies: []
+    capabilities: 
+      - capabilityId: C-001.1  
+      - capabilityId: C-005    
+      - capabilityId: C-009.1  
+      - capabilityId: C-009.3
+      - capabilityId: C-009.4
+  - technologyId: T-006
+    name: Apache JMeter
+    userApplication: true
+    purpose: JMeter is a test automation tool
+    slaLevel: 3
+    standardLevelId: TS-001       
+    capabilities: 
+      - capabilityId: C-011.4.2
+  - technologyId: T-007
+    name: Gitlab
+    userApplication: true
+    purpose: Gitlab is a version control and build tool
+    slaLevel: 2
+    standardLevelId: TS-001       
+    capabilities: 
+      - capabilityId: C-011.3     
+  - technologyId: T-101
+    name: PostgreSQL
+    userApplication: false
+    purpose: PostgreSQL is a relational database management service
+    technologyType: Server only
+    slaLevel: 2
+    standardLevelId: TS-002
+  - technologyId: T-102
+    name: Apache HTTPD
+    userApplication: false
+    purpose: Apache HTTP is web server software
+    technologyType: Server only
+    slaLevel: 2
+    standardLevelId: TS-002
+    standardNotes: Standardising on NGNIX for new developments
+  - technologyId: T-103
+    name: NGINX
+    userApplication: false
+    purpose: NGINX is web server software
+    technologyType: Server only
+    slaLevel: 1
+    standardLevelId: TS-001 
+  - technologyId: T-104
+    name: Apache Cassandra
+    userApplication: false
+    purpose: Apache Cassandra is a no-SQL data store
+    technologyType: Server only
+    slaLevel: 1
+    standardLevelId: TS-001 
+  - technologyId: T-105
+    name: Apache Mesos
+    userApplication: false
+    purpose: Apache Mesos is cluster management software
+    technologyType: Server only
+    slaLevel: 1
+    standardLevelId: TS-001     
+    capabilities:
+      - capabilityId: C-008.2
+  - technologyId: T-106
+    name: Fedora Linux
+    userApplication: false
+    purpose: Fedora is a Linux OS distribution
+    technologyType: Server only
+    slaLevel: 1
+    standardLevelId: TS-003  
+    standardNotes: Migrating to Arch Linux 
+  - technologyId: T-107
+    name: Arch Linux
+    userApplication: false
+    purpose: Arch is a Linux OS distribution
+    technologyType: Server only
+    slaLevel: 1
+    standardLevelId: TS-001   
+  - technologyId: T-108
+    name: ELK Stack
+    userApplication: false
+    purpose: The Elasticsearch / Logstash / Kibana stack provides monitoring and log management services
+    technologyType: Client/server
+    slaLevel: 1
+    standardLevelId: TS-001  
+    capabilities:
+      - capabilityId: C-008.4               
+      - capabilityId: C-009.4    
+  - technologyId: T-109
+    name: openSUSE
+    userApplication: false
+    purpose: openSUSE is used as a desktop OS
+    slaLevel: 3
+    standardLevelId: TS-001  
+  - technologyId: T-110
+    name: Ubuntu Linux
+    userApplication: false
+    purpose:  Ubuntu Linux is used as a desktop OS
+    slaLevel: 3
+    standardLevelId: TS-002         
+  - technologyId: T-008
+    name: ACS Portal
+    userApplication: true
+    purpose: ACS Portal provides customer and in-house interfaces for managing the cloud services
+    aka: Portal
+    disasterRecovery: Geo-redundant HA
+    technologyType: SaaS
+    slaLevel: 1
+    standardLevelId: TS-001
+    supportingTechnologies: 
+      - technologyId: T-103
+      - technologyId: T-104
+      - technologyId: T-105  
+      - technologyId: T-107
+    capabilities: []      

@@ -1,0 +1,106 @@
+eaArtifactMetricAssessments:
+  - eaArtifactId: EAA-001
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 2
+      - metricId: M-202
+        score: 1        
+  - eaArtifactId: EAA-002
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 4
+      - metricId: M-202
+        score: 4 
+  - eaArtifactId: EAA-004
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 4
+      - metricId: M-202
+        score: 3                     
+  - eaArtifactId: EAA-005
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 1
+      - metricId: M-202
+        score: 1       
+  - eaArtifactId: EAA-006
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 2
+      - metricId: M-202
+        score: 4             
+  - eaArtifactId: EAA-012
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 4
+      - metricId: M-202
+        score: 4           
+  - eaArtifactId: EAA-013
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 2
+      - metricId: M-202
+        score: 2    
+  - eaArtifactId: EAA-007
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 4
+      - metricId: M-202
+        score: 3    
+  - eaArtifactId: EAA-008
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 1
+      - metricId: M-202
+        score: 1   
+  - eaArtifactId: EAA-009
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 3
+      - metricId: M-202
+        score: 2    
+  - eaArtifactId: EAA-014
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 4
+      - metricId: M-202
+        score: 2     
+  - eaArtifactId: EAA-015
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 3
+      - metricId: M-202
+        score: 3   
+  - eaArtifactId: EAA-016
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 4
+      - metricId: M-202
+        score: 2   
+  - eaArtifactId: EAA-017
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 1
+      - metricId: M-202
+        score: 1    
+  - eaArtifactId: EAA-018
+    metricSetId: MS-003
+    assessments: 
+      - metricId: M-201
+        score: 3
+      - metricId: M-202
+        score: 2                                                             

@@ -1,0 +1,70 @@
+eaDomains:
+  - eaDomainId: EAD-001
+    name: Strategy
+    displayOrder: 1
+  - eaDomainId: EAD-002
+    name: Business
+    displayOrder: 2      
+  - eaDomainId: EAD-003
+    name: Technology
+    displayOrder: 3        
+  - eaDomainId: EAD-004
+    name: Data
+    displayOrder: 4    
+  - eaDomainId: EAD-005
+    name: Security
+    displayOrder: 5
+    isCrossCutting: true
+
+eaArtifacts:
+  - eaArtifactId: EAA-001
+    name: Data Dictionary
+    eaDomainId: EAD-004
+  - eaArtifactId: EAA-002
+    name: Data Metamodel
+    eaDomainId: EAD-004
+  - eaArtifactId: EAA-003
+    name: Data Reference Model
+    eaDomainId: EAD-004    
+  - eaArtifactId: EAA-004
+    name: Technology Reference Model
+    eaDomainId: EAD-003   
+  - eaArtifactId: EAA-005
+    name: Service Catalogue
+    eaDomainId: EAD-003   
+  - eaArtifactId: EAA-006
+    name: Technology Assessment Process
+    eaDomainId: EAD-003     
+  - eaArtifactId: EAA-012
+    name: Datacentre Capacity Plan
+    eaDomainId: EAD-003   
+  - eaArtifactId: EAA-013
+    name: Technology Roadmaps
+    eaDomainId: EAD-003        
+  - eaArtifactId: EAA-007
+    name: Business Reference Model
+    eaDomainId: EAD-002   
+  - eaArtifactId: EAA-008
+    name: Business Process Catalogue
+    eaDomainId: EAD-002 
+  - eaArtifactId: EAA-009
+    name: Process Maturity Assessment
+    eaDomainId: EAD-002    
+  - eaArtifactId: EAA-010
+    name: Business Taxonomy
+    eaDomainId: EAD-002                
+  - eaArtifactId: EAA-014
+    name: Architecture Vision
+    eaDomainId: EAD-001                 
+  - eaArtifactId: EAA-015
+    name: Architecture Principles
+    eaDomainId: EAD-001
+  - eaArtifactId: EAA-016
+    name: Risk Assessment Process
+    eaDomainId: EAD-005  
+  - eaArtifactId: EAA-017
+    name: Threat Taxonomy
+    eaDomainId: EAD-005    
+  - eaArtifactId: EAA-018
+    name: Identity and Access Management Roadmap
+    eaDomainId: EAD-005         

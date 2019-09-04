@@ -1,0 +1,25 @@
+componentDeployments:
+  - componentId: portal-view-engine
+    nodeId: portal-front-end
+    executionEnvironment: v8/node.js 
+  - componentId: portal-svc-bridge
+    nodeId: portal-front-end
+    executionEnvironment: v8/node.js 
+  - componentId: portal-chart-engine
+    nodeId: cs-kibana
+    executionEnvironment: v8/node.js 
+  - componentId: portal-svc-api
+    nodeId: portal-services
+    executionEnvironment: OpenJDK 8     
+  - componentId: portal-business-logic
+    nodeId: portal-services
+    executionEnvironment: OpenJDK 8      
+  - componentId: portal-repository
+    nodeId: portal-services
+    executionEnvironment: OpenJDK 8        
+  - componentId: log-datastore
+    nodeId: cs-elastic
+    executionEnvironment: OpenJDK 10  
+  - componentId: portal-datastore
+    nodeId: cs-manage-db
+   

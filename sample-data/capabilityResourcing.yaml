@@ -1,0 +1,31 @@
+capabilityResourcing:
+  - capabilityId: C-001
+    headcount: 2
+  - capabilityId: C-002
+    headcount: 5  
+  - capabilityId: C-003
+    headcount: 7  
+  - capabilityId: C-004
+    headcount: 3   
+  - capabilityId: C-005
+    headcount: 2   
+  - capabilityId: C-006
+    headcount: 4 
+  - capabilityId: C-007
+    headcount: 10    
+  - capabilityId: C-008
+    headcount: 12  
+  - capabilityId: C-009
+    headcount: 32                             
+  - capabilityId: C-010
+    headcount: 27      
+  - capabilityId: C-011
+    headcount: 16
+  - capabilityId: C-201
+    headcount: 4      
+  - capabilityId: C-202
+    headcount: 8  
+  - capabilityId: C-203
+    headcount: 12    
+  - capabilityId: C-204
+    headcount: 6            

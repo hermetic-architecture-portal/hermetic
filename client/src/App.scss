@@ -1,0 +1,1440 @@
+$body-background: #fff;
+$emphasis-background-1: darkred;
+$emphasis-text-1: white;
+$emphasis-background-2: darkgray;
+$emphasis-border-2: lightgray;
+$emphasis-text-2: black;
+$emphasis-background-3: lightgray;
+$emphasis-border-3: darkgray;
+$emphasis-text-3: black;
+$emphasis-background-4: white;
+$emphasis-text-4: black;
+$emphasis-border-4: darkgray;
+$emphasis-background-5: dimgray;
+$emphasis-text-5: white;
+$panel-background-1: rgba(0,0,0,.03);
+$panel-border-1: rgba(0,0,0,.125);
+$link-text: black;
+$link-background-hover: rgba(0,0,0,0.1);
+$select-background: white;
+$select-border: darkgray;
+$select-text: black;
+$loader-colour: black;
+$font-family: sans-serif;
+$header-name: 'Hermetic';
+$footer-text: '';
+$arrow-background: #F8F8F8;
+
+@import '~hermetic-client-plugin/variables.scss';
+
+/* Icons are from https://github.com/linea-io/Linea-Iconset */
+/* or https://github.com/ecceman/affinity */
+/* and are free to use */
+
+.Capability-row {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  width: 100%;
+}
+
+.Capability-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 100%;
+  flex: 1;
+}
+
+.Capability-column.Span-2{
+  flex: 2;
+}
+
+.Capability-column.Span-3{
+  flex: 3;
+}
+
+.Capability-column.Span-4{
+  flex: 4;
+}
+
+.Capability-column.Span-5{
+  flex: 5;
+}
+
+.Capability-column.Span-6{
+  flex: 6;
+}
+
+.Capability-column.Span-7{
+  flex: 7;
+}
+
+.Capability-column.Span-8{
+  flex: 8;
+}
+
+.Capability-column.Span-9{
+  flex: 9;
+}
+
+.Capability-column.Span-10{
+  flex: 10;
+}
+
+.Value-chain-segment {
+  background-color: $emphasis-background-1;
+  color: $emphasis-text-1;
+  display: inline-block;
+  margin:0;
+  width:calc(100% - 80px);
+  position: relative;
+  height: 40px;
+  padding-left: 5px;
+  background-color: $emphasis-background-1;
+  text-align: center;
+  line-height: 40px;
+  text-transform: uppercase;
+}
+
+.Value-chain-segment:after {
+  content:"";
+  position: absolute;
+  left: calc(100% - 40px);
+  top:0px;
+  width:0px;
+  height:0px;
+  border-top:20px solid $arrow-background;
+  border-left:40px solid $emphasis-background-1;
+  border-bottom:20px solid $arrow-background;
+}
+
+.Value-chain-segment:before {
+  content:"";
+  position: absolute;
+  right: calc(100% - 40px);
+  top:0px;
+  width:0px;
+  height:0px;
+  background-color: $emphasis-background-1;
+  border-top:20px solid $emphasis-background-1;
+  border-left:40px solid $arrow-background;
+  border-bottom:20px solid $emphasis-background-1;
+}
+
+body {
+  background-color: $body-background !important;
+  font-family: $font-family;
+}
+
+.Capability-type {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.Capability {
+  border-style: solid;
+  border-color: $emphasis-border-3;
+  border-width: 1px;
+  background-color: $emphasis-background-3;
+  vertical-align: top;
+}
+
+.Capability-column.Blank {
+  display: inline-block;
+  margin: 2px;
+  width: 49%;  
+}
+
+div.Capability {
+  display: inline-block;
+  margin: 1px;
+  width: 33%;
+}
+
+.Capability a:link {
+  text-decoration: none;
+}
+
+
+.Cap-model-level-1 {
+  height: 100%;
+  font-weight: bold;
+  color: $emphasis-text-3;
+  position: relative;
+}
+
+.Cap-model-level-2 {
+  margin: 5px;
+  padding: 0px;
+  font-weight: normal;
+  background-color: $emphasis-background-4;
+  color: $emphasis-text-4;
+  border-radius: 4px;
+  font-size: 13px;
+  width: 135px;
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+
+.Cap-model-level-3 {
+  margin: 5px;
+  padding: 0px;
+  font-weight: normal;
+  background-color: $emphasis-background-4;
+  color: $emphasis-text-4;
+  border-color: $emphasis-border-4;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  font-size: 13px;
+  width: calc(100% - 10px);
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+
+.Cap-model-level-4 {
+  margin: 5px;
+  padding: 0px;
+  font-weight: normal;
+  background-color: $emphasis-background-4;
+  color: $emphasis-text-4;
+  border-color: $emphasis-border-4;
+  border-style: solid;
+  border-width: 1px;  
+  border-radius: 4px;
+  font-size: 13px;
+  width: calc(100% - 10px);
+  display: inline-block;
+  vertical-align: top;
+  position: relative;
+}
+
+.Cap-model-cap-name {
+  margin-left: 16px;
+  color: $emphasis-text-3;
+  display: inline-block;
+  padding: 4px;
+}
+
+.Capability-technologies {
+  margin: 0;
+  padding: 0px 5px 5px 5px;
+}
+
+.Capability-technology {
+  margin: 5px 1px 0 0;
+  font-weight: normal;
+  font-size: 10px;
+  background-color: $emphasis-background-2;
+  color: $emphasis-text-2;
+  border-radius: 4px;
+  width: 100%;
+  max-width:135px;
+  display: inline-block;
+  padding: 5px 5px 5px 30px;
+  min-height: 30px;
+  background-position-x: 8px;
+  background-position-y: 6px;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+}
+
+.Capability-business-units {
+  margin: 0;
+  padding: 0px 5px 5px 5px;
+}
+
+.Capability-business-unit {
+  margin: 5px 1px 0 0;
+  font-weight: normal;
+  font-size: 10px;
+  background-color: $emphasis-background-3;
+  color: $emphasis-text-3;
+  border-color: $emphasis-border-3;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0px;
+  width: 100%;
+  max-width:135px;
+  display: inline-block;
+  padding: 5px 5px 5px 30px;
+  background-image: url('/img/tree.svg');
+  min-height: 30px;
+  background-position-x: 8px;
+  background-position-y: 6px;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+}
+
+.TechnologyType-Client-server {
+  background-image: url('/img/basic_display.svg');
+}
+
+.TechnologyType-SaaS {
+  background-image: url('/img/weather_cloud.svg');
+}
+
+.TechnologyType-Serveronly {
+  background-image: url('/img/basic_server.svg');
+}
+
+.TechnologyType-Supportservice {
+  background-image: url('/img/basic_gear.svg');
+}
+
+.TechnologyType-Platform {
+  background-image: url('/img/basic_settings.svg');
+}
+
+.TechnologyType-Unknown {
+  background-image: url('/img/basic_question.svg');
+}
+
+.TRM-layer {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.TRM-category {
+  display: inline-block;
+  border-style: solid;
+  border-color: $emphasis-border-3;
+  border-width: 1px;
+  background-color: $emphasis-background-3;
+  vertical-align: top; 
+  padding: 6px;
+  margin: 4px; 
+  max-width: 410px;
+}
+
+.TRM-technology-wrapper {
+  display: inline-block;
+  border-color: $emphasis-border-4;
+  background-color: $emphasis-background-4;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  margin-right: 4px;
+}
+
+.TRM-technology-wrapper .Toggle-visibility {
+  margin: 6px 2px 0px 6px;
+}
+
+.TRM-children .TRM-technology-wrapper {
+  margin: 0px 4px 4px 4px;
+}
+
+.TRM-technology {
+  margin: 4px 8px 6px 4px;
+  background-color: transparent;
+  color: $emphasis-text-4;
+  border-radius: 4px;
+  font-size: 0.8em;
+  width: 135px;
+  display: inline-block;
+  vertical-align: top;  
+}
+
+.TRM-children {
+  display: block;
+  margin-left: 8px;
+}
+
+.EA-domain .Head-1 {
+  font-size: x-large;
+}
+
+.EA-domains-cross-cutting {
+  float: left;
+  writing-mode: vertical-rl;
+  transform: rotate(180deg);
+  max-width: 30%;
+  max-height: 85%;
+}
+
+.EA-domains {
+  display: inline-block;
+  max-width: 70%;
+}
+
+.EA-domain {
+  display: inline-block;
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+  width: 98%;
+}
+
+.EA-domain.no-children {
+  padding: 0px;
+}
+
+.EA-domain.no-children .Head-1 {
+  margin: 0px;
+}
+
+.EA-artifact {
+  display: inline-block;
+  border-style: solid;
+  border-color: $emphasis-border-3;
+  border-width: 1px;
+  background-color: $emphasis-background-3;
+  vertical-align: top; 
+  padding: 6px;
+  margin: 4px; 
+  width: 310px;
+  text-align: center;
+  font-size: small;
+}
+
+.EA-domains-cross-cutting .EA-artifact {
+  width: auto;
+  height: 150px;
+}
+
+.EA-domains-cross-cutting .Head-1 {
+  margin: -10px -10px -10px 10px;
+  padding:10px;
+}
+
+.EA-domains-cross-cutting .Toggle-visibility {
+  margin-right: 0;
+  margin-bottom: 0.35em;
+  transform: rotate(90deg);
+}
+
+.EA-artifact a {
+  text-decoration: none;
+  color: $emphasis-text-3;
+}
+
+.EA-domains-cross-cutting .EA-domain {
+  height: 98%;
+}
+
+.EA-ref-model .Overlay-options div:first-child{
+  display: inline;
+}
+
+// health colour coding for a 1-3 scale
+
+.health-1-of-3 {
+  background-color: #e23627;
+}
+
+.health-2-of-3 {
+  background-color: #f4d942
+}
+
+.health-3-of-3 {
+  background-color: #7ed246;
+}
+
+// health colour coding for a 1-4 scale
+
+.health-1-of-4 {
+  background-color: #e23627;
+}
+
+.health-2-of-4 {
+  background-color: #ffa200;
+}
+
+.health-3-of-4 {
+  background-color: #ffdd00;  
+}
+
+.health-4-of-4 {
+  background-color: #7ed246;
+}
+
+// health colour coding for a 1-5 scale
+
+.health-1-of-5 {
+  background-color: #e23627;
+}
+
+.health-2-of-5 {
+  background-color: #ffc0cb;
+}
+
+.health-3-of-5 {
+  background-color: #ffffcc;  
+}
+
+.health-4-of-5 {
+  background-color: #ffcc00;
+}
+
+.health-5-of-5 {
+  background-color: #99cc00;
+}
+
+.Capability-technology[class*='health'] {
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.Cap-model-level-2[class*='health'] {
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.Cap-model-level-3[class*='health'] {
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.Cap-model-level-4[class*='health'] {
+  border-color: white;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.Two-col-wrapper {
+  display: flex;
+}
+
+.Single-col-wrapper {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.Left-col {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+  flex: 30%;
+}
+
+.Left-col a div,
+.Data-row a{
+  padding:6px 10px;
+  margin:0 -10px;
+  display:block;
+}
+.Single-col-wrapper a div{
+  padding:4px 10px 4px 40px;
+  margin:0 -10px;
+}
+.Left-col a:hover,
+.Left-col a:hover div,
+.Single-col-wrapper a:hover,
+.Single-col-wrapper a:hover div
+{
+  background-color:$link-background-hover;
+}
+.Left-col a,
+.Left-col a:visited,
+.Single-col-wrapper a,
+.Single-col-wrapper a:visited{ 
+  color:$link-text;
+  text-decoration: underline;
+}
+
+.Right-col {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+  flex: 70%;
+}
+
+.Tech-details-link {
+  margin-top: 1.5em;
+}
+
+.Graph-container {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-2;
+  background-color: $body-background;
+}
+
+.Capability-detail {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.Technology-list {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.Overlay-options {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px; 
+}
+
+.Overlay-options fieldset {
+  display: inline-block;
+  padding: 0px;
+  line-height: 34px;
+}
+
+.Overlay-options label {
+  margin: 2px;
+  padding: 2px;
+}
+
+.Menu {
+  margin: 10px 0;
+  background-color: $emphasis-background-1;
+  color: $emphasis-text-1;
+  margin-top: 0px;
+}
+
+.Menu button{
+  font-weight: 600;
+  color: $emphasis-text-1;
+  background-color: $emphasis-background-1;
+  border-style: none;
+  font-size: 1em;
+  font-family: $font-family;
+  min-height: 42px;  
+}
+
+.Menu a div {
+  display: inline-block;
+  text-decoration: none;
+  padding: 5px 15px;
+  color: $emphasis-text-3;
+}
+
+.Menu a div.Link-depth-1 {
+  padding-left: 30px;
+}
+
+.Menu a div.Link-depth-2 {
+  padding-left: 50px;
+}
+
+.Menu a div.Link-depth-3 {
+  padding-left: 70px;
+}
+
+
+.Menu-group {
+  display: none;
+}
+
+.Burger-menu{
+  font-weight: 600;
+  display: inline-block;
+  background-image: url('/img/logo-white.png');
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 6px 4px;  
+  padding: 10px; 
+  padding-left: 48px; 
+}
+
+.Burger-menu::after {
+  content: $header-name;
+}
+
+.Menu .Menu-group a:first-child div{
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  margin-left: 5px;
+}
+
+.Menu .Menu-group a:last-child div{
+  margin-right: 5px;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;  
+}
+
+.Node-list {
+  margin-left: 1em;
+}
+
+.Node-list div div span:first-of-type {
+  font-weight: bold;
+}
+
+.Node-list div:first-child {
+  margin-top: 1em;
+}
+
+.Node-list .Node-list {
+  margin-left: 2em;
+}
+
+.Technology-score div {
+  display: inline-block;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+.Technology-score-total div:first-child {
+  font-weight: bold;
+  // font-size: large;
+}
+
+.Category-score {
+  background-color: $emphasis-background-2;
+  color: $emphasis-text-2;
+  padding-top: 5px;
+  padding-bottom: 12px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.Category-score div:first-child {
+  font-weight: bold;
+  // font-size: large;
+}
+
+.Category-score div:nth-child(2) {
+  float: right;
+}
+
+.Technology-metrics {
+  background-color: $emphasis-background-3;
+  color: $emphasis-text-3;
+  margin-bottom:20px;
+}
+
+.Technology-metric {
+  background-color: $emphasis-background-3;
+  padding:10px;
+  border-top: 1px solid $emphasis-border-3;
+}
+
+.Technology-metric div:nth-child(1) {
+  font-weight: bold;
+  display: inline-block;
+}
+
+.Technology-metric div:nth-child(2) {
+  float: right;
+  margin-top: 5px;
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 5px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-3;
+  width:3.5em;
+  text-align: center;
+}
+
+.Head-1 {
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: xx-large;
+
+  margin: -10px -10px 10px -10px;
+  padding:10px;
+  background-color: $emphasis-background-1;
+  color: $emphasis-text-1;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+}
+
+.Head-2 {
+  font-weight: bold;
+  font-size: x-large;
+  margin-bottom: 0.5em;
+  margin-top: 0.7em;
+}
+
+.Head-3 {
+  font-weight: bold;
+  margin-bottom: 0.5em;
+  margin-top: 0.7em;
+}
+
+.Data-block {
+  border-top: 1px solid $panel-border-1;
+  padding: 0 10px 0 10px;
+  margin: 0 -10px 0 -10px;
+}
+
+.Data-block .Head-2{
+  background-color: $emphasis-background-3;
+  padding: 10px;
+  margin: 0px -10px 10px -10px;
+}
+
+.Data-single-row {
+  margin:0 -10px;
+  padding:0 14px 10px;
+}
+
+.Data-row {
+  border-top: 1px solid $panel-border-1;
+  margin:0 -10px;
+  padding:0 10px;
+}
+
+.Data-row div {
+  display: inline-block;
+  padding-right: 0.4em;
+  vertical-align: top;  
+}
+
+.Data-row ul {
+  list-style-type: none;
+  padding-left: 0;
+  vertical-align: top;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.Data-row ul ul {
+  list-style-type: square;
+  padding-left: 1.5em;
+  vertical-align: top;
+  margin-block-start: 0;
+  margin-block-end: 0;
+}
+
+.Data-row div:nth-of-type(1) {
+  font-weight: bold;
+  width: 10em;
+  padding: 5px;
+}
+
+.Data-row div:nth-of-type(2) {
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 5px;
+}
+
+.Technology-score div:nth-of-type(2) {
+  margin-left: 1em;
+  margin-right: 1em;
+  padding: 5px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-3;
+  background-position: right;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  width:3.5em;
+  text-align: center;
+}
+
+.Footer {
+  font-size: small;
+  padding-left: 14px;
+  padding-bottom: 5px;
+}
+
+.Search-box {
+  margin-bottom: 5px;
+}
+.Search-box input{
+  width:100%;
+  padding:4px 10px;
+  font-size:1.2em;
+  border-radius: 4px;
+  border: 1px solid $panel-border-1;
+}
+
+.Legend {
+  margin-top:10px;
+}
+
+.Legend .Capability-technology {
+  max-width: 140px;
+  font-weight: normal;
+  font-size: 0.8em;
+  margin:5px 5px 0 0;
+}
+
+.Legend div div:first-child {
+  display: inline-block;
+  margin-right: 8px;
+  font-weight: bold;
+}
+
+.Health-legend-item {
+  display: inline-block;
+  margin:5px 5px 0 0;
+  padding: 5px 15px;
+  border-radius: 4px;
+  font-size:0.8em;
+  min-height:20px;
+  font-weight:normal;
+}
+
+.Toggle-visibility {
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 0.75em;
+  height: 0.75em;
+  margin-right: 0.35em;
+}
+
+.Toggle-visibility.Has-children {
+  cursor: pointer;
+}
+
+.Head-1 .Toggle-visibility {
+  filter: invert(100%) drop-shadow(0px 0px);
+  -webkit-filter: invert(100%) drop-shadow(0px 0px);
+}
+
+.Section-visibility{
+  overflow-x:auto;
+}
+
+.Toggle-visibility.visible.Has-children {
+  background-image: url('/img/arrows_circle_minus.svg');
+}
+
+.Toggle-visibility.hidden.Has-children {
+  background-image: url('/img/arrows_circle_plus.svg');
+}
+
+.Section-visibility.hidden {
+  display: none;
+  overflow-x:hidden;
+}
+
+.Health-summary-legend {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px; 
+}
+
+
+.Health-summary-legend div div:first-of-type {
+  display: inline;
+  margin-right: 0.5em;
+  font-weight: bold;
+}
+
+.Health-summary-legend div:first-of-type {
+  display: block;
+  margin-bottom: 0.5em;
+}
+
+.Health-summary-legend div div {
+  display: inline;
+}
+
+.Save {
+  background-image: url('/img/basic_floppydisk.svg');
+  background-repeat: no-repeat;
+  background-size: 28px 28px;
+  background-position: 2px 2px;
+  height: 32px;
+  width: 32px;
+  float: right;  
+}
+
+.Head-1 .Save {
+  filter: invert(100%);
+  -webkit-filter: invert(100%);
+}
+
+.Environments-choice {
+  background-color: $select-background;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $select-border;
+  color: $select-text;
+  margin-left: 10px;
+  margin-right: 10px;
+  margin-top: 10px;
+  padding-left: 10px; 
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+.Environments-choice label{
+  font-size: medium;
+  font-weight: normal;
+}
+
+.Environments-choice select {
+  margin-left: 0.5em;
+}
+
+[data-server-type] {
+  background-image: url('/img/server.png');
+  background-repeat: no-repeat;
+  background-size: 14px 18px;
+  background-position-y: 6px;
+  background-position-x: 12px;
+  padding-left: 22px;
+  padding-top: 2px;
+  padding-bottom: 2px;
+}
+
+[data-server-type="Cluster"][data-env-node="false"] {
+  background-size: 18px 18px;
+  background-position-x: 10px;
+  background-image: url('/img/server-cluster.png');
+}
+
+[data-server-type="Database"] {
+  background-image: url('/img/storage.png');
+}
+
+[data-server-type^="Load Balancer"] {
+  background-size: 18px 18px;
+  background-position-x: 10px;
+  background-image: url('/img/loadbalancer.png');
+}
+
+.Deployment-node {
+  vertical-align:top;
+  display: inline-block;
+  border-style: solid;
+  border-color: $emphasis-border-3;
+  border-width: 1px;
+  background-color: $emphasis-background-3;
+  color: $emphasis-text-3;
+  margin: 5px;
+  padding: 4px;
+}
+
+.Deployment-node div:nth-child(2){
+  font-weight: bold;
+}
+
+.Execution-environment {
+  display: block;
+  border-style: solid;
+  border-color: $emphasis-border-4;
+  border-width: 1px;  
+  background-color: $emphasis-background-4;
+  text-align: center;
+  color: $emphasis-text-4;
+  margin: 5px;
+  padding: 4px;
+}
+
+.Deployment-artifact {
+  display: block;
+  border-style: solid;
+  border-color: $emphasis-border-2;
+  border-width: 1px;
+  background-color: $emphasis-background-2;
+  text-align: center;
+  color: $emphasis-text-2;    
+  margin: 5px;
+  padding: 4px;
+}
+
+.AriaMenuButton {
+  display: inline-block;
+  position: relative;
+}
+
+.AriaMenuButton-trigger {
+  cursor: pointer;
+  display: inline-block;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.AriaMenuButton-trigger::after {
+  content: "";
+  display: inline-block;
+  margin-left: 3px;
+  position: relative;
+  top: 3px;
+  border-color: currentColor transparent transparent;
+  border-width: 5px 4px;
+  border-style: solid;
+}
+
+.AriaMenuButton-trigger:hover,
+.AriaMenuButton-trigger:focus,
+.AriaMenuButton-trigger.is-open {
+  outline: none;
+}
+
+.AriaMenuButton-trigger:active,
+.AriaMenuButton-trigger.is-open {
+  outline: none;
+}
+
+.AriaMenuButton-menu {
+  background: $emphasis-background-3;
+  color: $emphasis-text-3;
+  border-color: $emphasis-border-3;
+  font-weight: normal;
+  list-style-type: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 99;
+  padding-left: 0;
+  margin: 0;
+  width: 315px;
+}
+
+.AriaMenuButton-menu--flushRight {
+  right: 0;
+}
+
+.current.AriaMenuButton-menuItem {
+  font-weight: bold;
+}
+
+.AriaMenuButton-menuItem {
+  cursor: pointer;
+  padding: 8px;
+}
+
+.AriaMenuButton-menuItem div {
+  width: 100%;
+}
+
+.AriaMenuButton-menuItem:hover,
+.AriaMenuButton-menuItem:focus {
+  background-color: $link-background-hover;
+}
+
+.AriaMenuButton-menuItem.is-selected {
+  cursor: default;
+  font-weight: bold;
+}
+
+.User-block {
+  float: right;
+}
+
+.Capability-model-tag {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-4;
+  height: 24px;
+  padding-left: 4px;
+  padding-right: 4px;
+  min-width: 24px;
+  text-align: center;
+  line-height: 24px;
+  border-radius: 12px;
+  margin-top: 1px;
+  margin-right: 1px;
+  float: right;
+  background-color: $emphasis-background-4;
+  font-size: small;
+}
+
+.Cap-model-level-2 .Capability-model-tag {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-4;
+  height: 24px;
+  padding-left: 4px;
+  padding-right: 4px;
+  min-width: 24px;
+  text-align: center;
+  line-height: 24px;
+  border-radius: 12px;
+  margin-top: -12px;
+  margin-right: -12px;
+  float: right;
+  background-color: $emphasis-background-4;
+}
+
+.Cap-model-level-3 .Capability-model-tag {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-4;
+  height: 24px;
+  padding-left: 4px;
+  padding-right: 4px;
+  min-width: 24px;
+  text-align: center;
+  line-height: 24px;
+  border-radius: 12px;
+  margin-top: -12px;
+  margin-right: -12px;
+  float: right;
+  background-color: $emphasis-background-4;
+}
+
+.Cap-model-level-4 .Capability-model-tag {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-4;
+  height: 24px;
+  padding-left: 4px;
+  padding-right: 4px;
+  min-width: 24px;
+  text-align: center;
+  line-height: 24px;
+  border-radius: 12px;
+  margin-top: -12px;
+  margin-right: -12px;
+  float: right;
+  background-color: $emphasis-background-4;
+}
+
+.Footer-placeholder::after {
+  content: $footer-text;
+}
+
+.Overlay-option-group {
+  display: inline-block;
+  margin: 0px 4px 0px 4px;
+}
+
+.Overlay-option-group .Group-name {
+  display: inline-block;
+  background-color: $emphasis-background-1;
+  color: $emphasis-text-1;
+  line-height: 31px;
+  border-radius: 4px 0px 0px 4px;
+  padding: 4px;
+}
+
+.Overlay-option-group .Group-options {
+  display: inline-block;
+  background-color: $emphasis-background-2;
+  color: $emphasis-text-2;  
+  line-height: 31px;
+  border-radius: 0px 4px 4px 0px;
+  padding: 4px;
+}
+
+input[type='number'] {
+  width: 4em;
+  margin-left: 4px;
+}
+
+.Component-tag {
+  display: inline-block;
+  background-color: $emphasis-background-3;
+  border-color: $emphasis-border-3;
+  border-style: solid; 
+  border-width: 1px;
+  margin: 4px;
+  padding: 4px;
+  cursor: pointer;
+}
+
+.Component-tag.selected {
+  background-color: $emphasis-background-2;
+}
+
+.TRM-tag {
+  border-style: solid;
+  border-width: 1px;
+  border-color: white;
+  height: 24px;
+  padding-left: 4px;
+  padding-right: 4px;
+  min-width: 24px;
+  text-align: center;
+  line-height: 24px;
+  border-radius: 12px;
+  margin-top: -12px;
+  margin-right: -12px;
+  float: right;
+}
+
+.Standard-legend-item {
+  display: inline-block;
+}
+
+.Standard-legend {
+  margin-top: 16px;
+}
+
+.Capability-expand {
+  position: absolute;
+  display: inline-block;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 14px;
+  height: 14px;
+  left: 2px;
+  top: 4px;
+}
+
+.Capability-expand.Has-children {
+  cursor: pointer;
+}
+.Capability-expand.Has-children {
+  background-image: url('/img/arrows_circle_plus.svg');
+}
+
+.Capability-expand.Has-children.Expanded {
+  background-image: url('/img/arrows_circle_minus.svg');
+}
+
+.DRM-type {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.DRM-topic {
+  display: inline-block;
+  border-style: solid;
+  border-color: $emphasis-border-3;
+  border-width: 1px;
+  background-color: $emphasis-background-3;
+  vertical-align: top; 
+  padding: 6px;
+  margin: 4px; 
+  max-width: 410px;
+}
+
+.DRM-entity-wrapper {
+  display: inline-block;
+  border-color: $emphasis-border-4;
+  background-color: $emphasis-background-4;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 4px;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-right: 4px;
+}
+
+.DRM-entity-wrapper .Toggle-visibility {
+  margin: 6px 2px 0px 6px;
+}
+
+.DRM-children .DRM-entity-wrapper {
+  margin: 0px 4px 4px 4px;
+}
+
+.DRM-entity {
+  margin: 4px 8px 6px 4px;
+  background-color: $emphasis-background-4;
+  color: $emphasis-text-4;
+  border-radius: 4px;
+  font-size: 0.8em;
+  width: 135px;
+  display: inline-block;
+  vertical-align: top;  
+}
+
+.DRM-children {
+  display: block;
+  margin-left: 8px;
+}
+
+.Data-row th {
+  text-align: left;
+  font-weight: normal;
+}
+
+.Data-row table {
+  border-style: solid;
+  border-width: 1px;
+}
+
+.Data-row td {
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+.Data-row thead tr {
+  background-color: $emphasis-background-3;
+  border-style: solid;
+  border-width: 1px;
+}
+
+
+.Data-row tr.Data-access-owner td:first-child{
+  font-weight: bold;
+}
+
+.TRM-legend .no-assessment {
+  border-color: $emphasis-border-4;
+  background-color: $emphasis-background-4;
+  border-style: solid;
+  border-width: 1px;
+}
+
+.EA-ref-model-legend .no-assessment {
+  background-color: $emphasis-background-3;
+}
+
+.BRM-tech-health-legend .no-assessment {
+  background-color: $emphasis-background-2;
+}
+
+.BRM-capability-health-legend .no-assessment {
+  border-color: $emphasis-border-4;
+  background-color: $emphasis-background-4;
+  border-style: solid;
+  border-width: 1px;
+}
+
+
+// Spinner
+
+.lds-dual-ring {
+  display: inline-block;
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  width: 64px;
+  height: 64px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 46px;
+  height: 46px;
+  margin: 1px;
+  border-radius: 50%;
+  border: 5px solid $loader-colour;
+  border-color: $loader-colour transparent $loader-colour transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@import '~hermetic-edit-client-plugin/static/HermeticEdit.scss';

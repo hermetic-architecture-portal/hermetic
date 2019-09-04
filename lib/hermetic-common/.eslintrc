@@ -1,0 +1,10 @@
+extends: airbnb-base
+plugins:
+  - jest
+env:
+  jest/globals: true
+rules:
+  object-shorthand: 0
+  max-len: [ 2, { "code": 100, "ignoreComments": true, "ignoreTemplateLiterals": true } ]
+  no-mixed-operators: [ 2, { "allowSamePrecedence": true }]
+  import/no-unresolved: "off"

@@ -1,0 +1,166 @@
+technologyMetricAssessments:
+  - technologyId: T-003
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 2
+       - metricId: M-002
+         score: 1
+       - metricId: M-003
+         score: 1
+       - metricId: M-004
+         score: 1                         
+  - technologyId: T-004
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 3
+       - metricId: M-002
+         score: 4
+       - metricId: M-003
+         score: 2
+       - metricId: M-004
+         score: 4             
+  - technologyId: T-005
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 2
+       - metricId: M-002
+         score: 3
+       - metricId: M-003
+         score: 2
+       - metricId: M-004
+         score: 3          
+  - technologyId: T-006
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 2
+       - metricId: M-002
+         score: 3
+       - metricId: M-003
+         score: 1
+       - metricId: M-004
+         score: 3         
+  - technologyId: T-007
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 4
+       - metricId: M-002
+         score: 4
+       - metricId: M-003
+         score: 2
+       - metricId: M-004
+         score: 4            
+  - technologyId: T-108
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 3
+       - metricId: M-002
+         score: 4
+       - metricId: M-003
+         score: 3
+       - metricId: M-004
+         score: 1     
+  - technologyId: T-104
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 4
+       - metricId: M-002
+         score: 4
+       - metricId: M-003
+         score: 2
+       - metricId: M-004
+         score: 1               
+  - technologyId: T-101
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 3
+       - metricId: M-002
+         score: 2
+       - metricId: M-003
+         score: 4
+       - metricId: M-004
+         score: 4           
+  - technologyId: T-102
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 4
+       - metricId: M-002
+         score: 2
+       - metricId: M-003
+         score: 3
+       - metricId: M-004
+         score: 4          
+  - technologyId: T-103
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 4
+       - metricId: M-002
+         score: 4
+       - metricId: M-003
+         score: 3
+       - metricId: M-004
+         score: 1          
+  - technologyId: T-105
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 2
+       - metricId: M-002
+         score: 4
+       - metricId: M-003
+         score: 1
+       - metricId: M-004
+         score: 1            
+  - technologyId: T-106
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 4
+       - metricId: M-002
+         score: 2
+       - metricId: M-003
+         score: 3
+       - metricId: M-004
+         score: 3          
+  - technologyId: T-107
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 4
+       - metricId: M-002
+         score: 4
+       - metricId: M-003
+         score: 1
+       - metricId: M-004
+         score: 1          
+  - technologyId: T-109
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 4
+       - metricId: M-002
+         score: 3
+       - metricId: M-003
+         score: 3
+       - metricId: M-004
+         score: 2   
+  - technologyId: T-110
+    metricSetId: MS-001
+    assessments:
+       - metricId: M-001
+         score: 3
+       - metricId: M-002
+         score: 4
+       - metricId: M-003
+         score: 3
+       - metricId: M-004
+         score: 3                     

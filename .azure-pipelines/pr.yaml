@@ -1,0 +1,28 @@
+# only triggered by pull requests, not commits
+# to main repo branches
+trigger: none
+    
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- checkout: self
+  clean: true
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install'
+
+- script: |
+   npm run build
+  displayName: 'npm build'
+
+- script: |
+    npm run test
+  displayName: 'npm test'

@@ -1,0 +1,5 @@
+**/node_modules
+**/.git
+server/build
+client/build
+lib/hermetic-common/lib

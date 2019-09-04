@@ -142,6 +142,15 @@ components:
     technologies:
         # technologyId: refers to technologies.[].technologyId
       - technologyId: string
+# dataAccessRoles: array
+# dataAccessRoles: Data access roles describe levels of access to data entities (e.g. "Reader", "Writer", "Master"
+dataAccessRoles:
+  - dataAccessRoleId: string
+    name: string
+    # rank: number
+    # rank: Rank describes an order of importance for the access roles
+    # rank: Where 1 is the highest importance (e.g. Master or Owner)
+    rank: 42
 # dataConnections: optional array
 # dataConnections: Data Connections describe the high level flows of data between technologies
 dataConnections:
@@ -172,6 +181,14 @@ dataEntities:
     name: string
     # parentDataEntityId: optional refers to dataEntities.[].dataEntityId
     parentDataEntityId: string
+    # technologies: optional array
+    technologies:
+        # dataAccessRoleId: refers to dataAccessRoles.[].dataAccessRoleId
+      - dataAccessRoleId: string
+        # description: optional
+        description: string
+        # technologyId: refers to technologies.[].technologyId
+        technologyId: string
 # dataTopics: optional array
 # dataTopics: Data topics categorise data
 dataTopics:
@@ -188,6 +205,72 @@ dataTopicTypes:
 # deploymentEnvironments: Deployment Environments are the levels in the environment (e.g. Dev, Test, Prod) which a particular server may be assigned to
 deploymentEnvironments:
   - environmentId: string
+    name: string
+# eaArtifactMetricAssessments: optional array
+eaArtifactMetricAssessments:
+    # assessments: array
+  - assessments:
+        # metricId: refers to metrics.[].metricId
+      - metricId: string
+        # score: number
+        # score: Scoring assumes higher = better, even if the metric description is negative (e.g. Technical Debt)
+        score: 42
+    # eaArtifactId: refers to eaArtifacts.[].eaArtifactId
+    eaArtifactId: string
+    # metricSetId: refers to eaArtifactMetricSets.[].metricSetId
+    metricSetId: string
+# eaArtifactMetricBands: optional array
+# eaArtifactMetricBands: EA artifact metric bands define the scoring system for Enterprise Architecture artifacts
+eaArtifactMetricBands:
+  - bandId: string
+    # levelNumber: number
+    # levelNumber: levelNumber is used to determine how to display the band in the user interface.
+    # levelNumber: A higher number represents a higher / better metric.
+    levelNumber: 42
+    # maxPercentExclusive: number
+    maxPercentExclusive: 42
+    # minPercent: number
+    minPercent: 42
+    # name: The title of the band displayed to the user (e.g. Good, OK, Poor)
+    name: string
+# eaArtifactMetricSets: optional array
+# eaArtifactMetricSets: EA artifact metric sets define different ways of measuring Enterprise Architecture artifacts
+eaArtifactMetricSets:
+    # metrics: array
+  - metrics:
+        # metricId: refers to metrics.[].metricId
+      - metricId: string
+    metricSetId: string
+    name: string
+# eaArtifacts: optional array
+# eaArtifacts: EA artifacts represent the documents and models which describe and/or direct the Enterprise Architecture
+eaArtifacts:
+    # description: optional
+  - description: string
+    eaArtifactId: string
+    # eaDomainId: refers to eaDomains.[].eaDomainId
+    eaDomainId: string
+    # links: optional array
+    # links: Hyperlinks which provide further information on the artifact
+    links:
+        # text: optional
+        # text: The text to display in the link
+      - text: string
+        # url: The web URL
+        url: string
+    name: string
+# eaDomains: optional array
+# eaDomains: EA domains segment the fields of activity in an Enterprise Architecture
+eaDomains:
+    # description: optional
+  - description: string
+    # displayOrder: optional number
+    # displayOrder: This field controls the display order of domains.  Lower numbers appear sooner.
+    displayOrder: 42
+    eaDomainId: string
+    # isCrossCutting: optional boolean
+    # isCrossCutting: If true, indicates that this domain cuts across all other domains
+    isCrossCutting: boolean
     name: string
 # metrics: optional array
 # metrics: Metrics define possible measurements which may be taken of an entitity
@@ -289,11 +372,17 @@ technologies:
       - capabilityId: string
     # category: optional
     category: string
+    # cloudRiskAssessed: optional boolean
+    # cloudRiskAssessed: Indicates whether an assessment for cloud risk has been undertaken
+    cloudRiskAssessed: boolean
     # contacts: optional array
     contacts:
     - string
     # disasterRecovery: optional
     disasterRecovery: string
+    # gdprAssessed: optional boolean
+    # gdprAssessed: Indicates whether an assessment for GDPR compliance has been undertaken
+    gdprAssessed: boolean
     # generalLinks: optional array
     # generalLinks: Hyperlinks which provide non-technical information on the technology for general consumption
     generalLinks:
@@ -302,6 +391,8 @@ technologies:
       - text: string
         # url: The web URL
         url: string
+    # hasPrivateData: optional boolean
+    hasPrivateData: boolean
     # lastReviewedBy: optional
     lastReviewedBy: string
     # lastReviewedOn: optional date

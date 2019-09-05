@@ -1,0 +1,53 @@
+trigger:
+  branches:
+    include:
+      - master
+
+# not triggered by pull requests
+# (these might come from a forked repo)
+pr: none
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '10.x'
+  displayName: 'Install Node.js'
+
+- checkout: self
+  clean: true
+
+- script: |
+    npm install
+    npm run build
+  displayName: 'npm install'
+
+- script: |
+   npm run build
+  displayName: 'npm build'
+
+- script: |
+    npm run test
+  displayName: 'npm test'
+
+- task: Docker@2
+  inputs:
+    containerRegistry: 'ACR'
+    repository: 'hermetic'
+    command: 'buildAndPush'
+    Dockerfile: '**/Dockerfile'
+    tags: |
+      $(Build.BuildId)
+      latest
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'MSDN Az Sub'
+    appType: 'webAppContainer'
+    WebAppName: 'hermetic'
+    DockerNamespace: 'hermetic.azurecr.io'
+    DockerRepository: 'hermetic'
+    DockerImageTag: '$(Build.BuildId)'

@@ -4,6 +4,9 @@ Hermetic is a model driven architecture portal.
 
 Users define the model for their environment by editing [YAML](https://en.wikipedia.org/wiki/YAML) files.  Hermetic processes the YAML files to dynamically generate architectural views including value chains, health reports, network diagrams and more.
 
+## Demo Site ##
+https://hermetic.azurewebsites.net
+
 ## Screenshots ##
 
 <img src="doc/img/screenshot-brm.png?raw=true" height="500">

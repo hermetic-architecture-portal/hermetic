@@ -51,6 +51,9 @@ capabilityMetricAssessments:
   - assessments:
         # metricId: refers to metrics.[].metricId
       - metricId: string
+        # reason: optional
+        # reason: Optionally, specify the rationale behind the assessed score
+        reason: string
         # score: number
         # score: Scoring assumes higher = better, even if the metric description is negative (e.g. Technical Debt)
         score: 42
@@ -212,6 +215,9 @@ eaArtifactMetricAssessments:
   - assessments:
         # metricId: refers to metrics.[].metricId
       - metricId: string
+        # reason: optional
+        # reason: Optionally, specify the rationale behind the assessed score
+        reason: string
         # score: number
         # score: Scoring assumes higher = better, even if the metric description is negative (e.g. Technical Debt)
         score: 42
@@ -440,6 +446,9 @@ technologyMetricAssessments:
   - assessments:
         # metricId: refers to metrics.[].metricId
       - metricId: string
+        # reason: optional
+        # reason: Optionally, specify the rationale behind the assessed score
+        reason: string
         # score: number
         # score: Scoring assumes higher = better, even if the metric description is negative (e.g. Technical Debt)
         score: 42

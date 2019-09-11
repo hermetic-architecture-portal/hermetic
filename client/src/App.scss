@@ -184,9 +184,9 @@ div.Capability {
   margin: 5px;
   padding: 0px;
   font-weight: normal;
-  background-color: $emphasis-background-4;
-  color: $emphasis-text-4;
-  border-color: $emphasis-border-4;
+  background-color: $emphasis-background-3;
+  color: $emphasis-text-3;
+  border-color: $emphasis-border-3;
   border-style: solid;
   border-width: 1px;
   border-radius: 4px;
@@ -1405,6 +1405,34 @@ input[type='number'] {
   border-style: solid;
   border-width: 1px;
 }
+
+.Capability-detail .Capability {
+  width: auto;
+  max-width: 1000px;
+}
+
+.Capability-detail .Capability-expand {
+  display: none;
+}
+
+.Capability-detail .Cap-model-cap-name {
+  margin-left: 0px;
+  padding: 4px;
+}
+
+.Capability-detail .Cap-model-level-1 {
+  width: auto;
+}
+.Capability-detail .Cap-model-level-2 {
+  width: auto;
+}
+.Capability-detail .Cap-model-level-3 {
+  width: auto;
+}
+.Capability-detail .Cap-model-level-4 {
+  width: auto;
+}
+
 
 
 // Spinner

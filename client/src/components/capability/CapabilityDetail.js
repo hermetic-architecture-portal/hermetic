@@ -6,6 +6,8 @@ import userStore from '../../stores/userStore';
 import constants from '../../constants';
 import Health from '../shared/Health';
 import Links from '../shared/Links';
+import CapabilityModel from '../modelView/CapabilityModel';
+import CapabilityOverlayStore from '../../stores/CapabilityOverlayStore';
 
 class CapabilityDetail extends React.Component {
   async componentDidMount() {
@@ -31,6 +33,29 @@ class CapabilityDetail extends React.Component {
       return null;
     }
 
+    const capabilityOverlayStore = new CapabilityOverlayStore(99);
+
+    let capabilityModel;
+
+    if (capability.capabilityModel && (capability.capabilityModel.length > 1)) {
+      const capabilityTypes = [
+        {
+          capabilityTypeId: 1,
+          name: 'Child',
+          capabilities: capability.capabilityModel
+            .map(c => ({
+              capabilityId: c.capabilityId,
+              capabilityTypeId: 1,
+              parentCapabilityId: (capabilityId === c.capabilityId)
+                ? undefined : c.parentCapabilityId,
+              name: c.name,
+            })),
+        },
+      ];
+      capabilityModel = <CapabilityModel capabilityTypes={capabilityTypes}
+      capabilityOverlayStore={capabilityOverlayStore}/>;
+    }
+
     const capResourcing = modelStore.capabilityResourcing
       .find(r => r.capabilityId === capabilityId);
 
@@ -52,7 +77,7 @@ class CapabilityDetail extends React.Component {
         </Link>
       </li>
     ));
-    return <div>
+    return <div className="Capability-detail">
         <div className="Single-col-wrapper">
         <div className="Head-1">{capability.name}</div>
         { !capability.description ? undefined
@@ -96,6 +121,7 @@ class CapabilityDetail extends React.Component {
               <Health healthDetail={capHealth}/>
             </div>}
       </div>
+      {capabilityModel}
     </div>;
   }
 }

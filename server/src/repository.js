@@ -2,6 +2,19 @@ import { features } from 'hermetic-common';
 import cache from './cache';
 import extendData from './extendData';
 
+const getCapabilitiesWithDescendants = (allCapabilities, parentCapabilityId, isRoot = true) => {
+  const childCapabilities = allCapabilities
+    .filter(c => c.parentCapabilityId === parentCapabilityId);
+  const result = [];
+  childCapabilities.forEach(cc => result
+    .push(...getCapabilitiesWithDescendants(allCapabilities, cc.capabilityId, false)));
+  result.push(...childCapabilities);
+  if (isRoot) {
+    result.push(allCapabilities.find(c => c.capabilityId === parentCapabilityId));
+  }
+  return result;
+};
+
 // normalise score to value between 0 and 1
 const getNormalisedScore = (score, metric) => (score - metric.minScore)
   / (metric.maxScore - metric.minScore);
@@ -357,6 +370,13 @@ const repository = {
           .name,
       };
     }
+    result.capabilityModel = getCapabilitiesWithDescendants(data.capabilities, capabilityId)
+      .map(c => ({
+        capabilityId: c.capabilityId,
+        capabilityTypeId: c.capabilityTypeId,
+        parentCapabilityId: c.parentCapabilityId,
+        name: c.name,
+      }));
     result.technologies = (data.technologies || [])
       .filter(tech => (tech.capabilities || [])
         .some(cap => cap.capabilityId === result.capabilityId))

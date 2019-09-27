@@ -86,16 +86,19 @@ const component = ({ technology }) => {
     </div>
     <div className="Data-row">
       <div>GDPR Assessed</div>
-      <div>{technology.gdprAssessed ? 'Y' : 'N'}</div>
+      <div>{(typeof technology.gdprAssessed === 'undefined')
+        ? 'Unknown' : technology.gdprAssessed}</div>
     </div>
     <div className="Data-row">
       <div>Private Data</div>
-      <div>{technology.hasPrivateData ? 'Y' : 'N'}</div>
+      <div>{(typeof technology.hasPrivateData === 'undefined')
+        ? 'Unknown' : technology.hasPrivateData}</div>
     </div>
     { technology.technologyType !== 'SaaS' ? undefined
       : <div className="Data-row">
       <div>Cloud Risk Assessed</div>
-      <div>{technology.cloudRiskAssessed ? 'Y' : 'N'}</div>
+      <div>{(typeof technology.cloudRiskAssessed === 'undefined')
+        ? 'Unknown' : technology.cloudRiskAssessed}</div>
     </div>}
     <ExtensionFields entity={technology} />
     { !technology.parentTechnology ? undefined

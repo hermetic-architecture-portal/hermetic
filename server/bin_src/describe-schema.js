@@ -30,6 +30,12 @@ const getFieldComment = (field) => {
       result.push(`refers to ${fk.arg.path}`);
     }
   }
+  if (field.valids && field.valids.length) {
+    const valids = field.valids.map(v => `"${v}"`).join(', ');
+    const validsDescriptor = (field.flags && field.flags.allowOnly)
+      ? '- choose from: ' : '- suggested values:';
+    result.push(`${validsDescriptor} ${valids}`);
+  }
   return result.join(' ');
 };
 

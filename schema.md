@@ -326,14 +326,12 @@ networkNodes:
         # nodeId: refers to networkNodes.[].nodeId
       - nodeId: string
     # isAbstractNode: optional boolean
-    # isAbstractNode: Abstract nodes represent a server role (e.g. "Domain controller") rather than an actual individual server
+    # isAbstractNode: Abstract nodes represent a server role (e.g. "Domain controller") rather than an actual individual server (e.g. "sydney-dc-prod1")
     isAbstractNode: boolean
     # locationId: refers to networkLocations.[].locationId
     locationId: string
     nodeId: string
-    # nodeType: optional
-    # nodeType: Free text node type category.
-    # nodeType: Known values with mapped icons are: Database, Desktop, Mobile Device, Cluster, Load Balancer, Load Balancer Alias, Server
+    # nodeType: optional - suggested values: "Database, Desktop", "Mobile Device", "Cluster", "Load Balancer", "Load Balancer Alias", "Server"
     nodeType: string
     # technologies: array
     technologies:
@@ -378,17 +376,17 @@ technologies:
       - capabilityId: string
     # category: optional
     category: string
-    # cloudRiskAssessed: optional boolean
+    # cloudRiskAssessed: optional - choose from:  "Yes", "No"
     # cloudRiskAssessed: Indicates whether an assessment for cloud risk has been undertaken
-    cloudRiskAssessed: boolean
+    cloudRiskAssessed: string
     # contacts: optional array
     contacts:
     - string
     # disasterRecovery: optional
     disasterRecovery: string
-    # gdprAssessed: optional boolean
+    # gdprAssessed: optional - choose from:  "Yes", "No"
     # gdprAssessed: Indicates whether an assessment for GDPR compliance has been undertaken
-    gdprAssessed: boolean
+    gdprAssessed: string
     # generalLinks: optional array
     # generalLinks: Hyperlinks which provide non-technical information on the technology for general consumption
     generalLinks:
@@ -397,8 +395,8 @@ technologies:
       - text: string
         # url: The web URL
         url: string
-    # hasPrivateData: optional boolean
-    hasPrivateData: boolean
+    # hasPrivateData: optional - choose from:  "Yes", "No"
+    hasPrivateData: string
     # lastReviewedBy: optional
     lastReviewedBy: string
     # lastReviewedOn: optional date
@@ -433,9 +431,7 @@ technologies:
         # url: The web URL
         url: string
     technologyId: string
-    # technologyType: optional
-    # technologyType: Icons are available for the following values: Client/server, SaaS, Server only, Support service, Platform.
-    # technologyType: Any other value can be used but will not be mapped to an icon.
+    # technologyType: optional - suggested values: "Client/server", "SaaS", "Server only", "Support service", "Platform"
     technologyType: string
     # userApplication: optional boolean
     # userApplication: If true, indicates that this technology is a user facing application.

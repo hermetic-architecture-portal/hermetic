@@ -657,7 +657,17 @@ div.Capability {
   background-size: 32px 32px;
   background-position: 6px 4px;  
   padding: 10px; 
-  padding-left: 48px; 
+  padding-left: 48px;
+  min-height: 38px;
+}
+
+.Header-brand {
+  // placeholder for if someone wants to customise this
+  display: inline-block;
+}
+
+.Document-title {
+  content: $header-name;
 }
 
 .Burger-menu::after {

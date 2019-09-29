@@ -4,6 +4,7 @@ import editPlugin from 'hermetic-edit-client-plugin';
 import plugin from 'hermetic-client-plugin';
 import { schema } from 'hermetic-common';
 import './App.scss';
+import 'hermetic-client-plugin/Custom.scss';
 import CapabilityModel from './components/modelView/CapabilityModel';
 import CapabilityDetail from './components/capability/CapabilityDetail';
 import Technology from './components/technology/Technology';

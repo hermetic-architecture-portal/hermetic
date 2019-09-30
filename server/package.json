@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "test": "cross-env NODE_PATH=\"${HERMETIC_CUSTOM_PLUGIN_PATH}:../lib\" jest",
     "start": "nodemon --exec \"eslint src && cross-env NODE_PATH=\"${HERMETIC_CUSTOM_PLUGIN_PATH}:../lib\" babel-node src/server.js\"",
     "start-deployed": "cross-env NODE_PATH=\"${HERMETIC_CUSTOM_PLUGIN_PATH}:../lib\" node build/server.js",
     "build": "eslint src && cross-env NODE_PATH=\"${HERMETIC_CUSTOM_PLUGIN_PATH}:../lib\" babel -d build src"

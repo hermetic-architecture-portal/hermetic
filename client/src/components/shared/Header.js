@@ -141,6 +141,8 @@ const header = ({ location }) => {
           </ul>
         </Menu>
       </Wrapper>
+      <div className="Header-brand">
+      </div>
       <div className="User-block">
         <UserWidget />
       </div>

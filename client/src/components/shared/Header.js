@@ -102,6 +102,22 @@ const header = ({ location }) => {
     });
   }
 
+  if (userStore.data.allowedFeatures.includes(features.techDetails)) {
+    menuItems.push({
+      link: '/functionalCapabilities',
+      itemLinkBase: '/functionalCapability',
+      text: 'Functional Capabilities',
+      children: [],
+    });
+  }
+
+  menuItems.push({
+    link: '/compareTechnologies',
+    itemLinkBase: '/compareTechnologies',
+    text: 'Compare Technologies',
+    children: [],
+  });
+
   if (userStore.data.allowedFeatures.includes(features.edit)) {
     menuItems.push({
       link: '/edit',

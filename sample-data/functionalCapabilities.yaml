@@ -1,0 +1,76 @@
+functionalCapabilities:
+  - functionalCapabilityId: FC-002
+    trmCategoryId: TRMC-005
+    description: This is the capability to serve content over the HTTP protocol
+    links: []
+    name: HTTP Server
+    technologies:
+      - technologyId: T-102
+      - technologyId: T-103
+  - functionalCapabilityId: FC-003
+    trmCategoryId: TRMC-005
+    description: This is the capability to serve content over the FTP protocol
+    links: []
+    name: FTP Server
+    technologies:
+      - technologyId: T-102
+        remarks: Via a plugin which we don't have installed   
+  - functionalCapabilityId: FC-004
+    trmCategoryId: TRMC-005
+    links: []
+    name: TLS Encryption
+    technologies:
+      - technologyId: T-102
+      - technologyId: T-103    
+  - functionalCapabilityId: FC-005
+    trmCategoryId: TRMC-005
+    links: []
+    name: Compression
+    technologies:
+      - technologyId: T-102
+      - technologyId: T-103    
+  - functionalCapabilityId: FC-006
+    trmCategoryId: TRMC-005
+    links: []
+    name: Proxy
+    technologies:
+      - technologyId: T-102
+      - technologyId: T-103    
+  - functionalCapabilityId: FC-008
+    trmCategoryId: TRMC-004
+    links: []
+    name: Referential Integrity
+    technologies:
+      - technologyId: T-101
+  - functionalCapabilityId: FC-009
+    trmCategoryId: TRMC-004
+    links: []
+    name: Sharding
+    technologies:
+      - technologyId: T-104    
+  - functionalCapabilityId: FC-010
+    trmCategoryId: TRMC-004
+    links: []
+    name: SQL Queries
+    technologies:
+      - technologyId: T-101    
+  - functionalCapabilityId: FC-011
+    trmCategoryId: TRMC-004
+    links: []
+    name: Triggers
+    technologies:
+      - technologyId: T-101        
+      - technologyId: T-104
+        remarks: Triggers are written in Java or other JVM language    
+  - functionalCapabilityId: FC-012
+    trmCategoryId: TRMC-004
+    links: []
+    name: Stored Procedures
+    technologies:
+      - technologyId: T-101    
+  - functionalCapabilityId: FC-013
+    trmCategoryId: TRMC-004
+    links: []
+    name: Map/Reduce
+    technologies:      
+      - technologyId: T-104

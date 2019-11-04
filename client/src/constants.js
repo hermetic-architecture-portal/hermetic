@@ -17,13 +17,17 @@ const capabilityOverlayFeature = {
 };
 
 const techRefModelOverlays = {
-  technologyHealth: 'Technology Health',
-  standardAssessments: 'Standard Assessments',
+  technologies: 'technologies',
+  technologyHealth: 'technologyHealth',
+  standardAssessments: 'standardAssessments',
+  functionalCapabilities: 'functionalCapabilities',
 };
 
 const techRefModelOverlayFeature = {
+  technologies: features.techDetails,
   technologyHealth: features.techDetails,
   standardAssessments: features.techDetails,
+  functionalCapabilities: features.techDetails,
 };
 
 const eaRefModelOverlays = {
@@ -45,7 +49,9 @@ const constants = {
 
   techRefModelOverlayFeature,
 
-  defaultTechRefModelOverlays: [],
+  defaultTechRefModelOverlays: [
+    techRefModelOverlays.technologies,
+  ],
 
   eaRefModelOverlays,
 

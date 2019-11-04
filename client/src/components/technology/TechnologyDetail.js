@@ -20,10 +20,15 @@ const component = ({ technology }) => {
       </Link>
     </li>);
     links.push(<li key="deployment">
-    <Link to={`/technology/${technology.technologyId}/deployment`}>
-      Deployment
-    </Link>
-  </li>);
+      <Link to={`/technology/${technology.technologyId}/deployment`}>
+        Deployment
+      </Link>
+    </li>);
+    links.push(<li key="compare">
+      <Link to={`/compareTechnologies?technologyId=${technology.technologyId}`}>
+        Compare
+      </Link>
+    </li>);
   }
   if (userStore.data.allowedFeatures.includes(features.technologyHealthMetrics)) {
     links.push(<li key="health">
@@ -121,7 +126,7 @@ const component = ({ technology }) => {
         </div>}
     <Links links={technology.generalLinks}/>
     <div className="Data-row">
-      <div>Capabilities</div>
+      <div>Business Capabilities</div>
       <div>
         <ul>
           {technology.capabilities.map(c => (

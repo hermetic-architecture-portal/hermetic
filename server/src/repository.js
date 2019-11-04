@@ -526,6 +526,14 @@ const repository = {
     const standardLevel = (data.technicalStandardLevels || [])
       .find(s => s.levelId === technology.standardLevelId);
 
+    const functionalCapabilities = (data.functionalCapabilities || [])
+      .filter(fc => (fc.technologies || [])
+        .some(fct => fct.technologyId === technologyId))
+      .map(fc => ({
+        name: fc.name,
+        functionalCapabilityId: fc.functionalCapabilityId,
+      }));
+
     const result = {
       technologyId,
       name: technology.name,
@@ -544,6 +552,7 @@ const repository = {
       environments: data.deploymentEnvironments || [],
       connections: connections.connections,
       networkLocations: connections.networkLocations,
+      functionalCapabilities,
     };
     extendData(result, technology, 'technology', features.techDetails, data);
     return result;
@@ -957,6 +966,72 @@ const repository = {
     return getItemHealth(artifact, 'eaArtifactId',
       data.eaArtifactMetricBands, data.eaArtifactMetricSets,
       data.eaArtifactMetricAssessments, data.metrics);
+  },
+  getFunctionalCapabilities: async (sandbox) => {
+    const data = await cache(null, false, sandbox);
+    const capabilities = (data.functionalCapabilities || [])
+      .map((c) => {
+        const result = {
+          functionalCapabilityId: c.functionalCapabilityId,
+          name: c.name,
+          trmCategoryId: c.trmCategoryId,
+          technologies: [],
+        };
+        if (c.trmCategoryId) {
+          const trmCategory = data.technicalReferenceModelCategories
+            .find(trmc => trmc.trmCategoryId === c.trmCategoryId);
+          result.categoryName = trmCategory.name;
+        }
+        if (c.technologies) {
+          result.technologies = c.technologies
+            .map((ct) => {
+              const technology = data.technologies
+                .find(t => t.technologyId === ct.technologyId);
+              return {
+                technologyId: ct.technologyId,
+                name: technology.name,
+                remarks: ct.remarks,
+              };
+            }).sort((a, b) => a.name.localeCompare(b.name));
+        }
+        return result;
+      });
+
+    return capabilities;
+  },
+  getFunctionalCapability: async (sandbox, functionalCapabilityId) => {
+    const data = await cache(null, false, sandbox);
+
+    const capability = (data.functionalCapabilities || [])
+      .find(c => c.functionalCapabilityId === functionalCapabilityId);
+    if (!capability) {
+      return null;
+    }
+
+    const result = {
+      functionalCapabilityId: capability.functionalCapabilityId,
+      name: capability.name,
+      description: capability.description,
+    };
+
+    if (capability.trmCategoryId) {
+      const trmCategory = data.technicalReferenceModelCategories
+        .find(trmc => trmc.trmCategoryId === capability.trmCategoryId);
+      result.categoryName = trmCategory.name;
+    }
+
+    result.technologies = (capability.technologies || [])
+      .map((ct) => {
+        const technology = data.technologies
+          .find(t => t.technologyId === ct.technologyId);
+        return {
+          technologyId: ct.technologyId,
+          name: technology.name,
+          remarks: ct.remarks,
+        };
+      }).sort((a, b) => a.name.localeCompare(b.name));
+
+    return result;
   },
 };
 

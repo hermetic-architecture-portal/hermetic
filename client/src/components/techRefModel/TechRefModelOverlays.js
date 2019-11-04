@@ -14,21 +14,45 @@ const checkboxChanged = (key, checked) => {
   }
 };
 
+const getOption = (key, title) => {
+  const canSee = userStore.data.allowedFeatures
+    .includes(constants.techRefModelOverlayFeature[key])
+  && (
+    // can only have technology health overlay if already have technology overlay
+    (constants.techRefModelOverlays[key] !== constants.techRefModelOverlays.technologyHealth)
+    || techRefModelOverlayStore.overlays.includes(constants.techRefModelOverlays.technologies)
+  )
+  && (
+    // can only have standard assessments overlay if already have technology overlay
+    (constants.techRefModelOverlays[key] !== constants.techRefModelOverlays.standardAssessments)
+    || techRefModelOverlayStore.overlays.includes(constants.techRefModelOverlays.technologies)
+  );
+  if (!canSee) {
+    return <label></label>;
+  }
+  return <label>
+    {title}
+    <input type="checkbox"
+      checked={techRefModelOverlayStore.overlays.includes(constants.techRefModelOverlays[key])}
+      onChange={event => checkboxChanged(key, event.target.checked)}/>
+</label>;
+};
+
 const component = () => {
-  const options = Object.keys(constants.techRefModelOverlays)
-    .map((key) => {
-      const canSee = userStore.data.allowedFeatures
-        .includes(constants.techRefModelOverlayFeature[key]);
-      if (!canSee) {
-        return <label key={key}></label>;
-      }
-      return <label key={key}>
-        {constants.techRefModelOverlays[key]}
-        <input type="checkbox"
-          checked={techRefModelOverlayStore.overlays.includes(constants.techRefModelOverlays[key])}
-          onChange={event => checkboxChanged(key, event.target.checked)}/>
-    </label>;
-    });
+  let functionalCapabilityOptions;
+
+  if (userStore.data.allowedFeatures
+    .includes(
+      constants.techRefModelOverlayFeature[constants.techRefModelOverlays.functionalCapabilities],
+    )) {
+    functionalCapabilityOptions = <div className="Overlay-option-group">
+      <div className="Group-name">Functional Capabilities:</div>
+      <div className="Group-options">
+        {getOption(constants.techRefModelOverlays.functionalCapabilities, 'Show')}
+      </div>
+    </div>;
+  }
+
   const legendItems = [];
   if (techRefModelOverlayStore.overlays.includes(constants.techRefModelOverlays.technologyHealth)) {
     legendItems.push(<HealthLegend key="ahl" className="TRM-legend"
@@ -62,8 +86,15 @@ const component = () => {
     legendItems.push(legend);
   }
   return <div className="Overlay-options">
-    <div>Overlays:</div>
-    {options}
+    <div className="Overlay-option-group">
+      <div className="Group-name">Technologies:</div>
+      <div className="Group-options">
+        {getOption(constants.techRefModelOverlays.technologies, 'Show')}
+        {getOption(constants.techRefModelOverlays.technologyHealth, 'Show Health')}
+        {getOption(constants.techRefModelOverlays.standardAssessments, 'Show Standard Assessments')}
+      </div>
+    </div>
+    {functionalCapabilityOptions}
     {!legendItems.length ? undefined
       : <div className="Legend">{legendItems}</div>}
   </div>;

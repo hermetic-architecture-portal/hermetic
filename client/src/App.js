@@ -24,8 +24,12 @@ import BusinessUnit from './components/businessUnit/BusinessUnit';
 import DataRefModel from './components/dataRefModel/DataRefModel';
 import DataEntity from './components/data/DataEntity';
 import EARefModel from './components/ea/EARefModel';
-import config from './config';
 import EAArtifactDetail from './components/ea/EAArtifactDetail';
+import FunctionalCapabilities from './components/functionalCapabilities/FunctionalCapabilities';
+import FunctionalCapabilityDetail
+  from './components/functionalCapabilities/FunctionalCapabilityDetail';
+import CompareTechnologies from './components/compareTechnologies/CompareTechnologies';
+import config from './config';
 
 const app = () => {
   let editRoutes;
@@ -111,6 +115,17 @@ const app = () => {
         component={({ match }) => <EAArtifactDetail
           key={match.params.eaArtifactId}
           eaArtifactId={match.params.eaArtifactId} />}
+      />
+      <Route path='/functionalCapabilities' exact={true}
+        component={() => <FunctionalCapabilities />}
+      />
+      <Route path='/functionalCapability/:functionalCapabilityId' exact={true}
+        component={({ match }) => <FunctionalCapabilityDetail
+          key={match.params.functionalCapabilityId}
+          functionalCapabilityId={match.params.functionalCapabilityId} />}
+      />
+      <Route path='/compareTechnologies' exact={true}
+        component={() => <CompareTechnologies />}
       />
       {editRoutes}
       <div className="Footer">

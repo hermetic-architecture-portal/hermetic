@@ -76,7 +76,7 @@ capabilityMetricBands:
     # name: The title of the band displayed to the user (e.g. Good, OK, Poor)
     name: string
 # capabilityMetricSets: optional array
-# capabilityMetricSets: Capability metric sets define different ways of measuring technologies
+# capabilityMetricSets: Capability metric sets define different ways of measuring business capabilities
 capabilityMetricSets:
     # metrics: array
   - metrics:
@@ -278,6 +278,30 @@ eaDomains:
     # isCrossCutting: If true, indicates that this domain cuts across all other domains
     isCrossCutting: boolean
     name: string
+# functionalCapabilities: optional array
+# functionalCapabilities: EXPERIMENTAL FEATURE! Functional capabilites are low level capabilities of applications and technologies
+functionalCapabilities:
+    # description: optional
+  - description: string
+    functionalCapabilityId: string
+    # links: optional array
+    # links: Hyperlinks which provide further information on the capability
+    links:
+        # text: optional
+        # text: The text to display in the link
+      - text: string
+        # url: The web URL
+        url: string
+    name: string
+    # technologies: array
+    # technologies: Technologies identifies the technologies which supply the functional capabilities
+    technologies:
+        # remarks: optional
+      - remarks: string
+        # technologyId: refers to technologies.[].technologyId
+        technologyId: string
+    # trmCategoryId: optional refers to technicalReferenceModelCategories.[].trmCategoryId
+    trmCategoryId: string
 # metrics: optional array
 # metrics: Metrics define possible measurements which may be taken of an entitity
 metrics:
@@ -371,6 +395,7 @@ technologies:
     # businessOwner: optional
     businessOwner: string
     # capabilities: optional array
+    # capabilities: Capabilities are the high level business capabilities reflected in the Business Reference Model
     capabilities:
         # capabilityId: refers to capabilities.[].capabilityId
       - capabilityId: string
@@ -385,7 +410,7 @@ technologies:
     # disasterRecovery: optional
     disasterRecovery: string
     # gdprAssessed: optional - choose from:  "Yes", "No"
-    # gdprAssessed: Indicates whether an assessment for GDPR compliance has been undertaken
+    # gdprAssessed: Indicates whether an assessment for GDPR compliance has been undertaken.
     gdprAssessed: string
     # generalLinks: optional array
     # generalLinks: Hyperlinks which provide non-technical information on the technology for general consumption

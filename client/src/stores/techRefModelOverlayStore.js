@@ -19,6 +19,10 @@ class TechRefModelOverlayStore {
 
   removeOverlay(overlay) {
     this.overlays.remove(overlay);
+    if (overlay === constants.techRefModelOverlays.technologies) {
+      this.overlays.remove(constants.techRefModelOverlays.technologyHealth);
+      this.overlays.remove(constants.techRefModelOverlays.standardAssessments);
+    }
   }
 }
 

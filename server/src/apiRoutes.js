@@ -511,6 +511,44 @@ const routes = [
     handler: request => repository.getEaArtifactMetricBands(request.query.sandbox),
   },
   {
+    path: '/api/functionalCapability',
+    method: 'GET',
+    options: {
+      plugins: {
+        feature: features.techDetails,
+      },
+      validate: {
+        query,
+      },
+    },
+    handler: request => repository
+      .getFunctionalCapabilities(request.query.sandbox),
+  },
+  {
+    path: '/api/functionalCapability/{functionalCapabilityId}',
+    method: 'GET',
+    options: {
+      validate: {
+        params: {
+          functionalCapabilityId: Joi.string().required(),
+        },
+        query,
+      },
+      plugins: {
+        feature: features.techDetails,
+      },
+    },
+    handler: async (request) => {
+      const data = await repository
+        .getFunctionalCapability(request.query.sandbox,
+          request.params.functionalCapabilityId);
+      if (data) {
+        return data;
+      }
+      return Boom.notFound(`Functional capability not found: ${request.params.functionalCapabilityId}`);
+    },
+  },
+  {
     path: '/api/accessRights',
     method: 'GET',
     options: {

@@ -41,6 +41,8 @@ const api = {
   getEaArtifactHealthDetail: async eaArtifactId => api.fetchJson(`${config.apiBaseUrl}/eaArtifact/${eaArtifactId}/health`),
   getEaArtifactHealthMetricTotals: async () => api.fetchJson(`${config.apiBaseUrl}/eaArtifactMetrics/totals`),
   getEaArtifactHealthMetricBands: async () => api.fetchJson(`${config.apiBaseUrl}/eaArtifactMetrics/bands`),
+  getFunctionalCapabilities: async () => api.fetchJson(`${config.apiBaseUrl}/functionalCapability`),
+  getFunctionalCapabilityDetail: async functionalCapabilityId => api.fetchJson(`${config.apiBaseUrl}/functionalCapability/${functionalCapabilityId}`),
   getSandboxes: async () => api.fetchJson(`${config.apiBaseUrl}/edit/sandbox`),
 
   sandbox: null,

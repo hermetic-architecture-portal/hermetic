@@ -8,6 +8,7 @@ class TechRefModel extends React.Component {
   componentDidMount() {
     modelStore.loadTechRefModel();
     modelStore.loadTechnologies();
+    modelStore.loadFunctionalCapabilities();
   }
 
   render() {

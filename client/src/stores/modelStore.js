@@ -34,6 +34,8 @@ const modelStore = {
   eaMetricTotals: observable([]),
   eaMetricTotalBands: observable([]),
   eaArtifactHealthDetails: observable([]),
+  functionalCapabilities: observable([]),
+  functionalCapabilityDetails: observable([]),
 
   reset: () => Object.getOwnPropertyNames(modelStore)
     .filter(fieldName => modelStore[fieldName] && modelStore[fieldName].clear)
@@ -262,6 +264,22 @@ const modelStore = {
     modelStore.eaArtifactHealthDetails.push(detailData);
   },
 
+  loadFunctionalCapabilities: async () => {
+    if (modelStore.functionalCapabilities.length) {
+      return;
+    }
+    const data = await api.getFunctionalCapabilities();
+    modelStore.functionalCapabilities.replace(data);
+  },
+
+  loadFunctionalCapabilityDetail: async (functionalCapabilityId) => {
+    if (modelStore.functionalCapabilityDetails
+      .some(c => c.functionalCapabilityId === functionalCapabilityId)) {
+      return;
+    }
+    const detailData = await api.getFunctionalCapabilityDetail(functionalCapabilityId);
+    modelStore.functionalCapabilityDetails.push(detailData);
+  },
 };
 
 export default modelStore;

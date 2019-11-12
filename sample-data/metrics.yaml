@@ -61,7 +61,6 @@ metrics:
     description: This metric measures how up to date the artifact is
     minScore: 0
     maxScore: 4    
-        
 
 technologyMetricSets:
   - metricSetId: MS-001

@@ -28,6 +28,11 @@ export default ({ technology, environmentId }) => {
     .map(st => <li key={st.technologyId}>
       <Link to={`/technology/${st.technologyId}`}>{st.name}</Link>
     </li>);
+  const functionalCapabilities = technology.functionalCapabilities
+    .map(fc => <li key={fc.functionalCapabilityId}>
+      <Link to={`/functionalCapability/${fc.functionalCapabilityId}`}>{fc.name}</Link>
+    </li>);
+
   return <div className="Left-col">
     <div className="Head-1">{technology.name}</div>
     <div className="Data-row">
@@ -91,6 +96,14 @@ export default ({ technology, environmentId }) => {
       <div>
         <ul>
           {supportsTechnologies}
+        </ul>
+      </div>
+    </div>
+    <div className="Data-row">
+      <div>Functional Capabilities</div>
+      <div>
+        <ul>
+          {functionalCapabilities}
         </ul>
       </div>
     </div>

@@ -351,6 +351,34 @@ div.Capability {
   margin-left: 8px;
 }
 
+.TRM-functional-capability-wrapper {
+  display: inline-block;
+  border-color: $emphasis-border-3;
+  background-color: $emphasis-background-3;
+  border-style: solid;
+  border-width: 1px;
+  margin-top: 6px;
+  margin-bottom: 4px;
+  margin-right: 4px;
+  background-image: url('/img/basic_settings.svg');
+  background-position-x: 4px;
+  background-position-y: 4px;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
+  padding-left: 25px;
+}
+
+.TRM-functional-capability {
+  margin: 4px 8px 6px 4px;
+  background-color: transparent;
+  color: $emphasis-text-4;
+  border-radius: 4px;
+  font-size: 0.8em;
+  width: 130px;
+  display: inline-block;
+  vertical-align: top;  
+}
+
 .EA-domain .Head-1 {
   font-size: x-large;
 }
@@ -541,14 +569,18 @@ div.Capability {
 .Left-col a:hover,
 .Left-col a:hover div,
 .Single-col-wrapper a:hover,
-.Single-col-wrapper a:hover div
+.Single-col-wrapper a:hover div,
+.Functional-capability-row a:hover
 {
   background-color:$link-background-hover;
 }
 .Left-col a,
 .Left-col a:visited,
 .Single-col-wrapper a,
-.Single-col-wrapper a:visited{ 
+.Single-col-wrapper a:visited,
+.Functional-capability-row a,
+.Functional-capability-row a:visited
+{ 
   color:$link-text;
   text-decoration: underline;
 }
@@ -835,7 +867,7 @@ div.Capability {
 
 .Data-row div:nth-of-type(1) {
   font-weight: bold;
-  width: 10em;
+  width: 12em;
   padding: 5px;
 }
 
@@ -1443,7 +1475,189 @@ input[type='number'] {
   width: auto;
 }
 
+.Single-col-wrapper .Functional-capability-row a div {
+  padding: initial;
+  margin: initial;
+}
 
+.Functional-capabilities-wrapper {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.Functional-capability-row {
+  border-top: 1px solid $panel-border-1;
+  margin:0 -10px;
+  padding:0 10px;
+}
+
+.Functional-capability-row>div:nth-of-type(1) {
+  width: 15%;
+  vertical-align: top;
+  max-width:10em;
+  padding-top:4px;
+}
+
+.Functional-capability-row>div:nth-of-type(2) {
+  width: 15%;
+  vertical-align: top;
+  max-width:15em;
+  padding-top:4px;
+}
+
+.Functional-capability-row.Functional-capability-heading {
+  font-weight: bold;
+  background-color: $emphasis-background-3;
+  padding: 4px;
+}
+
+.Functional-capability-row.Functional-capability-heading div {
+  padding: 4px;
+}
+
+.Functional-capability-row div {
+  display: inline-block;
+}
+
+.Functional-capability-row>div:nth-of-type(3) {
+  width: 70%;
+}
+
+.Functional-capability-row>div:nth-of-type(3) div {
+  display: inline-block;
+  margin: 4px;
+  padding: 4px;
+  background-color: $emphasis-background-3;
+  border-radius: 4px;
+  font-size: 13px;
+  width: 135px;
+  text-align: center;
+}
+
+.Functional-capability-row>div:nth-of-type(3) a:hover {
+  background-color: initial;
+}
+
+.Functional-capability-row>div:nth-of-type(3) div.Functional-capability-compare {
+  background-color: $emphasis-background-2;
+}
+
+li.Functional-capability-compare>a{
+  display: inline-block;
+  border-radius: 4px;
+  background-color: $emphasis-background-2;
+  text-decoration: none;
+  margin-left: 0px;
+}
+
+.Compare-tech-wrapper {
+  display: flex;
+  flex-direction: row;
+  margin: 10px;
+}
+
+.Compare-tech-column {
+  display: flex;
+  flex-direction: column;
+  flex-basis: 15em;
+  background-color: $emphasis-background-3;
+}
+
+.Compare-tech-column:first-of-type {
+  background-color: initial;
+}
+
+.Compare-tech-column>div {
+  flex-basis: 2.4em;
+  padding: 4px;
+  border-width: 1px;
+  border-color: $emphasis-border-4;  
+  border-bottom-style: solid;
+  border-right-style: solid;
+  white-space: nowrap;
+}
+
+.Compare-tech-column>div.Compare-tech-group-name {
+  font-weight: bold;
+}
+
+.Compare-tech-column>div:last-of-type { 
+  border-bottom-style: none;
+}
+
+.Compare-tech-column>div:first-of-type {
+  background-color: $emphasis-background-2;
+  color: $emphasis-text-2;
+  border-color:$emphasis-border-2;
+  font-weight: bold;
+}
+
+.Compare-tech-column:last-of-type>div:first-of-type {
+  border-right-color: $emphasis-border-4;
+  padding: 2px;
+}
+
+.Compare-tech-column:first-of-type>div {
+  background-color: $emphasis-background-2;
+  color: $emphasis-text-2;
+  border-color: $emphasis-border-2;  
+  border-bottom-style: solid;
+  border-right-style: solid;
+}
+
+.Compare-tech-column:first-of-type>div:first-of-type {
+  visibility: hidden;
+}
+
+.Compare-tech-column a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.Compare-tech-capability-absent {
+  color: transparent
+}
+
+.Compare-tech-capability-absent::before {
+  content: '❌';
+  color:red;
+}
+
+.Compare-tech-capability-present {
+  color: transparent
+}
+
+.Compare-tech-capability-present::before {
+  content: '✓';
+  color:green;
+}
+
+.Compare-tech-health-item {
+  display: inline-block;
+  padding-top: 2px;
+  padding-bottom: 2px;
+  padding-left: 8px;
+  padding-right: 8px;
+  border-radius: 4px;
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-3;
+}
+
+.Compare-tech-column>div.Compare-tech-sub-group-item {
+  padding-left: 1em;
+}
+
+.Compare-tech-remove {
+  margin-left: 8px;
+}
+
+.Compare-tech-column.Compare-tech-add-column>div:last-of-type { 
+  border-style: none;
+}
 
 // Spinner
 

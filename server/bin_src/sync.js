@@ -25,19 +25,21 @@ if (!fs.existsSync(path.join(dir, '.git'))) {
   process.exit(1);
 }
 
-const tempDir = tmp.dirSync();
-const mainRepo = git(dir);
-const tempGit = git(tempDir.name);
+let tempDir;
 
 const main = async () => {
   try {
+    const mainRepo = git(dir);
     await mainRepo.fetch();
     const status = await mainRepo.status();
+    const branch = status.current;
     if (!status.behind) {
       console.log(chalk.green('Repo is up to date'));
       process.exit(0);
     }
     console.log(`Repo is ${status.behind} commits behind remote`);
+    tempDir = tmp.dirSync();
+    const tempGit = git(tempDir.name);
     const remote = (await mainRepo.getRemotes(true))
       .find(r => r.name === 'origin');
     if (!remote) {
@@ -46,7 +48,10 @@ const main = async () => {
     const remoteUrl = remote.refs.fetch;
     console.log(`Verifying latest version of remote ${remoteUrl}`);
 
-    await tempGit.clone(remoteUrl, path.join(tempDir.name, 'temp'), { '--depth': 1 });
+    await tempGit.clone(remoteUrl, path.join(tempDir.name, 'temp'));
+    await tempGit.cwd(path.join(tempDir.name, 'temp'));
+    console.log(chalk.green(`Checking out branch ${branch}`));
+    await tempGit.checkout(branch);
     // next line would throw if there is a validation error in new version
     await cache(path.join(tempDir.name, 'temp'), true);
     console.log('Latest version verified, replacing current repo');
@@ -57,7 +62,9 @@ const main = async () => {
     console.log(chalk.green('Up to date'));
   } catch (e) {
     console.error(chalk.red(e.message));
-    rimraf.sync(tempDir.name);
+    if (tempDir) {
+      rimraf.sync(tempDir.name);
+    }
     process.exit(1);
   }
 };

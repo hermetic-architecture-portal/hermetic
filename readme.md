@@ -16,7 +16,7 @@ https://hermetic.azurewebsites.net
 <img src="doc/img/screenshot-component.png?raw=true" height="500">
 
 ## Getting started ##
-1. Ensure you have node.js v8.x or higher installed
+1. Check the [prerequisites](#Prerequisites)
 2. Clone this repository:
 
 ```shell
@@ -31,6 +31,14 @@ $ npm run build
 $ npm start
 ```
 3. Browse to http://localhost:3001
+
+## Prerequisites
+1. Node.js must be installed.  Supported versions are v8-v12 inclusive. v13 and higher causes issues with one of the dependencies.
+2. In some cases you may need to install the [node-gyp dependencies](https://github.com/nodejs/node-gyp#installation)
+3. Hermetic is primarily designed for Linux and related systems (e.g. OSX)
+4. Hermetic should largely work on Windows.  In the instructions shown here you would need make some subsititutions:
+    1. Instead of running `.sh` scripts run the `.bat` scripts of the same name
+    2. Use `set VARIABLE=value` instead of `export VARIABLE=value` 
 
 ## Options
 Options are specifed as environment variables:

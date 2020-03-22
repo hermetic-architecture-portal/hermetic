@@ -1,11 +1,8 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import ReactDOM from 'react-dom';
-import plugin from 'hermetic-client-plugin';
-import './index.css';
+import './styles/index.css';
 import App from './App';
 import userStore from './stores/userStore';
-
-console.log(`Loaded plugin "${plugin.pluginName}"`);
 
 const findNamedStyle = (styleName) => {
   for (let i = 0; i < window.document.styleSheets.length; i += 1) {
@@ -31,9 +28,6 @@ const fixTitle = () => {
 
 const start = async () => {
   window.addEventListener('load', fixTitle);
-  if (plugin.login && !plugin.login()) {
-    return;
-  }
   await userStore.load();
   ReactDOM.render(<App />, document.getElementById('root'));
 };

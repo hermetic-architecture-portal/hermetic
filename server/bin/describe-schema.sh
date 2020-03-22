@@ -1,3 +1,3 @@
-#!/usr/bin/env bash
+#!/bin/sh
 export NODE_PATH=../lib
 node_modules/@babel/node/bin/babel-node.js bin_src/describe-schema.js "$@"

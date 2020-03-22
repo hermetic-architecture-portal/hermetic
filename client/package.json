@@ -1,6 +1,6 @@
 {
   "name": "hermetic-client",
-  "version": "1.1.5",
+  "version": "1.2.0",
   "private": true,
   "dependencies": {
     "cytoscape": "^3.5.0",
@@ -14,17 +14,20 @@
     "node-sass": "^4.11.0",
     "react": "^16.8.3",
     "react-aria-menubutton": "^6.1.0",
+    "react-auto-edit": "^2.3.5",
     "react-bootstrap": "^1.0.0-beta.5",
+    "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
-    "react-scripts": "2.1.5",
+    "react-scripts": "^3.4.1",
+    "react-tooltip": "^3.10.0",
     "sweetalert2": "^8.8.1",
     "uuid": "^3.3.3"
   },
   "scripts": {
-    "start": "eslint src && cross-env NODE_PATH=\"${HERMETIC_CUSTOM_PLUGIN_PATH}:../lib\" react-scripts start",
-    "build": "eslint src && cross-env NODE_PATH=\"${HERMETIC_CUSTOM_PLUGIN_PATH}:../lib\" react-scripts build",
-    "test": "eslint src && cross-env NODE_PATH=\"${HERMETIC_CUSTOM_PLUGIN_PATH}:../lib\" react-scripts test",
+    "start": "eslint src && cross-env SASS_PATH=\"${HERMETIC_CUSTOM_SASS_PATH}:src/styles/customStubs\" react-scripts start",
+    "build": "eslint src && cross-env SASS_PATH=\"${HERMETIC_CUSTOM_SASS_PATH}:src/styles/customStubs\" react-scripts build",
+    "test": "eslint src && cross-env SASS_PATH=\"${HERMETIC_CUSTOM_SASS_PATH}:src/styles/customStubs\" react-scripts test",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -40,7 +43,6 @@
     "cross-env": "^5.2.0",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-jest": "^22.3.0",
-    "eslint-plugin-react": "^7.12.4",
-    "joi": "^14.3.1"
+    "eslint-plugin-react": "^7.12.4"
   }
 }

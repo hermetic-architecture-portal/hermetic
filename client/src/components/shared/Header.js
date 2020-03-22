@@ -118,6 +118,14 @@ const header = ({ location }) => {
     children: [],
   });
 
+  if (userStore.data.allowedFeatures.includes(features.reporting)) {
+    menuItems.push({
+      link: '/reporting',
+      text: 'Reporting',
+      children: [],
+    });
+  }
+
   if (userStore.data.allowedFeatures.includes(features.edit)) {
     menuItems.push({
       link: '/edit',

@@ -25,7 +25,7 @@ $header-name: 'Hermetic';
 $footer-text: '';
 $arrow-background: #F8F8F8;
 
-@import '~hermetic-client-plugin/variables.scss';
+@import 'CustomVariables.scss';
 
 /* Icons are from https://github.com/linea-io/Linea-Iconset */
 /* or https://github.com/ecceman/affinity */
@@ -1659,6 +1659,33 @@ li.Functional-capability-compare>a{
   border-style: none;
 }
 
+.Reporting-route {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-3;
+  background-color: $emphasis-background-3;
+  margin-top: 6px;
+}
+
+.Reporting-route div {
+  padding: 4px;
+}
+
+.Reporting-route div:first-child {
+  font-weight: bold;
+}
+
+.Copy-content {
+  border-style: solid;
+  border-width: 1px;
+  border-color: $emphasis-border-4;
+  background-color: $emphasis-background-4;
+  padding: 4px;
+  font-family: 'Courier-new', monospace;
+  margin: 2px;
+  display: inline-block;
+}
+
 // Spinner
 
 .lds-dual-ring {
@@ -1689,4 +1716,6 @@ li.Functional-capability-compare>a{
   }
 }
 
-@import '~hermetic-edit-client-plugin/static/HermeticEdit.scss';
+@import 'HermeticEdit.scss';
+
+@import 'CustomStyles.scss';

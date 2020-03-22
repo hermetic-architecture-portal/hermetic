@@ -12,12 +12,10 @@ const routes = [
   {
     path: '/api/capabilityType',
     method: 'GET',
+    feature: features.core,
     options: {
       validate: {
         query,
-      },
-      plugins: {
-        feature: features.core,
       },
     },
     handler: request => repository.getCapabilityTypes(request.query.sandbox),
@@ -25,15 +23,13 @@ const routes = [
   {
     path: '/api/capability/{capabilityId}',
     method: 'GET',
+    feature: features.core,
     options: {
       validate: {
         params: {
           capabilityId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.core,
       },
     },
     handler: async (request) => {
@@ -48,15 +44,13 @@ const routes = [
   {
     path: '/api/capability/{capabilityId}/health',
     method: 'GET',
+    feature: features.capabilityHealthMetrics,
     options: {
       validate: {
         params: {
           capabilityId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.capabilityHealthMetrics,
       },
     },
     handler: async (request) => {
@@ -71,10 +65,8 @@ const routes = [
   {
     path: '/api/technology',
     method: 'GET',
+    feature: features.core,
     options: {
-      plugins: {
-        feature: features.core,
-      },
       validate: {
         query,
       },
@@ -85,10 +77,8 @@ const routes = [
   {
     path: '/api/technologyHealthMetrics/totals',
     method: 'GET',
+    feature: features.technologyHealthMetrics,
     options: {
-      plugins: {
-        feature: features.technologyHealthMetrics,
-      },
       validate: {
         query,
       },
@@ -100,10 +90,8 @@ const routes = [
   {
     path: '/api/technologyHealthMetrics/bands',
     method: 'GET',
+    feature: features.technologyHealthMetrics,
     options: {
-      plugins: {
-        feature: features.technologyHealthMetrics,
-      },
       validate: {
         query,
       },
@@ -113,10 +101,8 @@ const routes = [
   {
     path: '/api/capabilityHealthMetrics/totals',
     method: 'GET',
+    feature: features.capabilityHealthMetrics,
     options: {
-      plugins: {
-        feature: features.capabilityHealthMetrics,
-      },
       validate: {
         query,
       },
@@ -126,10 +112,8 @@ const routes = [
   {
     path: '/api/capabilityHealthMetrics/bands',
     method: 'GET',
+    feature: features.capabilityHealthMetrics,
     options: {
-      plugins: {
-        feature: features.capabilityHealthMetrics,
-      },
       validate: {
         query,
       },
@@ -139,10 +123,8 @@ const routes = [
   {
     path: '/api/capabilityResourcing',
     method: 'GET',
+    feature: features.capabilityResourcing,
     options: {
-      plugins: {
-        feature: features.capabilityResourcing,
-      },
       validate: {
         query,
       },
@@ -152,15 +134,13 @@ const routes = [
   {
     path: '/api/technology/{technologyId}',
     method: 'GET',
+    feature: features.core,
     options: {
       validate: {
         params: {
           technologyId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.core,
       },
     },
     handler: async (request) => {
@@ -176,15 +156,13 @@ const routes = [
   {
     path: '/api/technology/{technologyId}/technical',
     method: 'GET',
+    feature: features.techDetails,
     options: {
       validate: {
         params: {
           technologyId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.techDetails,
       },
     },
     handler: async (request) => {
@@ -199,15 +177,13 @@ const routes = [
   {
     path: '/api/technology/{technologyId}/components',
     method: 'GET',
+    feature: features.techDetails,
     options: {
       validate: {
         params: {
           technologyId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.techDetails,
       },
     },
     handler: async (request) => {
@@ -222,15 +198,13 @@ const routes = [
   {
     path: '/api/technology/{technologyId}/deployment',
     method: 'GET',
+    feature: features.techDetails,
     options: {
       validate: {
         params: {
           technologyId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.techDetails,
       },
     },
     handler: async (request) => {
@@ -245,15 +219,13 @@ const routes = [
   {
     path: '/api/technology/{technologyId}/health',
     method: 'GET',
+    feature: features.technologyHealthMetrics,
     options: {
       validate: {
         params: {
           technologyId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.technologyHealthMetrics,
       },
     },
     handler: async (request) => {
@@ -269,10 +241,8 @@ const routes = [
   {
     path: '/api/node',
     method: 'GET',
+    feature: features.techDetails,
     options: {
-      plugins: {
-        feature: features.techDetails,
-      },
       validate: {
         query,
       },
@@ -282,15 +252,13 @@ const routes = [
   {
     path: '/api/node/{nodeId}',
     method: 'GET',
+    feature: features.techDetails,
     options: {
       validate: {
         params: {
           nodeId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.techDetails,
       },
     },
     handler: async (request) => {
@@ -304,10 +272,8 @@ const routes = [
   {
     path: '/api/technicalReferenceModel',
     method: 'GET',
+    feature: features.techDetails,
     options: {
-      plugins: {
-        feature: features.techDetails,
-      },
       validate: {
         query,
       },
@@ -317,10 +283,8 @@ const routes = [
   {
     path: '/api/technicalStandardAssessments',
     method: 'GET',
+    feature: features.techDetails,
     options: {
-      plugins: {
-        feature: features.techDetails,
-      },
       validate: {
         query,
       },
@@ -330,10 +294,8 @@ const routes = [
   {
     path: '/api/businessUnit',
     method: 'GET',
+    feature: features.core,
     options: {
-      plugins: {
-        feature: features.core,
-      },
       validate: {
         query,
       },
@@ -343,15 +305,13 @@ const routes = [
   {
     path: '/api/businessUnit/{businessUnitId}',
     method: 'GET',
+    feature: features.core,
     options: {
       validate: {
         params: {
           businessUnitId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.core,
       },
     },
     handler: async (request) => {
@@ -366,10 +326,8 @@ const routes = [
   {
     path: '/api/dataTopic',
     method: 'GET',
+    feature: features.core,
     options: {
-      plugins: {
-        feature: features.core,
-      },
       validate: {
         query,
       },
@@ -379,10 +337,8 @@ const routes = [
   {
     path: '/api/dataTopicType',
     method: 'GET',
+    feature: features.core,
     options: {
-      plugins: {
-        feature: features.core,
-      },
       validate: {
         query,
       },
@@ -392,10 +348,8 @@ const routes = [
   {
     path: '/api/dataEntity',
     method: 'GET',
+    feature: features.core,
     options: {
-      plugins: {
-        feature: features.core,
-      },
       validate: {
         query,
       },
@@ -405,15 +359,13 @@ const routes = [
   {
     path: '/api/dataEntity/{dataEntityId}',
     method: 'GET',
+    feature: features.core,
     options: {
       validate: {
         params: {
           dataEntityId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.core,
       },
     },
     handler: async (request) => {
@@ -428,10 +380,8 @@ const routes = [
   {
     path: '/api/eaDomain',
     method: 'GET',
+    feature: features.core,
     options: {
-      plugins: {
-        feature: features.core,
-      },
       validate: {
         query,
       },
@@ -441,10 +391,8 @@ const routes = [
   {
     path: '/api/eaArtifact/{eaArtifactId}',
     method: 'GET',
+    feature: features.core,
     options: {
-      plugins: {
-        feature: features.core,
-      },
       validate: {
         params: {
           eaArtifactId: Joi.string().required(),
@@ -464,10 +412,8 @@ const routes = [
   {
     path: '/api/eaArtifact/{eaArtifactId}/health',
     method: 'GET',
+    feature: features.eaHealthMetrics,
     options: {
-      plugins: {
-        feature: features.eaHealthMetrics,
-      },
       validate: {
         params: {
           eaArtifactId: Joi.string().required(),
@@ -487,10 +433,8 @@ const routes = [
   {
     path: '/api/eaArtifactMetrics/totals',
     method: 'GET',
+    feature: features.eaHealthMetrics,
     options: {
-      plugins: {
-        feature: features.eaHealthMetrics,
-      },
       validate: {
         query,
       },
@@ -500,10 +444,8 @@ const routes = [
   {
     path: '/api/eaArtifactMetrics/bands',
     method: 'GET',
+    feature: features.eaHealthMetrics,
     options: {
-      plugins: {
-        feature: features.eaHealthMetrics,
-      },
       validate: {
         query,
       },
@@ -513,10 +455,8 @@ const routes = [
   {
     path: '/api/functionalCapability',
     method: 'GET',
+    feature: features.techDetails,
     options: {
-      plugins: {
-        feature: features.techDetails,
-      },
       validate: {
         query,
       },
@@ -527,15 +467,13 @@ const routes = [
   {
     path: '/api/functionalCapability/{functionalCapabilityId}',
     method: 'GET',
+    feature: features.techDetails,
     options: {
       validate: {
         params: {
           functionalCapabilityId: Joi.string().required(),
         },
         query,
-      },
-      plugins: {
-        feature: features.techDetails,
       },
     },
     handler: async (request) => {
@@ -551,6 +489,7 @@ const routes = [
   {
     path: '/api/accessRights',
     method: 'GET',
+    feature: features.core,
     options: {
       validate: {
         query,
@@ -566,7 +505,11 @@ const routes = [
             .map(key => features[key]),
         };
       }
-      return request.auth.credentials;
+      return {
+        displayName: request.auth.credentials.displayName,
+        username: request.auth.credentials.username,
+        allowedFeatures: request.auth.credentials.scope,
+      };
     },
   },
 ];

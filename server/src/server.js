@@ -1,36 +1,39 @@
 import '@babel/polyfill';
-import Hapi from 'hapi';
-import Inert from 'inert';
+import Hapi from '@hapi/hapi';
+import Inert from '@hapi/inert';
+import H2o2 from '@hapi/h2o2';
 import path from 'path';
-import plugin from 'hermetic-server-plugin';
-import editPlugin from 'hermetic-edit-server-plugin';
-import { features, schema } from 'hermetic-common';
+import { features } from 'hermetic-common';
+import editor from './editor';
 import bunyanLoggingPlugin from './logging/bunyanLoggingPlugin';
 import BunyanRequestLogger from './logging/BunyanRequestLogger';
 import createLogger from './logging/createLogger';
 import apiRoutes from './apiRoutes';
 import reportingRoutes from './reportingRoutes';
 import config from './config';
-import cache from './cache';
+import auth from './auth';
 
-// eslint-disable-next-line no-console
-console.log(`Loaded plugin "${plugin.pluginName}"`);
-
-if ((!(plugin.hapiAuthStrategies && plugin.hapiAuthStrategies.length))
-  && (config.baseYamlPath !== config.sampleDataPath)
-  && (!config.canRunWithNoAuth)) {
+if ((!config.auth.hasAuth)
+  && ((config.baseYamlPath !== config.sampleDataPath) || !!config.sandboxBasePath)
+  && (!config.auth.canRunWithNoAuth)) {
   // eslint-disable-next-line no-console
-  console.error(`You are trying to start Hermetic without any authentication configured
-  if you are sure you want to do this, set the HERMETIC_RUN_WITH_NO_AUTH to 'Y'`);
+  console.error(`You are trying to start Hermetic without any authentication configured\n
+If you are sure you want to do this, set the environment variable HERMETIC_RUN_WITH_NO_AUTH to 'Y'.\n
+This is a VERY BAD IDEA if the system is accessible outside localhost.`);
   process.exit(1);
 }
 
 const plugins = [];
 
-plugins.push(Inert);
-if (plugin.hapiPlugins) {
-  plugins.push(...plugin.hapiPlugins);
+if (config.auth.hasAuth) {
+  plugins.push(...auth.plugins);
 }
+if (config.debugClient) {
+  plugins.push(H2o2);
+} else {
+  plugins.push(Inert);
+}
+
 
 const baseLogger = createLogger();
 
@@ -44,9 +47,6 @@ plugins.push({
 const server = new Hapi.Server({
   port: config.port,
   routes: {
-    cors: {
-      origin: [config.corsOrigin],
-    },
     // https://github.com/hapijs/hapi/issues/3658
     // "Changed validation errors to exclude all validation information.
     // Use failAction to expose the information needed"
@@ -66,28 +66,27 @@ const server = new Hapi.Server({
 });
 
 const routes = [];
+
 let editRoutes = [];
-if (editPlugin.getRoutes) {
-  // eslint-disable-next-line no-console
-  console.log('Loaded Edit plugin');
-  editRoutes = editPlugin.getRoutes(schema, cache, features);
+if (config.sandboxBasePath) {
+  editRoutes = editor.getRoutes();
 }
+
 const rawRoutes = apiRoutes.concat(reportingRoutes, editRoutes);
 routes.push(...rawRoutes.map((r) => {
   const result = Object.assign({}, r);
   result.options = result.options || {};
-
-  if (plugin.hapiAuthStrategies) {
-    result.options.auth = {
-      strategies: plugin.hapiAuthStrategies.map(s => s.name),
-    };
+  if (!r.feature) {
+    throw new Error(`Route ${r.method} ${r.path} does not have a feature field and is insecure`);
   }
+  auth.setRouteAclOption(result, r.feature);
+  delete result.feature;
   const originalHandler = r.handler;
   result.handler = async (request, h) => {
     try {
       if (request.auth.credentials) {
-        if (!(request.auth.credentials.allowedFeatures
-          && request.auth.credentials.allowedFeatures.includes(features.edit))) {
+        if (!(request.auth.credentials.scope
+          && request.auth.credentials.scope.includes(features.edit))) {
           request.query.sandbox = null;
         }
       }
@@ -101,16 +100,30 @@ routes.push(...rawRoutes.map((r) => {
   return result;
 }));
 
-const staticRoute = {
-  method: 'get',
-  path: '/{param*}',
-  handler: {
+let staticHandler;
+
+if (config.debugClient) {
+  const proxyOptions = {
+    host: 'localhost',
+    port: 3000,
+    protocol: 'http',
+    passThrough: true,
+  };
+  staticHandler = (request, h) => h.proxy(proxyOptions);
+} else {
+  staticHandler = {
     directory: {
       path: config.staticContentRoot,
       redirectToSlash: true,
       index: true,
     },
-  },
+  };
+}
+
+const staticRoute = {
+  method: 'get',
+  path: '/{param*}',
+  handler: staticHandler,
 };
 
 routes.push(staticRoute);
@@ -139,12 +152,15 @@ const init = async () => {
   try {
     await server.register(plugins);
 
-    if (plugin.hapiAuthStrategies) {
-      plugin.hapiAuthStrategies.forEach(s => server
-        .auth.strategy(s.name, s.scheme, s.options));
+    if (config.auth.hasAuth) {
+      auth.strategies.forEach(s => server.auth.strategy(s.name, s.scheme, s.settings));
     }
 
     await server.start();
+    if (config.auth.hasAuth) {
+      server.route(auth.authRoutes);
+      server.auth.default('session');
+    }
     server.route(routes);
     baseLogger.debug(`Listening on ${config.port}`);
   } catch (err) {

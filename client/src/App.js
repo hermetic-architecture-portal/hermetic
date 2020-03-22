@@ -1,10 +1,7 @@
 import React, { Component } from 'react'; // eslint-disable-line no-unused-vars
 import { BrowserRouter as Router, Route } from 'react-router-dom';
-import editPlugin from 'hermetic-edit-client-plugin';
-import plugin from 'hermetic-client-plugin';
-import { schema } from 'hermetic-common';
-import './App.scss';
-import 'hermetic-client-plugin/Custom.scss';
+import { features } from 'hermetic-common';
+import './styles/App.scss';
 import CapabilityModel from './components/modelView/CapabilityModel';
 import CapabilityDetail from './components/capability/CapabilityDetail';
 import Technology from './components/technology/Technology';
@@ -29,16 +26,15 @@ import FunctionalCapabilities from './components/functionalCapabilities/Function
 import FunctionalCapabilityDetail
   from './components/functionalCapabilities/FunctionalCapabilityDetail';
 import CompareTechnologies from './components/compareTechnologies/CompareTechnologies';
+import Reporting from './components/reporting/Reporting';
 import config from './config';
+import editor from './editor';
+import userStore from './stores/userStore';
 
 const app = () => {
   let editRoutes;
-  if (editPlugin.getRoutes) {
-    editRoutes = editPlugin.getRoutes(
-      schema,
-      config.apiBaseUrl,
-      plugin.getAuthToken,
-    );
+  if (userStore.data.allowedFeatures.includes(features.techDetails)) {
+    editRoutes = editor.getRoutes();
   }
   return <Router>
     <div>
@@ -126,6 +122,9 @@ const app = () => {
       />
       <Route path='/compareTechnologies' exact={true}
         component={() => <CompareTechnologies />}
+      />
+      <Route path='/reporting' exact={true}
+        component={() => <Reporting/>}
       />
       {editRoutes}
       <div className="Footer">

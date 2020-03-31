@@ -1,4 +1,3 @@
-import plugin from 'hermetic-client-plugin';
 import config from './config';
 import fetchHelper from './fetchHelper';
 
@@ -44,6 +43,7 @@ const api = {
   getFunctionalCapabilities: async () => api.fetchJson(`${config.apiBaseUrl}/functionalCapability`),
   getFunctionalCapabilityDetail: async functionalCapabilityId => api.fetchJson(`${config.apiBaseUrl}/functionalCapability/${functionalCapabilityId}`),
   getSandboxes: async () => api.fetchJson(`${config.apiBaseUrl}/edit/sandbox`),
+  getReporting: async () => api.fetchJson(`${config.apiBaseUrl}/reporting`),
 
   sandbox: null,
 
@@ -56,24 +56,7 @@ const api = {
         newUrl = `${newUrl}?sandbox=${api.sandbox}`;
       }
     }
-    const defaults = {
-      headers: {},
-    };
-    const newOptions = Object.assign(defaults, options);
-    if (plugin.getAuthToken) {
-      let token;
-      try {
-        token = await plugin.getAuthToken();
-      } catch (e) {
-        // eslint-disable-next-line no-alert
-        alert(`Error getting token: ${e.message}`);
-        throw e;
-      }
-      Object.assign(newOptions.headers, {
-        Authorization: `Bearer ${token}`,
-      });
-    }
-    return fetchHelper(newUrl, newOptions);
+    return fetchHelper(newUrl, options);
   },
 };
 

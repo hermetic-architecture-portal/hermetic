@@ -71,7 +71,7 @@ const loadAllFiles = async (paths, fileDates, cache) => {
 const load = async (dirs, verbose, sandbox) => {
   let baseDirs;
   if (sandbox) {
-    const exists = await sandboxUtils.sandboxExists(config.sandboxBasePath, sandbox);
+    const exists = await sandboxUtils.sandboxExists(sandbox);
     if (!exists) {
       throw new Error(`Sandbox "${sandbox}" does not exist`);
     }

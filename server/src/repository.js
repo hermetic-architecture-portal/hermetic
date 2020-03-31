@@ -190,7 +190,7 @@ const securityTrimFilter = (credentials, technology) => {
     // running the server in unauthenticated mode, let everyone see it
     return true;
   }
-  return credentials.allowedFeatures && credentials.allowedFeatures.includes(features.techDetails);
+  return credentials.scope && credentials.scope.includes(features.techDetails);
 };
 
 const getImplementedNodes = (implementingNode, networkNodes) => (networkNodes || [])

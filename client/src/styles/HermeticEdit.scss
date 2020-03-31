@@ -1,0 +1,38 @@
+
+@import '~react-auto-edit/static/Edit.css';
+
+.Hermetic-edit-sandboxes .Ed-button {
+  color: black;
+  width: auto;
+  display: inline-block;
+  border-style: solid;
+  border-width: 1px;
+  border-radius: 0;
+  padding: 2px;
+  height: auto;
+}
+
+.sandbox {
+  display: block;
+  margin: 4px;
+}
+
+.sandbox .Ed-button {
+  margin-left: 4px;
+}
+
+.sandbox .Ed-button.selected {
+  background-color: gray;
+  color: white;
+}
+
+.Edit-hint {
+  margin: 4px;
+  background-color: lightgray;
+  padding: 4px;
+  border-color: black;
+  border-style: solid;
+  border-width: 1px;
+  font-size: 14px;
+  max-width: 600px;
+}

@@ -18,29 +18,42 @@ steps:
 
 - checkout: self
   clean: true
+    # persistCredentials so we can push tags to the remote repo
+  persistCredentials: true
 
-- script: |
+- bash: |
+    echo "##vso[task.setvariable variable=packageVersion]`cat package.json | jq .version -r`"
+  displayName: extract version
+
+- bash: |
     npm install
     npm run build
   displayName: 'npm install'
 
-- script: |
+- bash: |
    npm run build
   displayName: 'npm build'
 
-- script: |
+- bash: |
     npm run test
   displayName: 'npm test'
 
 - task: Docker@2
   inputs:
-    containerRegistry: 'ACR'
-    repository: 'hermetic'
+    containerRegistry: 'Docker Hub'
+    repository: 'hermeticarchitectureportal/hermetic'
     command: 'buildAndPush'
     Dockerfile: '**/Dockerfile'
     tags: |
-      $(Build.BuildId)
+      $(packageVersion)
       latest
+
+- bash: |
+    git config user.email pipeline@dev.azure.com
+    git config user.name build-pipeline
+    git tag -f $(packageVersion)
+    git push -f --tags
+  displayName: tag version
 
 - task: AzureRmWebAppDeployment@4
   inputs:
@@ -48,6 +61,6 @@ steps:
     azureSubscription: 'MSDN Az Sub'
     appType: 'webAppContainer'
     WebAppName: 'hermetic'
-    DockerNamespace: 'hermetic.azurecr.io'
-    DockerRepository: 'hermetic'
-    DockerImageTag: '$(Build.BuildId)'
+    DockerNamespace: 'docker.io'
+    DockerRepository: 'hermeticarchitectureportal/hermetic'
+    DockerImageTag: '$(packageVersion)'

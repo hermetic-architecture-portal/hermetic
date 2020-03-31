@@ -1,6 +1,5 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { observer } from 'mobx-react';
-import plugin from 'hermetic-client-plugin';
 import {
   Button, Wrapper,
   Menu, MenuItem,
@@ -13,9 +12,7 @@ class UserWidget extends React.Component {
   }
 
   handleSelection() {
-    if (plugin.logout) {
-      plugin.logout();
-    }
+    window.location.href = '/logout';
   }
 
   render() {

@@ -129,6 +129,10 @@ const auth = {
         clientId: config.auth.clientId,
         clientSecret: config.auth.clientSecret,
         isSecure: !config.auth.insecureCookies,
+        // bell does not detect https from x-forwarded headers
+        // so secure cookies will not work behind
+        // a reverse proxy without forceHttps
+        forceHttps: !config.auth.insecureCookies,
         config: config.auth.providerConfig,
       },
     },

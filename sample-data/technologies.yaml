@@ -40,6 +40,10 @@ technologies:
       - technologyId: T-105  
       - technologyId: T-107
     capabilities: []  
+    authenticationInternalStore: 'No'
+    authenticationTechnologyId: T-001
+    authorisationInternalStore: 'Yes'
+    authorisationNotes: User access roles internal to platform
   - technologyId: T-003
     name: InScope Financials
     userApplication: true
@@ -55,6 +59,8 @@ technologies:
       - capabilityId: C-202.1   
       - capabilityId: C-202.2
       - capabilityId: C-009.3
+    authenticationInternalStore: 'Yes'
+    authorisationInternalStore: 'Yes'
   - technologyId: T-004
     name: PeopleStar
     userApplication: true
@@ -187,4 +193,10 @@ technologies:
       - technologyId: T-104
       - technologyId: T-105  
       - technologyId: T-107
-    capabilities: []      
+    capabilities: []     
+    authenticationInternalStore: 'No'
+    authenticationNotes: OpenID Connect
+    authenticationTechnologyId: T-001
+    authorisationInternalStore: 'No'
+    authorisationNotes: ACS role engine
+    authorisationTechnologyId: T-001 

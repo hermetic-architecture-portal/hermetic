@@ -62,7 +62,7 @@ capabilityMetricAssessments:
     # metricSetId: refers to capabilityMetricSets.[].metricSetId
     metricSetId: string
 # capabilityMetricBands: optional array
-# capabilityMetricBands: Technology metric bands define the scoring system for technology assessments
+# capabilityMetricBands: Capability metric bands define the scoring system for technology assessments
 capabilityMetricBands:
   - bandId: string
     # levelNumber: number
@@ -355,7 +355,7 @@ networkNodes:
     # locationId: refers to networkLocations.[].locationId
     locationId: string
     nodeId: string
-    # nodeType: optional - suggested values: "Database, Desktop", "Mobile Device", "Cluster", "Load Balancer", "Load Balancer Alias", "Server"
+    # nodeType: optional - suggested values: "Database", "Desktop", "Mobile Device", "Cluster", "Load Balancer", "Load Balancer Alias", "Server"
     nodeType: string
     # technologies: array
     technologies:
@@ -392,6 +392,22 @@ technologies:
     # aka: optional
     # aka: Alternative name for technology
   - aka: string
+    # authenticationInternalStore: optional - choose from:  "Yes", "No"
+    # authenticationInternalStore: Indicates if there is an store of usernames and credentials internal to the technology
+    authenticationInternalStore: string
+    # authenticationNotes: optional
+    authenticationNotes: string
+    # authenticationTechnologyId: optional refers to technologies.[].technologyId
+    # authenticationTechnologyId: Identifies the technology which supplies authentication to this technology
+    authenticationTechnologyId: string
+    # authorisationInternalStore: optional - choose from:  "Yes", "No"
+    # authorisationInternalStore: Indicates if there is an store of access role/group memberships internal to the technology
+    authorisationInternalStore: string
+    # authorisationNotes: optional
+    authorisationNotes: string
+    # authorisationTechnologyId: optional refers to technologies.[].technologyId
+    # authorisationTechnologyId: Identifies the technology which supplies authorisation to this technology
+    authorisationTechnologyId: string
     # businessOwner: optional
     businessOwner: string
     # capabilities: optional array

@@ -73,6 +73,32 @@ export default ({ technology, environmentId }) => {
         </ul>
       </div>
     </div>
+    <div className="Data-row">
+      <div>Authentication</div>
+      <div>
+        <ul>
+          {technology.authenticationInternalStore === 'Yes' ? <li>Internal store</li> : ''}
+          {technology.authenticationTechnology
+            ? <li><Link to={`/technology/${technology.authenticationTechnology.technologyId}`}>
+              {technology.authenticationTechnology.name}
+              </Link></li> : ''}
+          {technology.authenticationNotes ? <li>{technology.authenticationNotes}</li> : ''}
+        </ul>
+      </div>
+    </div>
+    <div className="Data-row">
+      <div>Authorisation</div>
+      <div>
+        <ul>
+          {technology.authorisationInternalStore === 'Yes' ? <li>Internal store</li> : ''}
+          {technology.authorisationTechnology
+            ? <li><Link to={`/technology/${technology.authorisationTechnology.technologyId}`}>
+              {technology.authorisationTechnology.name}
+              </Link></li> : ''}
+          {technology.authorisationNotes ? <li>{technology.authorisationNotes}</li> : ''}
+        </ul>
+      </div>
+    </div>
     <Links links={technology.technicalLinks} />
     <ExtensionFields entity={technology} />
     <div className="Data-row">

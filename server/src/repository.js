@@ -534,6 +534,22 @@ const repository = {
         functionalCapabilityId: fc.functionalCapabilityId,
       }));
 
+    const authorisationTechnology = technology.authorisationTechnologyId
+      && data.technologies
+        .filter(otherTech => otherTech.technologyId === technology.authorisationTechnologyId)
+        .map(otherTech => ({
+          technologyId: otherTech.technologyId,
+          name: otherTech.name,
+        }))[0];
+
+    const authenticationTechnology = technology.authenticationTechnologyId
+      && data.technologies
+        .filter(otherTech => otherTech.technologyId === technology.authenticationTechnologyId)
+        .map(otherTech => ({
+          technologyId: otherTech.technologyId,
+          name: otherTech.name,
+        }))[0];
+
     const result = {
       technologyId,
       name: technology.name,
@@ -553,6 +569,12 @@ const repository = {
       connections: connections.connections,
       networkLocations: connections.networkLocations,
       functionalCapabilities,
+      authenticationInternalStore: technology.authenticationInternalStore,
+      authenticationNotes: technology.authenticationNotes,
+      authenticationTechnology,
+      authorisationInternalStore: technology.authorisationInternalStore,
+      authorisationNotes: technology.authorisationNotes,
+      authorisationTechnology,
     };
     extendData(result, technology, 'technology', features.techDetails, data);
     return result;

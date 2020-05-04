@@ -78,12 +78,26 @@ const header = ({ location }) => {
       children: [],
     },
     {
+      link: '/vendors',
+      itemLinkBase: '/vendor',
+      text: 'Vendor List',
+      children: [],
+    },
+    {
       link: '/businessUnits',
       itemLinkBase: '/businessUnit',
       text: 'Business Unit List',
       children: [],
     },
   ]);
+
+  if (userStore.data.allowedFeatures.includes(features.cost)) {
+    menuItems.push({
+      link: '/costModel',
+      text: 'Cost Model',
+      children: [],
+    });
+  }
 
   if (userStore.data.allowedFeatures.includes(features.technologyHealthMetrics)) {
     menuItems.push({

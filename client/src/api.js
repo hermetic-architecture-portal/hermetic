@@ -29,6 +29,8 @@ const api = {
     .fetchJson(`${config.apiBaseUrl}/node/${encodeURIComponent(nodeId)}`),
   getTechnicalReferenceModel: async () => api.fetchJson(`${config.apiBaseUrl}/technicalReferenceModel`),
   getTechnicalStandardAssessments: async () => api.fetchJson(`${config.apiBaseUrl}/technicalStandardAssessments`),
+  getVendors: async () => api.fetchJson(`${config.apiBaseUrl}/vendor`),
+  getVendorDetail: async vendorId => api.fetchJson(`${config.apiBaseUrl}/vendor/${vendorId}`),
   getBusinessUnits: async () => api.fetchJson(`${config.apiBaseUrl}/businessUnit`),
   getBusinessUnitDetail: async businessUnitId => api.fetchJson(`${config.apiBaseUrl}/businessUnit/${businessUnitId}`),
   getDataTopics: async () => api.fetchJson(`${config.apiBaseUrl}/dataTopic`),
@@ -42,6 +44,7 @@ const api = {
   getEaArtifactHealthMetricBands: async () => api.fetchJson(`${config.apiBaseUrl}/eaArtifactMetrics/bands`),
   getFunctionalCapabilities: async () => api.fetchJson(`${config.apiBaseUrl}/functionalCapability`),
   getFunctionalCapabilityDetail: async functionalCapabilityId => api.fetchJson(`${config.apiBaseUrl}/functionalCapability/${functionalCapabilityId}`),
+  getTechnologyCosts: async () => api.fetchJson(`${config.apiBaseUrl}/technologyCost`),
   getSandboxes: async () => api.fetchJson(`${config.apiBaseUrl}/edit/sandbox`),
   getReporting: async () => api.fetchJson(`${config.apiBaseUrl}/reporting`),
 

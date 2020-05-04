@@ -23,6 +23,8 @@ const modelStore = {
   techRefModelCategories: observable([]),
   businessUnits: observable([]),
   businessUnitDetails: observable([]),
+  vendors: observable([]),
+  vendorDetails: observable([]),
   technicalStandardLevels: observable([]),
   technicalStandardAssessments: observable([]),
   dataTopicTypes: observable([]),
@@ -36,6 +38,7 @@ const modelStore = {
   eaArtifactHealthDetails: observable([]),
   functionalCapabilities: observable([]),
   functionalCapabilityDetails: observable([]),
+  technologyCosts: observable([]),
 
   reset: () => Object.getOwnPropertyNames(modelStore)
     .filter(fieldName => modelStore[fieldName] && modelStore[fieldName].clear)
@@ -192,6 +195,14 @@ const modelStore = {
     modelStore.technicalStandardLevels.replace(data.technicalStandardLevels);
   },
 
+  loadTechnologyCosts: async () => {
+    if (modelStore.technologyCosts.length) {
+      return;
+    }
+    const data = await api.getTechnologyCosts();
+    modelStore.technologyCosts.replace(data);
+  },
+
   loadBusinessUnits: async () => {
     if (modelStore.businessUnits.length) {
       return;
@@ -206,6 +217,22 @@ const modelStore = {
     }
     const data = await api.getBusinessUnitDetail(businessUnitId);
     modelStore.businessUnitDetails.push(data);
+  },
+
+  loadVendors: async () => {
+    if (modelStore.vendors.length) {
+      return;
+    }
+    const data = await api.getVendors();
+    modelStore.vendors.replace(data);
+  },
+
+  loadVendorDetail: async (vendorId) => {
+    if (modelStore.vendorDetails.some(v => v.vendorId === vendorId)) {
+      return;
+    }
+    const data = await api.getVendorDetail(vendorId);
+    modelStore.vendorDetails.push(data);
   },
 
   loadDataEntities: async () => {

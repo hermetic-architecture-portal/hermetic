@@ -1,6 +1,7 @@
 import Bell from '@hapi/bell';
 import Cookie from '@hapi/cookie';
 import Iron from '@hapi/iron';
+import Url from 'url';
 import AuthBearer from 'hapi-auth-bearer-token';
 import { features } from 'hermetic-common';
 import config from './config';
@@ -81,6 +82,15 @@ const auth = {
           scope: getAllowedFeatures(roles),
         };
         request.cookieAuth.set(identity);
+
+        if (request.auth.credentials.query.original_path) {
+          const parsedUrl = Url.parse(request.auth.credentials.query.original_path);
+          if (!(parsedUrl.host || parsedUrl.protocol)) {
+            // if we got passed a URL to redirect to and it is valid
+            // (i.e. doesn't specify host or port) then redirect
+            return h.redirect(request.auth.credentials.query.original_path);
+          }
+        }
         return h.redirect('/');
       },
     },
@@ -118,6 +128,7 @@ const auth = {
           ttl: 60 * 60 * 1000, // 1hr expiry time
         },
         redirectTo: '/callback',
+        appendNext: 'original_path',
       },
     },
     {

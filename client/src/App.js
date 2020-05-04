@@ -18,6 +18,8 @@ import Header from './components/shared/Header';
 import Loading from './components/shared/Loading';
 import BusinessUnits from './components/businessUnit/BusinessUnits';
 import BusinessUnit from './components/businessUnit/BusinessUnit';
+import Vendor from './components/technology/Vendor';
+import Vendors from './components/technology/Vendors';
 import DataRefModel from './components/dataRefModel/DataRefModel';
 import DataEntity from './components/data/DataEntity';
 import EARefModel from './components/ea/EARefModel';
@@ -27,6 +29,7 @@ import FunctionalCapabilityDetail
   from './components/functionalCapabilities/FunctionalCapabilityDetail';
 import CompareTechnologies from './components/compareTechnologies/CompareTechnologies';
 import Reporting from './components/reporting/Reporting';
+import CostModel from './components/cost/CostModel';
 import config from './config';
 import editor from './editor';
 import userStore from './stores/userStore';
@@ -95,6 +98,15 @@ const app = () => {
       />
       <Route path='/businessUnit/:businessUnitId' exact={true}
         component={({ match }) => <BusinessUnit businessUnitId={match.params.businessUnitId} />}
+      />
+      <Route path='/costModel' exact={true}
+        component={() => <CostModel />}
+      />
+      <Route path='/vendors' exact={true}
+        component={() => <Vendors />}
+      />
+      <Route path='/vendor/:vendorId' exact={true}
+        component={({ match }) => <Vendor vendorId={match.params.vendorId} />}
       />
       <Route path={config.resolvePathAgainstDefault('/dataRefModel')} exact={true}
         component={() => <DataRefModel/>}

@@ -3,19 +3,24 @@
   "version": "1.2.2",
   "private": true,
   "dependencies": {
+    "chart.js": "^2.9.3",
     "cytoscape": "^3.5.0",
     "cytoscape-cola": "^2.3.0",
     "cytoscape-dagre": "^2.2.2",
     "cytoscape-spread": "^3.0.0",
     "file-saver": "^2.0.1",
+    "google-palette": "^1.1.0",
     "localforage": "^1.7.3",
     "mobx": "^5.9.0",
     "mobx-react": "^5.4.3",
+    "moment": "2.24.0",
     "node-sass": "^4.11.0",
+    "rc-slider": "^9.2.4",
     "react": "^16.8.3",
     "react-aria-menubutton": "^6.1.0",
     "react-auto-edit": "^2.3.5",
     "react-bootstrap": "^1.0.0-beta.5",
+    "react-chartjs-2": "^2.9.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.8.3",
     "react-router-dom": "^4.3.1",
@@ -44,5 +49,8 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-jest": "^22.3.0",
     "eslint-plugin-react": "^7.12.4"
+  },
+  "resolutions": {
+    "moment": "2.24.0"
   }
 }

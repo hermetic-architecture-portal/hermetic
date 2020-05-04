@@ -4,6 +4,7 @@ import auth from './auth';
 import config from './config';
 
 const routes = Object.getOwnPropertyNames(schema.describe().children)
+  .filter(fieldName => fieldName !== 'technologyCosts')
   .map(fieldName => ({
     method: 'get',
     path: `/api/reporting/${fieldName}`,

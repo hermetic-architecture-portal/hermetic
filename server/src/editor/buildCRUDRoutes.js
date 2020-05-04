@@ -47,7 +47,7 @@ const buildGetMultipleItemRoute = (
   },
   handler: async (request) => {
     const pageNum = (request.query && request.query.page) ? request.query.page : 1;
-    const data = await getData(null, false, request.query && request.query.sandbox);
+    const data = await getData(null, false, request.query && request.query.sandbox, true);
     const collection = findItem(data, findFunctions, request.params);
     if (!collection) {
       return {
@@ -73,7 +73,7 @@ const buildGetSingleItemRoute = (
     },
   },
   handler: async (request) => {
-    const data = await getData(null, false, request.query && request.query.sandbox);
+    const data = await getData(null, false, request.query && request.query.sandbox, true);
     const match = findItem(data, findFunctions, request.params);
     if (match) {
       const cloned = clone(match);
@@ -99,7 +99,7 @@ const buildPutSingleItemRoute = (
     },
   },
   handler: async (request) => {
-    const data = clone(await getData(null, false, request.query && request.query.sandbox));
+    const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
     const match = findItem(data, findFunctions, request.params);
     if (!match) {
       return Boom.notFound();
@@ -132,7 +132,7 @@ const buildDeleteSingleItemRoute = (
     },
   },
   handler: async (request) => {
-    const data = clone(await getData(null, false, request.query && request.query.sandbox));
+    const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
     const match = findItem(data, findFunctions, request.params);
     if (!match) {
       return Boom.notFound();
@@ -159,7 +159,7 @@ const buildPostSingleItemRoute = (
     },
   },
   handler: async (request) => {
-    const data = clone(await getData(null, false, request.query && request.query.sandbox));
+    const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
     let collection = findItem(data, findFunctions, request.params);
     if (!collection) {
       const parent = findParent(data, findFunctions, request.params);

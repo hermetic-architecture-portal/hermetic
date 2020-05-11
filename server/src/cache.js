@@ -68,16 +68,25 @@ const loadAllFiles = async (paths, fileDates, cache) => {
   }
 };
 
-const load = async (dirs, verbose, sandbox) => {
-  let baseDirs;
+const load = async (dirs, verbose, sandbox, forEditor) => {
+  let baseDirs = (dirs || config.baseYamlPath).split(':');
   if (sandbox) {
     const exists = await sandboxUtils.sandboxExists(sandbox);
     if (!exists) {
       throw new Error(`Sandbox "${sandbox}" does not exist`);
     }
-    baseDirs = [path.join(config.sandboxBasePath, sandbox)];
-  } else {
-    baseDirs = (dirs || config.baseYamlPath).split(':');
+    if (forEditor) {
+      // the editing interface should only see the sandbox directory
+      // data as we don't know how to split out data into multiple
+      // directories at save time.
+      baseDirs = [];
+    } else {
+      // if there are multiple base data directories, the first
+      // will be the basis for the sandbox, and the 2nd+ will
+      // need to be merged in to see the result
+      baseDirs = baseDirs.slice(1);
+    }
+    baseDirs.push(path.join(config.sandboxBasePath, sandbox));
   }
   const filePaths = await fileUtil.getPaths(baseDirs, verbose);
   let fileDates = await Promise.all(filePaths.map(p => getStats(p)));

@@ -37,6 +37,7 @@ const defaultFeatureMap = {
   eaHealthMetrics: ['TechDetailsAccess'],
   edit: ['EditDataAccess'],
   reporting: ['TechDetailsAccess'],
+  cost: ['CostDataAccess'],
 };
 
 let featureMapSupplied = false;

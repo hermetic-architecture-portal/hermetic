@@ -75,6 +75,30 @@ const routes = [
       request.auth.credentials),
   },
   {
+    path: '/api/vendor',
+    method: 'GET',
+    feature: features.core,
+    options: {
+      validate: {
+        query,
+      },
+    },
+    handler: request => repository.getVendors(request.query.sandbox),
+  },
+  {
+    path: '/api/vendor/{vendorId}',
+    method: 'GET',
+    feature: features.core,
+    options: {
+      validate: {
+        query,
+      },
+    },
+    handler: request => repository.getVendorDetail(request.query.sandbox,
+      request.params.vendorId,
+      request.auth.credentials),
+  },
+  {
     path: '/api/technologyHealthMetrics/totals',
     method: 'GET',
     feature: features.technologyHealthMetrics,
@@ -485,6 +509,18 @@ const routes = [
       }
       return Boom.notFound(`Functional capability not found: ${request.params.functionalCapabilityId}`);
     },
+  },
+  {
+    path: '/api/technologyCost',
+    method: 'GET',
+    feature: features.cost,
+    options: {
+      validate: {
+        query,
+      },
+    },
+    handler: request => repository
+      .getTechnologyCosts(request.query.sandbox),
   },
   {
     path: '/api/accessRights',

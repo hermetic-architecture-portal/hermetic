@@ -33,9 +33,12 @@ const createSandbox = async (sandboxName, logger) => {
   if (await sandboxUtils.sandboxExists(sandboxName)) {
     return Boom.badRequest(`Sandbox already exists "${sandboxName}"`);
   }
+  // editor only works on a single directory, so if multiple
+  // data dirs are configured, just clone the first
+  const baseDataDir = config.baseYamlPath.split(':')[0];
   // not using fs-extra for recursive directory copy because of
   // https://github.com/jprichardson/node-fs-extra/issues/629
-  await copy(config.baseYamlPath, sandboxPath, {
+  await copy(baseDataDir, sandboxPath, {
     expand: true,
     dot: true,
   });

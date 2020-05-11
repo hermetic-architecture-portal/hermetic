@@ -73,6 +73,10 @@ const component = ({ technology }) => {
   return <div className="Left-col">
     <div className="Head-1">{technology.name}</div>
     {!technology.aka ? undefined : <div className="Head-2">Aka {technology.aka}</div>}
+    {!technology.vendorId ? undefined : <div className="Data-row">
+      <div>Vendor</div>
+      <div><Link to={`/vendor/${technology.vendorId}`}>{technology.vendorName}</Link></div>
+    </div>}
     {!links.length ? undefined : <div className="Data-row">
       <div>Details</div>
       <div><ul>{links}</ul></div>

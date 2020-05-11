@@ -272,6 +272,32 @@ const repository = {
       connections,
     };
   },
+  getVendors: async (sandbox) => {
+    const data = await cache(null, false, sandbox);
+    return data.vendors || [];
+  },
+  getVendorDetail: async (sandbox, vendorId, credentials) => {
+    const data = await cache(null, false, sandbox);
+
+    const vendor = data.vendors.find(v => v.vendorId === vendorId);
+
+    if (!vendor) {
+      return null;
+    }
+
+    const technologies = (data.technologies || [])
+      .filter(tech => (tech.vendorId === vendorId) && securityTrimFilter(credentials, tech))
+      .map(tech => ({
+        technologyId: tech.technologyId,
+        name: tech.name,
+      }));
+
+    return {
+      vendorId: vendor.vendorId,
+      name: vendor.name,
+      technologies,
+    };
+  },
   getTechnologyHealthMetricBands: async (sandbox) => {
     const data = await cache(null, false, sandbox);
     return data.technologyMetricBands || [];
@@ -405,6 +431,8 @@ const repository = {
       return null;
     }
 
+    const vendor = (data.vendors || []).find(v => v.vendorId === technology.vendorId);
+
     const result = {
       technologyId: technology.technologyId,
       name: technology.name,
@@ -418,6 +446,8 @@ const repository = {
       cloudRiskAssessed: technology.cloudRiskAssessed,
       hasPrivateData: technology.hasPrivateData,
       technologyType: technology.technologyType,
+      vendorName: vendor && vendor.name,
+      vendorId: vendor && vendor.vendorId,
     };
 
     if (technology.parentTechnologyId) {
@@ -1054,6 +1084,12 @@ const repository = {
       }).sort((a, b) => a.name.localeCompare(b.name));
 
     return result;
+  },
+
+  getTechnologyCosts: async (sandbox) => {
+    const data = await cache(null, false, sandbox);
+
+    return data.technologyCosts || [];
   },
 };
 

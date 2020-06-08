@@ -81,6 +81,7 @@ const auth = {
           roles,
           scope: getAllowedFeatures(roles),
         };
+
         request.cookieAuth.set(identity);
 
         if (request.auth.credentials.query.original_path) {
@@ -126,7 +127,9 @@ const auth = {
           isSecure: !config.auth.insecureCookies,
           // session cookies would be dangerous as they could be replayed indefinitely
           ttl: 60 * 60 * 1000, // 1hr expiry time
+          path: '/',
         },
+        keepAlive: true,
         redirectTo: '/callback',
         appendNext: 'original_path',
       },

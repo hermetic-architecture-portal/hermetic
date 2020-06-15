@@ -1,0 +1,17 @@
+appReferenceModelDomainGroups:
+  - armDomainGroupId: enterprise
+    displayOrder: 1
+    name: Enterprise Applications
+appReferenceModelDomains:
+  - armDomainId: finmgmt
+    armDomainGroupId: enterprise
+    displayOrder: 1
+    name: Financial Management
+  - armDomainId: hr
+    armDomainGroupId: enterprise
+    displayOrder: 2
+    name: Human Resources Management
+  - armDomainId: crm
+    armDomainGroupId: enterprise
+    displayOrder: 3
+    name: Customer Resource Management      

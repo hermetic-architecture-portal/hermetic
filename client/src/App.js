@@ -22,6 +22,7 @@ import Vendor from './components/technology/Vendor';
 import Vendors from './components/technology/Vendors';
 import DataRefModel from './components/dataRefModel/DataRefModel';
 import DataEntity from './components/data/DataEntity';
+import AppRefModel from './components/appRefModel/AppRefModel';
 import EARefModel from './components/ea/EARefModel';
 import EAArtifactDetail from './components/ea/EAArtifactDetail';
 import FunctionalCapabilities from './components/functionalCapabilities/FunctionalCapabilities';
@@ -115,6 +116,9 @@ const app = () => {
         component={({ match }) => <DataEntity
           key={match.params.dataEntityId}
           dataEntityId={match.params.dataEntityId} />}
+      />
+      <Route path={config.resolvePathAgainstDefault('/appRefModel')} exact={true}
+        component={() => <AppRefModel/>}
       />
       <Route path={config.resolvePathAgainstDefault('/eaRefModel')} exact={true}
         component={() => <EARefModel/>}

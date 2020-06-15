@@ -75,6 +75,17 @@ const routes = [
       request.auth.credentials),
   },
   {
+    path: '/api/technologyCategory',
+    method: 'GET',
+    feature: features.core,
+    options: {
+      validate: {
+        query,
+      },
+    },
+    handler: request => repository.getTechnologyCategories(request.query.sandbox),
+  },
+  {
     path: '/api/vendor',
     method: 'GET',
     feature: features.core,
@@ -400,6 +411,40 @@ const routes = [
       }
       return Boom.notFound(`Data entity not found: ${request.params.dataEntityId}`);
     },
+  },
+  {
+    path: '/api/appReferenceModelDomainGroup',
+    method: 'GET',
+    feature: features.core,
+    options: {
+      validate: {
+        query,
+      },
+    },
+    handler: request => repository.getAppRefModelDomainGroups(request.query.sandbox),
+  },
+  {
+    path: '/api/appReferenceModelDomain',
+    method: 'GET',
+    feature: features.core,
+    options: {
+      validate: {
+        query,
+      },
+    },
+    handler: request => repository.getAppRefModelDomains(request.query.sandbox),
+  },
+  {
+    path: '/api/appReferenceModelTechnology',
+    method: 'GET',
+    feature: features.core,
+    options: {
+      validate: {
+        query,
+      },
+    },
+    handler: request => repository.getAppRefModelTechnologies(request.query.sandbox,
+      request.auth.credentials),
   },
   {
     path: '/api/eaDomain',

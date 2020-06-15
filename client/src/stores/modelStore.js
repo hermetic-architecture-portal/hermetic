@@ -5,6 +5,7 @@ const modelStore = {
   capabilityTypes: observable([]),
   capabilityDetails: observable([]),
   technologies: observable([]),
+  technologyCategories: observable([]),
   technologyDetails: observable([]),
   technologyTechDetails: observable([]),
   technologyComponents: observable([]),
@@ -31,6 +32,9 @@ const modelStore = {
   dataTopics: observable([]),
   dataEntities: observable([]),
   dataEntityDetails: observable([]),
+  appRefModelDomainGroups: observable([]),
+  appRefModelDomains: observable([]),
+  appRefModelTechnologies: observable([]),
   eaDomains: observable([]),
   eaArtifactDetails: observable([]),
   eaMetricTotals: observable([]),
@@ -75,6 +79,14 @@ const modelStore = {
     const data = await api.getTechnologies();
     modelStore.technologies.replace(data.technologies);
     modelStore.dataConnections.replace(data.connections);
+  },
+
+  loadTechnologyCategories: async () => {
+    if (modelStore.technologyCategories.length) {
+      return;
+    }
+    const data = await api.getTechnologyCategories();
+    modelStore.technologyCategories.replace(data);
   },
 
   loadTechnologyHealthMetricTotals: async () => {
@@ -253,6 +265,30 @@ const modelStore = {
     }
     const data = await api.getDataEntityDetail(dataEntityId);
     modelStore.dataEntityDetails.push(data);
+  },
+
+  loadAppRefModelDomainGroups: async () => {
+    if (modelStore.appRefModelDomainGroups.length) {
+      return;
+    }
+    const data = await api.getAppRefModelDomainGroups();
+    modelStore.appRefModelDomainGroups.replace(data);
+  },
+
+  loadAppRefModelDomains: async () => {
+    if (modelStore.appRefModelDomains.length) {
+      return;
+    }
+    const data = await api.getAppRefModelDomains();
+    modelStore.appRefModelDomains.replace(data);
+  },
+
+  loadAppRefModelTechnologies: async () => {
+    if (modelStore.appRefModelTechnologies.length) {
+      return;
+    }
+    const data = await api.getAppRefModelTechnologies();
+    modelStore.appRefModelTechnologies.replace(data);
   },
 
   loadEaDomains: async () => {

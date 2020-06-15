@@ -38,6 +38,15 @@ const eaRefModelOverlayFeature = {
   eaHealth: features.eaHealthMetrics,
 };
 
+const appRefModelOverlays = {
+  techHealth: 'Health',
+};
+
+const appRefModelOverlayFeature = {
+  techHealth: features.technologyHealthMetrics,
+};
+
+
 const constants = {
   capabilityOverlays,
 
@@ -58,6 +67,12 @@ const constants = {
   eaRefModelOverlayFeature,
 
   defaultEaRefModelOverlays: [],
+
+  appRefModelOverlays,
+
+  appRefModelOverlayFeature,
+
+  defaultAppRefModelOverlays: [],
 };
 
 export default constants;

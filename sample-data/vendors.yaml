@@ -1,0 +1,13 @@
+vendors:
+  - vendorId: acs
+    name: ACS
+  - vendorId: apache
+    name: Apache
+  - vendorId: elastic
+    name: Elastic
+  - vendorId: inscope
+    name: InScope
+  - vendorId: canonical
+    name: Canonical
+  - vendorId: zip
+    name: Zip

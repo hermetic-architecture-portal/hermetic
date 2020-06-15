@@ -12,12 +12,14 @@ technicalStandardLevels:
 technologies:
   - technologyId: T-001
     name: ACS Identity
+    vendorId: acs
     userApplication: true
     purpose: ACS Identity is a component of Acme Cloud Services which provides identity and access management services
     aka: ACSId
     disasterRecovery: Geo-redundant HA
     technologyType: SaaS
     slaLevel: 1
+    technologyCategoryId: inhouse
     standardLevelId: TS-001
     supportingTechnologies: 
       - technologyId: T-102
@@ -27,11 +29,13 @@ technologies:
     capabilities: []
   - technologyId: T-002
     name: ACS Data Management
+    vendorId: acs
     userApplication: true
     purpose: ACS Data Management is a component of Acme Cloud Services which provides data management including data cleansing and master data management
     aka: ACSDM
     disasterRecovery: Geo-redundant HA
     technologyType: SaaS
+    technologyCategoryId: inhouse
     slaLevel: 1
     standardLevelId: TS-001
     supportingTechnologies: 
@@ -46,11 +50,14 @@ technologies:
     authorisationNotes: User access roles internal to platform
   - technologyId: T-003
     name: InScope Financials
+    vendorId: inscope
     userApplication: true
     purpose: InScope Financials supports financial management and accounting activities
     disasterRecovery: Active/Passive Manual failover
     technologyType: Client/server
+    technologyCategoryId: proprietary
     slaLevel: 3
+    armDomainId: finmgmt
     standardLevelId: TS-001
     supportingTechnologies: 
       - technologyId: T-101
@@ -68,18 +75,23 @@ technologies:
     disasterRecovery: Geo-redundant HA
     technologyType: SaaS
     slaLevel: 2
+    armDomainId: hr
     standardLevelId: TS-001
+    technologyCategoryId: proprietary
     supportingTechnologies: []
     capabilities: 
       - capabilityId: C-203.1  
       - capabilityId: C-203.2     
   - technologyId: T-005
     name: Zip CRM
+    vendorId: zip
     userApplication: true
     purpose: ZIP CRM tracks and manages customer relationships for the business
     disasterRecovery: Geo-redundant HA
     technologyType: SaaS
     slaLevel: 2
+    armDomainId: crm
+    technologyCategoryId: proprietary
     standardLevelId: TS-001
     supportingTechnologies: []
     capabilities: 
@@ -89,9 +101,11 @@ technologies:
       - capabilityId: C-009.3
       - capabilityId: C-009.4
   - technologyId: T-006
-    name: Apache JMeter
+    name: JMeter
+    vendorId: apache
     userApplication: true
     purpose: JMeter is a test automation tool
+    technologyCategoryId: opensource
     slaLevel: 3
     standardLevelId: TS-001       
     capabilities: 
@@ -100,6 +114,7 @@ technologies:
     name: Gitlab
     userApplication: true
     purpose: Gitlab is a version control and build tool
+    technologyCategoryId: opensource
     slaLevel: 2
     standardLevelId: TS-001       
     capabilities: 
@@ -108,13 +123,16 @@ technologies:
     name: PostgreSQL
     userApplication: false
     purpose: PostgreSQL is a relational database management service
+    technologyCategoryId: opensource
     technologyType: Server only
     slaLevel: 2
     standardLevelId: TS-002
   - technologyId: T-102
-    name: Apache HTTPD
+    name: HTTPD
+    vendorId: apache
     userApplication: false
     purpose: Apache HTTP is web server software
+    technologyCategoryId: opensource
     technologyType: Server only
     slaLevel: 2
     standardLevelId: TS-002
@@ -123,20 +141,25 @@ technologies:
     name: NGINX
     userApplication: false
     purpose: NGINX is web server software
+    technologyCategoryId: opensource
     technologyType: Server only
     slaLevel: 1
     standardLevelId: TS-001 
   - technologyId: T-104
-    name: Apache Cassandra
+    name: Cassandra
+    vendorId: apache
     userApplication: false
     purpose: Apache Cassandra is a no-SQL data store
+    technologyCategoryId: opensource
     technologyType: Server only
     slaLevel: 1
     standardLevelId: TS-001 
   - technologyId: T-105
-    name: Apache Mesos
+    name: Mesos
+    vendorId: apache
     userApplication: false
     purpose: Apache Mesos is cluster management software
+    technologyCategoryId: opensource
     technologyType: Server only
     slaLevel: 1
     standardLevelId: TS-001     
@@ -146,6 +169,7 @@ technologies:
     name: Fedora Linux
     userApplication: false
     purpose: Fedora is a Linux OS distribution
+    technologyCategoryId: opensource
     technologyType: Server only
     slaLevel: 1
     standardLevelId: TS-003  
@@ -154,14 +178,17 @@ technologies:
     name: Arch Linux
     userApplication: false
     purpose: Arch is a Linux OS distribution
+    technologyCategoryId: opensource
     technologyType: Server only
     slaLevel: 1
     standardLevelId: TS-001   
   - technologyId: T-108
     name: ELK Stack
+    vendorId: elastic
     userApplication: false
     purpose: The Elasticsearch / Logstash / Kibana stack provides monitoring and log management services
     technologyType: Client/server
+    technologyCategoryId: opensource
     slaLevel: 1
     standardLevelId: TS-001  
     capabilities:
@@ -175,18 +202,22 @@ technologies:
     standardLevelId: TS-001  
   - technologyId: T-110
     name: Ubuntu Linux
+    vendorId: canonical
     userApplication: false
     purpose:  Ubuntu Linux is used as a desktop OS
+    technologyCategoryId: opensource
     slaLevel: 3
     standardLevelId: TS-002         
   - technologyId: T-008
     name: ACS Portal
+    vendorId: acs
     userApplication: true
     purpose: ACS Portal provides customer and in-house interfaces for managing the cloud services
     aka: Portal
     disasterRecovery: Geo-redundant HA
     technologyType: SaaS
     slaLevel: 1
+    technologyCategoryId: inhouse
     standardLevelId: TS-001
     supportingTechnologies: 
       - technologyId: T-103
@@ -200,3 +231,10 @@ technologies:
     authorisationInternalStore: 'No'
     authorisationNotes: ACS role engine
     authorisationTechnologyId: T-001 
+technologyCategories:
+  - technologyCategoryId: inhouse
+    name: In-house developed
+  - technologyCategoryId: opensource
+    name: Open Source
+  - technologyCategoryId: proprietary
+    name: Proprietary

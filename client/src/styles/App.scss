@@ -379,6 +379,54 @@ div.Capability {
   vertical-align: top;  
 }
 
+.ARM-domain-group {
+  background-color: $panel-background-1;
+  border: 1px solid $panel-border-1;
+  border-radius: 4px;
+  margin: 10px;
+  padding: 10px;
+}
+
+.ARM-domain {
+  display: inline-block;
+  border-style: solid;
+  border-color: $emphasis-border-3;
+  border-width: 1px;
+  background-color: $emphasis-background-3;
+  vertical-align: top; 
+  padding: 6px;
+  margin: 4px; 
+  max-width: 410px;
+}
+
+.ARM-domain .ARM-domain {
+  border-color: $emphasis-border-2;
+  background-color: $emphasis-background-2;
+}
+
+.ARM-technology {
+  display: inline-block;
+  border-style: solid;
+  border-color: $emphasis-border-4;
+  background-color: $emphasis-background-4;  
+  border-width: 1px;
+  vertical-align: top; 
+  padding: 6px;
+  margin: 4px; 
+  text-align: center;
+  font-size: small;
+}
+
+.ARM-technology a {
+  text-decoration: none;
+  color: $emphasis-text-3;
+}
+
+.app-ref-model .Overlay-options div:first-child{
+  display: inline;
+}
+
+
 .EA-domain .Head-1 {
   font-size: x-large;
 }
@@ -1427,6 +1475,13 @@ input[type='number'] {
   font-weight: bold;
 }
 
+.ARM-legend .no-assessment {
+  border-color: $emphasis-border-4;
+  background-color: $emphasis-background-4;
+  border-style: solid;
+  border-width: 1px;
+}
+
 .TRM-legend .no-assessment {
   border-color: $emphasis-border-4;
   background-color: $emphasis-background-4;
@@ -1692,6 +1747,27 @@ div.Range-selector {
   width: 300px;
   padding-left: 20px;
   padding-right: 20px;
+}
+
+div.Category-filter {
+  margin: 4px;
+}
+
+div.Category-filter select {
+  min-width: 15em;
+  margin-left: 4px;
+}
+
+div.Technology-filters {
+  border-style: solid none solid none;
+  border-width: 1px;
+  border-color: $emphasis-border-2;
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+div.Technology-filters .Search-box{
+  margin: 4px;
 }
 
 // Spinner

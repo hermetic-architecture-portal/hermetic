@@ -253,6 +253,7 @@ const repository = {
         name: tech.name,
         technologyType: tech.technologyType,
         parentTechnologyId: tech.parentTechnologyId,
+        technologyCategoryId: tech.technologyCategoryId,
         capabilities: tech.capabilities || [],
       }))
       .sort((a, b) => a.name.localeCompare(b.name));
@@ -423,6 +424,14 @@ const repository = {
       data.capabilityMetricBands, data.capabilityMetricSets,
       data.capabilityMetricAssessments, data.metrics);
   },
+  getTechnologyCategories: async (sandbox) => {
+    const data = await cache(null, false, sandbox);
+    return (data.technologyCategories || [])
+      .map(c => ({
+        technologyCategoryId: c.technologyCategoryId,
+        name: c.name,
+      }));
+  },
   getTechnologyDetail: async (sandbox, technologyId, credentials) => {
     const data = await cache(null, false, sandbox);
 
@@ -580,6 +589,11 @@ const repository = {
           name: otherTech.name,
         }))[0];
 
+    const category = technology.technologyCategoryId
+      && data.technologyCategories
+        .filter(tc => tc.technologyCategoryId === technology.technologyCategoryId)
+        .map(tc => tc.name)[0];
+
     const result = {
       technologyId,
       name: technology.name,
@@ -587,7 +601,7 @@ const repository = {
       slaLevel: technology.slaLevel,
       disasterRecovery: technology.disasterRecovery,
       technologyType: technology.technologyType,
-      category: technology.category,
+      category,
       lifecycleStatus: technology.lifecycleStatus,
       technicalLinks: technology.technicalLinks,
       nodes: connections.nodes,
@@ -945,6 +959,43 @@ const repository = {
       };
     }
     return result;
+  },
+
+  getAppRefModelDomainGroups: async (sandbox) => {
+    const data = await cache(null, false, sandbox);
+
+    return (data.appReferenceModelDomainGroups || [])
+      .map(dg => ({
+        armDomainGroupId: dg.armDomainGroupId,
+        name: dg.name,
+        displayOrder: dg.displayOrder,
+      }));
+  },
+
+  getAppRefModelDomains: async (sandbox) => {
+    const data = await cache(null, false, sandbox);
+
+    return (data.appReferenceModelDomains || [])
+      .map(d => ({
+        armDomainId: d.armDomainId,
+        armDomainGroupId: d.armDomainGroupId,
+        name: d.name,
+        displayOrder: d.displayOrder,
+        parentArmDomainId: d.parentArmDomainId,
+      }));
+  },
+
+  getAppRefModelTechnologies: async (sandbox, credentials) => {
+    const data = await cache(null, false, sandbox);
+
+    return (data.technologies || [])
+      .filter(t => !!t.armDomainId)
+      .filter(tech => securityTrimFilter(credentials, tech))
+      .map(t => ({
+        technologyId: t.technologyId,
+        name: t.name,
+        armDomainId: t.armDomainId,
+      }));
   },
 
   getEaDomains: async (sandbox) => {

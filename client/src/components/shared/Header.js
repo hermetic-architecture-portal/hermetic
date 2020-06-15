@@ -60,6 +60,11 @@ const header = ({ location }) => {
       text: 'Data Reference Model',
       children: [],
     },
+    {
+      link: config.resolvePathAgainstDefault('/appRefModel'),
+      text: 'Application Reference Model',
+      children: [],
+    },
   ];
 
   if (userStore.data.allowedFeatures.includes(features.techDetails)) {

@@ -9,6 +9,7 @@ const AppRefModelDomainGroup = ({ group }) => {
   const domains = modelStore.appRefModelDomains
     .filter(d => (d.armDomainGroupId === group.armDomainGroupId)
       && (!d.parentArmDomainId))
+    .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0))
     .map(domain => <AppRefModelDomain
       domain={domain} key={domain.armDomainId}/>);
   return <div className="ARM-domain-group">

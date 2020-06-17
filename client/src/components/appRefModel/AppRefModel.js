@@ -13,6 +13,7 @@ class AppRefModel extends React.Component {
 
   render() {
     const domainGroups = modelStore.appRefModelDomainGroups
+      .sort((a, b) => (a.displayOrder || 0) - (b.displayOrder || 0))
       .map(group => <AppRefModelDomainGroup group={group} key={group.armDomainGroupId} />);
     return <div className="app-ref-model">
       <AppRefModelOverlays />

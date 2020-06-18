@@ -5,6 +5,7 @@ import { observer } from 'mobx-react';
 import modelStore from '../../stores/modelStore';
 import TechnologyConnections from './TechnologyConnections';
 import SearchBox from '../shared/SearchBox';
+import TechnologyCategoryFilter from '../shared/TechnologyCategoryFilter';
 
 class Technologies extends React.Component {
   constructor(props) {
@@ -17,14 +18,9 @@ class Technologies extends React.Component {
 
   componentDidMount() {
     modelStore.loadTechnologies();
-    modelStore.loadTechnologyCategories();
   }
 
   render() {
-    const categoryOptions = modelStore.technologyCategories.map(c => <option
-      value={c.technologyCategoryId} key={c.technologyCategoryId}>
-      {c.name}
-    </option>);
     const technologies = modelStore.technologies
       .filter(a => (!this.filters.search)
         || (a.name.toUpperCase().includes(this.filters.search.toUpperCase())))
@@ -35,16 +31,8 @@ class Technologies extends React.Component {
         <div className="Left-col">
           <div className="Head-1">Technologies</div>
           <div className="Technology-filters">
-            <div className="Category-filter">
-              <label>
-                Category:
-                <select value={this.filters.technologyCategoryId}
-                  onChange={(event) => { this.filters.technologyCategoryId = event.target.value; }}>
-                  <option value="any">Any</option>
-                  {categoryOptions}
-                </select>
-              </label>
-            </div>
+            <TechnologyCategoryFilter technologyCategoryId={this.filters.technologyCategoryId}
+              onCategoryChanged={(value) => { this.filters.technologyCategoryId = value; }} />
             <SearchBox valueChanged={(value) => { this.filters.search = value; }}/>
           </div>
           {technologies.map(tech => (

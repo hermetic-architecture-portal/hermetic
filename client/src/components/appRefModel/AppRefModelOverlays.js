@@ -5,6 +5,7 @@ import appRefModelOverlayStore from '../../stores/appRefModelOverlayStore';
 import userStore from '../../stores/userStore';
 import modelStore from '../../stores/modelStore';
 import HealthLegend from '../shared/HealthLegend';
+import TechnologyCategoryFilter from '../shared/TechnologyCategoryFilter';
 
 const checkboxChanged = (key, checked) => {
   if (checked) {
@@ -35,6 +36,11 @@ const component = () => {
       bands={modelStore.technologyHealthMetricTotalBands} title="Health"/>);
   }
   return <div className="Overlay-options">
+    <TechnologyCategoryFilter
+      technologyCategoryId={appRefModelOverlayStore.filters.technologyCategoryId}
+      onCategoryChanged={(value) => {
+        appRefModelOverlayStore.filters.technologyCategoryId = value;
+      }} />
     <div>Overlays:</div>
     {options}
     {!legendItems.length ? undefined

@@ -5,6 +5,9 @@ import modelStore from './modelStore';
 class AppRefModelOverlayStore {
   constructor() {
     this.overlays = observable(constants.defaultAppRefModelOverlays.slice());
+    this.filters = observable({
+      technologyCategoryId: 'any',
+    });
   }
 
   addOverlay(overlay) {

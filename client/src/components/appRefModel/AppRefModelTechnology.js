@@ -7,7 +7,10 @@ import constants from '../../constants';
 
 
 const AppRefModelTechnology = ({ technology }) => {
-  let className = 'ARM-technology';
+  const technologyTypeClassName = !technology.technologyType ? 'TechnologyType-Unknown'
+    : `TechnologyType-${technology.technologyType.replace(' ', '').replace('/', '-')}`;
+
+  let className = `ARM-technology ${technologyTypeClassName}`;
 
   const showHealth = (
     appRefModelOverlayStore.overlays.includes(constants.appRefModelOverlays.techHealth)

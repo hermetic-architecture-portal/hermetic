@@ -411,10 +411,15 @@ div.Capability {
   background-color: $emphasis-background-4;  
   border-width: 1px;
   vertical-align: top; 
-  padding: 6px;
+  padding: 6px 6px 6px 30px;
   margin: 4px; 
   text-align: center;
   font-size: small;
+  min-height: 30px;
+  background-position-x: 8px;
+  background-position-y: 6px;
+  background-size: 18px 18px;
+  background-repeat: no-repeat;
 }
 
 .ARM-technology a {
@@ -422,12 +427,17 @@ div.Capability {
   color: $emphasis-text-3;
 }
 
-.app-ref-model .Overlay-options div:first-child{
+.app-ref-model .Category-filter{
   display: inline;
+  margin-left: 0px;
 }
 
-.app-ref-model .Overlay-options div:nth-child(2){
-  display: inline;
+.app-ref-model .Overlay-options .ARM-technology {
+  vertical-align: middle;
+}
+
+.app-ref-model .Legend div div:first-child {
+  font-weight: normal;
 }
 
 .EA-domain .Head-1 {

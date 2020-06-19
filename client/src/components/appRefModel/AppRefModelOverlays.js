@@ -6,6 +6,7 @@ import userStore from '../../stores/userStore';
 import modelStore from '../../stores/modelStore';
 import HealthLegend from '../shared/HealthLegend';
 import TechnologyCategoryFilter from '../shared/TechnologyCategoryFilter';
+import TechnologyTypeLegend from '../shared/TechnologyTypeLegend';
 
 const checkboxChanged = (key, checked) => {
   if (checked) {
@@ -41,10 +42,13 @@ const component = () => {
       onCategoryChanged={(value) => {
         appRefModelOverlayStore.filters.technologyCategoryId = value;
       }} />
-    <div>Overlays:</div>
+    Overlays:
     {options}
-    {!legendItems.length ? undefined
-      : <div className="Legend">{legendItems}</div>}
+    <div className="Legend">
+      <TechnologyTypeLegend baseClassName="ARM-technology" />
+      {!legendItems.length ? undefined
+        : <div>{legendItems}</div>}
+    </div>
   </div>;
 };
 

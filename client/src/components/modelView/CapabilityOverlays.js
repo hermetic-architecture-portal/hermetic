@@ -2,7 +2,7 @@ import React from 'react'; // eslint-disable-line no-unused-vars
 import { observer } from 'mobx-react';
 import constants from '../../constants';
 import userStore from '../../stores/userStore';
-import TechnologyTypeLegend from './TechnologyTypeLegend';
+import TechnologyTypeLegend from '../shared/TechnologyTypeLegend';
 import HealthLegend from '../shared/HealthLegend';
 import modelStore from '../../stores/modelStore';
 
@@ -36,7 +36,7 @@ const getOption = (key, title, capabilityOverlayStore) => {
 const component = ({ capabilityOverlayStore }) => {
   const legendItems = [];
   if (capabilityOverlayStore.overlays.includes(constants.capabilityOverlays.technologies)) {
-    legendItems.push(<TechnologyTypeLegend key="atl"/>);
+    legendItems.push(<TechnologyTypeLegend baseClassName="Capability-technology" key="atl"/>);
   }
   if (capabilityOverlayStore.overlays.includes(constants.capabilityOverlays.technologyHealth)) {
     legendItems.push(<HealthLegend key="ahl" className="BRM-tech-health-legend"

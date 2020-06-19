@@ -996,6 +996,7 @@ const repository = {
         name: t.name,
         armDomainId: t.armDomainId,
         technologyCategoryId: t.technologyCategoryId,
+        technologyType: t.technologyType,
       }));
   },
 

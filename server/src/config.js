@@ -66,6 +66,7 @@ const config = {
     ? Number.parseInt(process.env.HERMETIC_EDIT_PAGE_SIZE, 10)
     : 10,
   debugClient: process.env.HERMETIC_DEBUG_CLIENT === 'Y',
+  helpFilesPath: process.env.HERMETIC_HELP_FILES_PATH || '../help/build',
   auth: {
     hasAuth: !!provider,
     canRunWithNoAuth: process.env.HERMETIC_RUN_WITH_NO_AUTH === 'Y',

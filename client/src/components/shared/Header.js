@@ -1,176 +1,83 @@
 import React from 'react'; // eslint-disable-line no-unused-vars
 import { Link, withRouter } from 'react-router-dom';
+import { matchPath } from 'react-router';
 import { observer } from 'mobx-react';
+import decamelize from 'decamelize';
+import string from 'string';
 import {
   Button, Wrapper,
   Menu, MenuItem,
 } from 'react-aria-menubutton';
 import { features } from 'hermetic-common';
+import viewRoutes from '../../viewRoutes';
 import UserWidget from './UserWidget';
 import userStore from '../../stores/userStore';
-import config from '../../config';
+import constants from '../../constants';
 
-const activeClassname = (location, path) => (
-  location.pathname === path
-    ? 'current'
-    : ''
-);
-
-const makePath = (locationParts, currentIndex) => (
-  locationParts.filter((path, index) => index <= currentIndex)
-    .join('/')
-);
-
-const makeMenuItem = (item, location, depth) => <li
+const makeMenuItem = (title, linkTo, current, depth) => <li
   className="AriaMenuButton-menuItemWrapper"
-  key={item.text}>
-    <MenuItem value={item.text} className={`AriaMenuButton-menuItem ${activeClassname(location, item.link)}`}>
-    <Link to={item.link}>
-      <div className={`Link-depth-${depth}`}>{item.text}</div>
+  key={title}>
+    <MenuItem value={title} className={`AriaMenuButton-menuItem ${current ? 'current' : ''}`}>
+    <Link to={linkTo}>
+      <div className={`Link-depth-${depth}`}>{title}</div>
     </Link>
     </MenuItem>
 </li>;
 
-const makeMenuItems = (items, location, depth) => {
-  const result = [];
-  items.forEach((item) => {
-    result.push(makeMenuItem(item, location, depth || 0));
-    result.push(...makeMenuItems(item.children, location, (depth || 0) + 1));
-  });
-  return result;
-};
-
 const header = ({ location }) => {
-  const menuItems = [
-    {
-      link: config.resolvePathAgainstDefault('/eaRefModel'),
-      itemLinkBase: '/eaArtifact',
-      text: 'Enterprise Architecture Model',
-      children: [],
-    },
-    {
-      link: config.resolvePathAgainstDefault('/businessRefModel'),
-      itemLinkBase: '/capability',
-      text: 'Business Reference Model',
-      children: [],
-    },
-    {
-      link: config.resolvePathAgainstDefault('/dataRefModel'),
-      itemLinkBase: '/entity',
-      text: 'Data Reference Model',
-      children: [],
-    },
-    {
-      link: config.resolvePathAgainstDefault('/appRefModel'),
-      text: 'Application Reference Model',
-      children: [],
-    },
-  ];
+  const currentRoute = viewRoutes.find(r => matchPath(location.pathname, r));
 
-  if (userStore.data.allowedFeatures.includes(features.techDetails)) {
-    menuItems.push({
-      link: config.resolvePathAgainstDefault('/techRefModel'),
-      text: 'Technical Reference Model',
-      children: [],
-    });
-  }
+  const firstLevelRoutes = viewRoutes
+    .filter(r => r.menu.crumbs.length === 1)
+    .filter(r => (!r.securityFeature)
+      || userStore.data.allowedFeatures.includes(r.securityFeature))
+    .sort((a, b) => (a.menu.displayOrder || 0) - (b.menu.displayOrder || 0));
 
-  menuItems.push(...[
-    {
-      link: '/technologies',
-      itemLinkBase: '/technology',
-      text: 'Technology List',
-      children: [],
-    },
-    {
-      link: '/vendors',
-      itemLinkBase: '/vendor',
-      text: 'Vendor List',
-      children: [],
-    },
-    {
-      link: '/businessUnits',
-      itemLinkBase: '/businessUnit',
-      text: 'Business Unit List',
-      children: [],
-    },
-  ]);
+  const menuItems = firstLevelRoutes
+    .map(r => makeMenuItem(r.menu.crumbs[0], r.path, r === currentRoute, 1));
 
-  if (userStore.data.allowedFeatures.includes(features.cost)) {
-    menuItems.push({
-      link: '/costModel',
-      text: 'Cost Model',
-      children: [],
-    });
-  }
+  const splitPath = location.pathname.split('/');
 
-  if (userStore.data.allowedFeatures.includes(features.technologyHealthMetrics)) {
-    menuItems.push({
-      link: '/technologyHealthSummary',
-      text: 'Technology Health Summary',
-      children: [],
-    });
-  }
-
-  if (userStore.data.allowedFeatures.includes(features.techDetails)) {
-    menuItems.push({
-      link: '/servers',
-      itemLinkBase: '/server',
-      text: 'Server List',
-      children: [],
-    });
-  }
-
-  if (userStore.data.allowedFeatures.includes(features.techDetails)) {
-    menuItems.push({
-      link: '/functionalCapabilities',
-      itemLinkBase: '/functionalCapability',
-      text: 'Functional Capabilities',
-      children: [],
-    });
-  }
-
-  menuItems.push({
-    link: '/compareTechnologies',
-    itemLinkBase: '/compareTechnologies',
-    text: 'Compare Technologies',
-    children: [],
-  });
-
-  if (userStore.data.allowedFeatures.includes(features.reporting)) {
-    menuItems.push({
-      link: '/reporting',
-      text: 'Reporting',
-      children: [],
-    });
-  }
-
-  if (userStore.data.allowedFeatures.includes(features.edit)) {
-    menuItems.push({
-      link: '/edit',
-      text: 'Edit',
-      children: [],
-    });
-  }
-
-  // Add breadcrumbs
-  const locationParts = location.pathname.split('/');
-  if (locationParts.length >= 3) {
-    let parentMenuItem = menuItems.find(i => i.itemLinkBase === makePath(locationParts, 1));
-    if (parentMenuItem) {
-      for (let i = 2; i < locationParts.length; i += 1) {
-        const childMenuItem = {
-          link: makePath(locationParts, i),
-          text: locationParts[i],
-          children: [],
-        };
-        parentMenuItem.children.push(childMenuItem);
-        parentMenuItem = childMenuItem;
-      }
+  // show child items on the menu if we are at a child item, otherwise don't
+  if (currentRoute && (currentRoute.menu.crumbs.length > 1)) {
+    const parentItemIndex = firstLevelRoutes
+      .findIndex(r => r.menu.crumbs[0] === currentRoute.menu.crumbs[0]);
+    for (let i = 1;
+      (i < currentRoute.menu.crumbs.length) && (i < (splitPath.length - 1));
+      i += 1) {
+      const crumbTitle = (currentRoute.menu.crumbs[i] === constants.menuItemEntityId)
+        ? splitPath[i + 1] : currentRoute.menu.crumbs[i];
+      const childMenuItem = makeMenuItem(crumbTitle, splitPath.slice(0, i + 2).join('/'),
+        i === currentRoute.menu.crumbs.length - 1, i + 1);
+      menuItems.splice(parentItemIndex + i, 0, childMenuItem);
     }
   }
 
-  const menuElements = makeMenuItems(menuItems, location);
+  let helpAnchor;
+
+  if (currentRoute) {
+    helpAnchor = string(currentRoute.menu.crumbs
+      .join(' ')
+      .replace(constants.menuItemEntityId, 'Item')).slugify().toString();
+  }
+
+  if ((userStore.data.allowedFeatures.includes(features.edit))) {
+    menuItems.push(makeMenuItem('Edit', '/edit', location.pathname === '/edit', 1));
+    if ((splitPath.length > 2) && (splitPath[1] === 'edit')) {
+      const crumbTitle = decamelize(splitPath[2], ',')
+        .split(',').map(word => `${word.slice(0, 1).toUpperCase()}${word.slice(1)}`)
+        .join(' ');
+      menuItems.push(makeMenuItem(crumbTitle, splitPath.slice(0, 3).join('/'),
+        true, 2));
+      helpAnchor = string(`edit ${crumbTitle}`).slugify().toString();
+    }
+    if ((!helpAnchor) && (splitPath.length > 1) && (splitPath[1] === 'edit')) {
+      helpAnchor = 'edit';
+    }
+  }
+
+  console.log(currentRoute);
+  console.log(helpAnchor);
 
   return <div>
     <div className='Menu'>
@@ -180,7 +87,7 @@ const header = ({ location }) => {
         </Button>
         <Menu>
           <ul className="AriaMenuButton-menu">
-            {menuElements}
+            {menuItems}
           </ul>
         </Menu>
       </Wrapper>
@@ -188,6 +95,12 @@ const header = ({ location }) => {
       </div>
       <div className="User-block">
         <UserWidget />
+      </div>
+      <div className="Help-menu-block">
+        <a href={`/help/index.html#${helpAnchor || ''}`} target='_blank'
+          rel="noopener noreferrer">
+          <div className="Help-link" />
+        </a>
       </div>
     </div>
   </div>;

@@ -1,11 +1,11 @@
 {
   "name": "hermetic",
-  "version": "1.4.3",
+  "version": "1.4.4",
   "description": "",
   "main": "index.js",
   "scripts": {
     "install": "cd lib && npm install && cd ../client && npm install && cd ../server && npm install && cd ../help && npm install",
-    "build": "cd lib && npm run build && cd ../client && npm run build && cd ../server && npm run build && cd ../help && npm install",
+    "build": "cd lib && npm run build && cd ../client && npm run build && cd ../server && npm run build && cd ../help && npm run build",
     "start": "cd server && npm run start-deployed",
     "test": "export CI=true&&cd lib && npm run test && cd ../server && npm run test"
   },

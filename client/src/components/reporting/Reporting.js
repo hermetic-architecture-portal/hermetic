@@ -22,7 +22,6 @@ class Reporting extends React.Component {
     this.reportingInfo.tokenExpiryHours = reportingInfo.tokenExpiryHours;
     this.reportingInfo.routes = reportingInfo.routes
       .sort((a, b) => a.name.localeCompare(b.name));
-    console.log(this.reportingInfo);
   }
 
   render() {

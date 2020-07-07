@@ -1,6 +1,6 @@
 {
   "name": "hermetic-client",
-  "version": "1.4.2",
+  "version": "1.4.3",
   "private": true,
   "dependencies": {
     "chart.js": "^2.9.3",
@@ -8,6 +8,7 @@
     "cytoscape-cola": "^2.3.0",
     "cytoscape-dagre": "^2.2.2",
     "cytoscape-spread": "^3.0.0",
+    "decamelize": "^4.0.0",
     "file-saver": "^2.0.1",
     "google-palette": "^1.1.0",
     "localforage": "^1.7.3",
@@ -23,9 +24,11 @@
     "react-chartjs-2": "^2.9.0",
     "react-copy-to-clipboard": "^5.0.2",
     "react-dom": "^16.8.3",
+    "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
     "react-scripts": "^3.4.1",
     "react-tooltip": "^3.10.0",
+    "string": "^3.3.3",
     "sweetalert2": "^8.8.1",
     "uuid": "^3.3.3"
   },

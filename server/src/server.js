@@ -30,9 +30,8 @@ if (config.auth.hasAuth) {
 }
 if (config.debugClient) {
   plugins.push(H2o2);
-} else {
-  plugins.push(Inert);
 }
+plugins.push(Inert);
 
 
 const baseLogger = createLogger();
@@ -127,6 +126,20 @@ const staticRoute = {
 };
 
 routes.push(staticRoute);
+
+const helpRoute = {
+  method: 'get',
+  path: '/help/{param*}',
+  handler: {
+    directory: {
+      path: config.helpFilesPath,
+      redirectToSlash: true,
+      index: true,
+    },
+  },
+};
+
+routes.push(helpRoute);
 
 server.ext('onRequest', (request, h) => {
   request.plugins.logger = new BunyanRequestLogger(baseLogger, request);

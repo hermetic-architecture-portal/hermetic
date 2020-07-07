@@ -1,0 +1,79 @@
+$body-background: #fff;
+$emphasis-background-1: darkred;
+$emphasis-text-1: white;
+$emphasis-background-2: darkgray;
+$emphasis-border-2: lightgray;
+$emphasis-text-2: black;
+$emphasis-background-3: lightgray;
+$emphasis-border-3: darkgray;
+$emphasis-text-3: black;
+$font-family: "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+$header-name: 'Hermetic';
+
+@import 'CustomVariables.scss';
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: $font-family;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+*{
+  box-sizing: border-box;
+}
+
+.Header {
+  margin: 10px 0;
+  background-color: $emphasis-background-1;
+  color: $emphasis-text-1;
+  margin-top: 0px;
+  font-weight: 600;
+  background-image: url("/img/logo-white.png");
+  background-repeat: no-repeat;
+  background-size: 32px 32px;
+  background-position: 6px 4px;
+  padding: 10px;
+      padding-left: 10px;
+  padding-left: 48px  
+}
+
+.Document-title {
+  content: $header-name;
+}
+
+.Help-title::before {
+  content: $header-name;
+}
+
+nav.table-of-contents {
+  background-color: $emphasis-background-3;
+  border-color: $emphasis-border-3;
+  border-style: solid;
+  border-width: 1px;
+  color: $emphasis-text-3;
+  border-radius: 4px;
+  margin: 8px;
+}
+
+nav.table-of-contents a {
+  text-decoration: none;
+  color: $emphasis-text-3;
+}
+
+nav.table-of-contents a:hover {
+  text-decoration: none;
+  color: $emphasis-text-2;
+  background-color: $emphasis-background-2;
+}
+
+nav.table-of-contents ol {
+  padding-left: 16px;
+}
+
+body { scroll-behavior: smooth; }
+ 
+ol { counter-reset: list-item; }
+li { display: block; counter-increment: list-item; }
+li:before { content: counters(list-item,'.') ' '; }

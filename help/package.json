@@ -1,0 +1,21 @@
+{
+  "name": "hermetic-help",
+  "version": "1.4.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "node index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "markdown-it": "^11.0.0",
+    "markdown-it-anchor": "5.3.0",
+    "markdown-it-toc-done-right": "^4.1.0",
+    "node-sass": "^4.14.1",
+    "recursive-copy": "^2.0.10",
+    "recursive-readdir": "^2.2.2",
+    "string": "^3.3.3"
+  }
+}

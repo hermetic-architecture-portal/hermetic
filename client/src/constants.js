@@ -73,6 +73,8 @@ const constants = {
   appRefModelOverlayFeature,
 
   defaultAppRefModelOverlays: [],
+
+  menuItemEntityId: 'menuItemEntityId',
 };
 
 export default constants;

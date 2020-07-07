@@ -124,6 +124,9 @@ Configuration settings are supplied as environment variables
 * ```HERMETIC_DEBUG_CLIENT```
   * Default: ```N```
   * When set to ```Y```, the Hermetic server proxies HTML/CSS/JS content from localhost:3000 (i.e. the Create React App dev server), rather than serving compiled client files.
+* ```HERMETIC_HELP_FILES_PATH```
+  * Default: ```../help/build```
+  * Enables you to serve a different set of help files from those provided with Hermetic
 
 ### Authentication
 Hermetic supports the following authentication mechanisms:

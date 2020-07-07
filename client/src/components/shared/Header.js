@@ -76,9 +76,6 @@ const header = ({ location }) => {
     }
   }
 
-  console.log(currentRoute);
-  console.log(helpAnchor);
-
   return <div>
     <div className='Menu'>
       <Wrapper className="AriaMenuButton">

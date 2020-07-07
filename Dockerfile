@@ -13,6 +13,7 @@ COPY --chown=hermetic:hermetic ./package.json /app/
 COPY --chown=hermetic:hermetic ./lib /app/lib
 COPY --chown=hermetic:hermetic ./client /app/client
 COPY --chown=hermetic:hermetic ./server /app/server
+COPY --chown=hermetic:hermetic ./help /app/help
 COPY --chown=hermetic:hermetic ./sample-data /app/sample-data
 
 RUN npm set unsafe-perm true

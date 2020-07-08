@@ -5,10 +5,11 @@ import util from 'util';
 import readdir from 'recursive-readdir';
 import yaml from 'js-yaml';
 import {
-  validateData, schema, sortKeys,
+  validateData,
 } from 'hermetic-common';
 import sandboxUtils from '../sandboxUtils';
 import config from '../config';
+import fileUtil from '../fileUtil';
 
 const validate = async (sandboxName, payload, logger) => {
   if (!await sandboxUtils.sandboxExists(sandboxName)) {
@@ -72,11 +73,8 @@ const saveData = async (payload, sandboxName, logger) => {
     }
     newDataset.data[fieldName] = payload[fieldName];
   });
-  const sort = sortKeys(schema);
-  await Promise.all(newDatasets.map(async (ds) => {
-    const yamlData = yaml.safeDump(ds.data, { noRefs: true, sortKeys: sort });
-    await util.promisify(fs.writeFile)(ds.filePath, yamlData);
-  }));
+  await Promise.all(newDatasets.map(ds => fileUtil
+    .writeYaml(ds.filePath, ds.data)));
   const filesToDelete = oldDatasets
     .filter(ods => !newDatasets.find(nds => nds.filePath === ods.filePath))
     .map(ods => ods.filePath);

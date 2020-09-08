@@ -1,10 +1,27 @@
 import Joi from 'joi';
+import { Mutex } from 'async-mutex';
 import Boom from 'boom';
 import clone from 'clone-deep';
 import utils from './utils';
 import page from './page';
+import config from '../config';
 
-const queryValidation = {
+const mutex = new Mutex();
+
+const lock = async () => {
+  if (config.liveEditing) {
+    // if we are live editing, multiple people may try to save
+    // changes to the same data directory at the same time
+    // which could result in data that does not pass the validation test
+    // we need to lock so that only one can do it at a time
+    const release = await mutex.acquire();
+    return release;
+  }
+  // editing in sandboxes so no need to lock
+  return () => {};
+};
+
+const queryValidation = config.liveEditing ? {} : {
   // !!!!!!!!!!!!!!!!!!!!!!!!
   // restricting this to alphanumeric
   // to prevent attempts to break out from sandbox directory
@@ -99,24 +116,30 @@ const buildPutSingleItemRoute = (
     },
   },
   handler: async (request) => {
-    const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
-    const match = findItem(data, findFunctions, request.params);
-    if (!match) {
-      return Boom.notFound();
-    }
-    Object.getOwnPropertyNames(match)
-      .filter(fieldName => !excludeFieldsFromSave.includes(fieldName))
-      .forEach((fieldName) => {
-        delete match[fieldName];
-      });
+    const release = await lock();
+    try {
+      const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
+      const match = findItem(data, findFunctions, request.params);
+      if (!match) {
+        return Boom.notFound();
+      }
+      Object.getOwnPropertyNames(match)
+        .filter(fieldName => !excludeFieldsFromSave.includes(fieldName))
+        .forEach((fieldName) => {
+          delete match[fieldName];
+        });
 
-    Object.getOwnPropertyNames(request.payload)
-      .filter(fieldName => !excludeFieldsFromSave.includes(fieldName))
-      .forEach((fieldName) => {
-        match[fieldName] = request.payload[fieldName];
-      });
-    return setData(data, request.query && request.query.sandbox,
-      request.plugins && request.plugins.logger);
+      Object.getOwnPropertyNames(request.payload)
+        .filter(fieldName => !excludeFieldsFromSave.includes(fieldName))
+        .forEach((fieldName) => {
+          match[fieldName] = request.payload[fieldName];
+        });
+      return setData(data, request.query && request.query.sandbox,
+        request.plugins && request.plugins.logger,
+        request.auth && request.auth.credentials);
+    } finally {
+      release();
+    }
   },
 });
 
@@ -132,16 +155,22 @@ const buildDeleteSingleItemRoute = (
     },
   },
   handler: async (request) => {
-    const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
-    const match = findItem(data, findFunctions, request.params);
-    if (!match) {
-      return Boom.notFound();
+    const release = await lock();
+    try {
+      const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
+      const match = findItem(data, findFunctions, request.params);
+      if (!match) {
+        return Boom.notFound();
+      }
+      const parentCollection = findParent(data, findFunctions, request.params);
+      const indexToRemove = parentCollection.indexOf(match);
+      parentCollection.splice(indexToRemove, 1);
+      return setData(data, request.query && request.query.sandbox,
+        request.plugins && request.plugins.logger,
+        request.auth && request.auth.credentials);
+    } finally {
+      release();
     }
-    const parentCollection = findParent(data, findFunctions, request.params);
-    const indexToRemove = parentCollection.indexOf(match);
-    parentCollection.splice(indexToRemove, 1);
-    return setData(data, request.query && request.query.sandbox,
-      request.plugins && request.plugins.logger);
   },
 });
 
@@ -159,24 +188,30 @@ const buildPostSingleItemRoute = (
     },
   },
   handler: async (request) => {
-    const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
-    let collection = findItem(data, findFunctions, request.params);
-    if (!collection) {
-      const parent = findParent(data, findFunctions, request.params);
-      if (!parent) {
-        return Boom.notFound();
+    const release = await lock();
+    try {
+      const data = clone(await getData(null, false, request.query && request.query.sandbox, true));
+      let collection = findItem(data, findFunctions, request.params);
+      if (!collection) {
+        const parent = findParent(data, findFunctions, request.params);
+        if (!parent) {
+          return Boom.notFound();
+        }
+        collection = [];
+        parent[parentFieldName] = collection;
       }
-      collection = [];
-      parent[parentFieldName] = collection;
+      const newItem = clone(request.payload);
+      excludeFieldsFromSave.forEach((fieldName) => {
+        // because sometimes the array is mandatory
+        newItem[fieldName] = [];
+      });
+      collection.push(newItem);
+      return setData(data, request.query && request.query.sandbox,
+        request.plugins && request.plugins.logger,
+        request.auth && request.auth.credentials);
+    } finally {
+      release();
     }
-    const newItem = clone(request.payload);
-    excludeFieldsFromSave.forEach((fieldName) => {
-      // because sometimes the array is mandatory
-      newItem[fieldName] = [];
-    });
-    collection.push(newItem);
-    return setData(data, request.query && request.query.sandbox,
-      request.plugins && request.plugins.logger);
   },
 });
 

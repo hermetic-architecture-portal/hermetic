@@ -8,7 +8,8 @@ import { Menu } from 'react-auto-edit';
  * @param {HermeticEditController} props.controller
  */
 const HermeticMenu = ({ controller }) => {
-  if (!controller.sandboxState.selectedSandbox) {
+  if ((!controller.sandboxState.liveEditing)
+    && (!controller.sandboxState.selectedSandbox)) {
     return <div className="Edit-hint">
         <p>
           Data is edited in personal sandboxes that do not interfere with what

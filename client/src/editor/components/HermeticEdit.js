@@ -33,6 +33,14 @@ class HermeticEdit extends React.Component {
     if (!this.props.controller.sandboxState.ready) {
       return <div>Loading...</div>;
     }
+    if (this.props.controller.sandboxState.liveEditing) {
+      return <div className="Edit-hint">
+        <p>
+          You are editing live data - any changes you save
+          will be seen by other users.
+        </p>
+      </div>;
+    }
     const sandboxes = this.props.controller.sandboxState.sandboxes
       .map((sb, index) => {
         const selected = this.props.controller.sandboxState.selectedSandbox === sb.sandbox;

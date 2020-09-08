@@ -104,6 +104,10 @@ Configuration settings are supplied as environment variables
   * Default: ```undefined```
   * This specifies the base path where Hermetic Edit sandbox files should be stored
   * Editing functionality is disabled unless this variable is set
+* ```HERMETIC_LIVE_EDITING```
+  * Default: ```N```
+  * When set to ```Y``` allows users to edit data in the main data directory
+  * without use of sandboxes.  This mode is not recommended.
 
 ### UI Settings  
 * ```REACT_APP_HERMETIC_DEFAULT_PATH```

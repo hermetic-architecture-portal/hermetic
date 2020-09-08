@@ -1,6 +1,6 @@
 {
   "name": "hermetic-server",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -19,6 +19,7 @@
     "@hapi/hapi": "^18.4.1",
     "@hapi/inert": "^5.2.2",
     "@hapi/iron": "5.1.4",
+    "async-mutex": "^0.2.4",
     "boom": "^7.3.0",
     "bunyan": "^1.8.12",
     "camelcase": "^5.3.1",

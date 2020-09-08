@@ -61,6 +61,7 @@ const config = {
   baseYamlPath: process.env.HERMETIC_DATA_BASE_PATH || '../sample-data',
   port: process.env.HERMETIC_PORT || 3001,
   staticContentRoot: '../client/build',
+  liveEditing: process.env.HERMETIC_LIVE_EDITING === 'Y',
   sandboxBasePath: process.env.HERMETIC_SANDBOX_PATH,
   editorPageSize: process.env.HERMETIC_EDIT_PAGE_SIZE
     ? Number.parseInt(process.env.HERMETIC_EDIT_PAGE_SIZE, 10)

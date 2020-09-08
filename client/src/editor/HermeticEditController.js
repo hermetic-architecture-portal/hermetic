@@ -9,6 +9,7 @@ class HermeticEditController extends Controller {
     super(schema, apiProxy, options);
     this.sandboxState = observable({
       ready: false,
+      liveEditing: false,
       sandboxes: [],
       selectedSandbox: false,
     });
@@ -18,11 +19,15 @@ class HermeticEditController extends Controller {
     if (this.sandboxState.ready && !force) {
       return;
     }
-    const sandboxes = await this.apiProxy.fetchJson(`${this.apiProxy.baseApiPath}/sandbox`);
-    this.sandboxState.sandboxes.replace(sandboxes);
-    const selectedSandbox = await localforage.getItem(sandboxKey);
-    if (selectedSandbox && sandboxes.find(sb => sb.sandbox === selectedSandbox)) {
-      await this.setSelectedSandbox(selectedSandbox);
+    const editingMode = await this.apiProxy.fetchJson(`${this.apiProxy.baseApiPath}/editingMode`);
+    this.sandboxState.liveEditing = editingMode.liveEditing;
+    if (!this.sandboxState.liveEditing) {
+      const sandboxes = await this.apiProxy.fetchJson(`${this.apiProxy.baseApiPath}/sandbox`);
+      this.sandboxState.sandboxes.replace(sandboxes);
+      const selectedSandbox = await localforage.getItem(sandboxKey);
+      if (selectedSandbox && sandboxes.find(sb => sb.sandbox === selectedSandbox)) {
+        await this.setSelectedSandbox(selectedSandbox);
+      }
     }
     this.sandboxState.ready = true;
   }

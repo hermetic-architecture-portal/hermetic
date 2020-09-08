@@ -62,10 +62,17 @@ const sandboxRoutes = [
     handler: async () => sandboxHandlers
       .getSandboxes(),
   },
+  {
+    path: '/api/edit/editingMode',
+    method: 'GET',
+    handler: () => ({
+      liveEditing: config.liveEditing,
+    }),
+  },
 ];
 
 const getRoutes = () => {
-  if (!config.sandboxBasePath) {
+  if ((!config.liveEditing) && (!config.sandboxBasePath)) {
     // eslint-disable-next-line max-len
     throw new Error('The sandbox path configuration setting (HERMETIC_SANDBOX_PATH) must be supplied to enable editing functionality');
   }

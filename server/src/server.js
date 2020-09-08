@@ -14,7 +14,9 @@ import config from './config';
 import auth from './auth';
 
 if ((!config.auth.hasAuth)
-  && ((config.baseYamlPath !== config.sampleDataPath) || !!config.sandboxBasePath)
+  && ((config.baseYamlPath !== config.sampleDataPath)
+    || (!!config.sandboxBasePath)
+    || config.liveEditing)
   && (!config.auth.canRunWithNoAuth)) {
   // eslint-disable-next-line no-console
   console.error(`You are trying to start Hermetic without any authentication configured\n

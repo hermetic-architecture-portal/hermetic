@@ -7,6 +7,7 @@ const modelStore = {
   technologies: observable([]),
   technologyCategories: observable([]),
   technologyDetails: observable([]),
+  technologyManagementDetails: observable([]),
   technologyTechDetails: observable([]),
   technologyComponents: observable([]),
   technologyComponentDeployments: observable([]),
@@ -127,6 +128,14 @@ const modelStore = {
     }
     const data = await api.getTechnologyDetail(technologyId);
     modelStore.technologyDetails.push(data);
+  },
+
+  loadTechnologyManagementDetail: async (technologyId) => {
+    if (modelStore.technologyManagementDetails.some(tech => tech.technologyId === technologyId)) {
+      return;
+    }
+    const data = await api.getTechnologyManagementDetail(technologyId);
+    modelStore.technologyManagementDetails.push(data);
   },
 
   loadTechnologyTechDetail: async (technologyId) => {

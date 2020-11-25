@@ -4,6 +4,7 @@ import CapabilityModel from './components/modelView/CapabilityModel';
 import CapabilityDetail from './components/capability/CapabilityDetail';
 import Technology from './components/technology/Technology';
 import Technologies from './components/technology/Technologies';
+import TechnologyManagementDetails from './components/technology/TechnologyManagementDetails';
 import TechnologyTechDetails from './components/technology/TechnologyTechDetails';
 import TechnologyComponents from './components/technology/TechnologyComponents';
 import TechnologyHealth from './components/technology/TechnologyHealth';
@@ -73,6 +74,16 @@ const viewRoutes = [
     menu: {
       crumbs: ['Technology List', constants.menuItemEntityId],
     },
+  },
+  {
+    path: '/technology/:technologyId/management',
+    component: ({ match }) => <TechnologyManagementDetails
+      key={`${match.params.technologyId}-tech`}
+      technologyId={match.params.technologyId} />,
+    menu: {
+      crumbs: ['Technology List', constants.menuItemEntityId, 'Management'],
+    },
+    securityFeature: features.techDetails,
   },
   {
     path: '/technology/:technologyId/technical',

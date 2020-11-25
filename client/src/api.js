@@ -17,6 +17,8 @@ const api = {
     .fetchJson(`${config.apiBaseUrl}/capability/${encodeURIComponent(capabilityId)}`),
   getCapabilityHealthDetail: async capabilityId => api
     .fetchJson(`${config.apiBaseUrl}/capability/${encodeURIComponent(capabilityId)}/health`),
+  getTechnologyManagementDetail: async technologyId => api
+    .fetchJson(`${config.apiBaseUrl}/technology/${encodeURIComponent(technologyId)}/management`),
   getTechnologyTechDetail: async technologyId => api
     .fetchJson(`${config.apiBaseUrl}/technology/${encodeURIComponent(technologyId)}/technical`),
   getTechnologyComponents: async technologyId => api

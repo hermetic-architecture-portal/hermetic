@@ -189,6 +189,27 @@ const routes = [
     },
   },
   {
+    path: '/api/technology/{technologyId}/management',
+    method: 'GET',
+    feature: features.techDetails,
+    options: {
+      validate: {
+        params: {
+          technologyId: Joi.string().required(),
+        },
+        query,
+      },
+    },
+    handler: async (request) => {
+      const data = await repository.getTechnologyManagementDetail(request.query.sandbox,
+        request.params.technologyId);
+      if (data) {
+        return data;
+      }
+      return Boom.notFound(`Technology not found: ${request.params.technologyId}`);
+    },
+  },
+  {
     path: '/api/technology/{technologyId}/technical',
     method: 'GET',
     feature: features.techDetails,

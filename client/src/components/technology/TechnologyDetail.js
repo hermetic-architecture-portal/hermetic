@@ -29,6 +29,11 @@ const component = ({ technology }) => {
         Compare
       </Link>
     </li>);
+    links.push(<li key="management">
+      <Link to={`/technology/${technology.technologyId}/management`}>
+        Management
+      </Link>
+    </li>);
   }
   if (userStore.data.allowedFeatures.includes(features.technologyHealthMetrics)) {
     links.push(<li key="health">
@@ -82,6 +87,10 @@ const component = ({ technology }) => {
       <div><ul>{links}</ul></div>
     </div>}
     <div className="Data-row">
+      <div>System Type</div>
+      <div>{technology.systemType}</div>
+    </div>
+    <div className="Data-row">
       <div>Main Purpose</div>
       <div>{technology.purpose}</div>
     </div>
@@ -102,6 +111,14 @@ const component = ({ technology }) => {
       <div>Private Data</div>
       <div>{(typeof technology.hasPrivateData === 'undefined')
         ? 'Unknown' : technology.hasPrivateData}</div>
+    </div>
+    <div className="Data-row">
+      <div>Userbase</div>
+      <div>{technology.userbase}</div>
+    </div>
+    <div className="Data-row">
+      <div>Vendor Management</div>
+      <div>{technology.vendorManagement}</div>
     </div>
     { technology.technologyType !== 'SaaS' ? undefined
       : <div className="Data-row">

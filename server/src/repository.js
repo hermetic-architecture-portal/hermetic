@@ -457,6 +457,9 @@ const repository = {
       technologyType: technology.technologyType,
       vendorName: vendor && vendor.name,
       vendorId: vendor && vendor.vendorId,
+      userbase: technology.userbase,
+      systemType: technology.systemType,
+      vendorManagement: technology.vendorManagement,
     };
 
     if (technology.parentTechnologyId) {
@@ -621,6 +624,49 @@ const repository = {
       authorisationTechnology,
     };
     extendData(result, technology, 'technology', features.techDetails, data);
+    return result;
+  },
+  getTechnologyManagementDetail: async (sandbox, technologyId) => {
+    const data = await cache(null, false, sandbox);
+    // don't need to security filter this as it requires the techDetails feature anyway
+    const technology = data.technologies.find(tech => tech.technologyId === technologyId);
+
+    if (!technology) {
+      return technology;
+    }
+
+    const browserCompatibility = (technology.browserCompatibility || [])
+      .map((bc) => {
+        const browser = data.browsers.find(b => b.browserId === bc.browserId);
+        return {
+          browserId: browser.browserId,
+          browserName: browser.name,
+          compatible: bc.compatible,
+        };
+      });
+
+    const result = {
+      technologyId,
+      name: technology.name,
+      commsResponsibility: technology.commsResponsibility,
+      integrationResponsibility: technology.integrationResponsibility,
+      licensingResponsibility: technology.licensingResponsibility,
+      reportWriting: technology.reportWriting,
+      security: technology.security,
+      trainingDelivery: technology.trainingDelivery,
+      applicationHelp: technology.applicationHelp,
+      comments: technology.comments,
+      incidentsAndProblems: technology.incidentsAndProblems,
+      internalHosting: technology.internalHosting,
+      sME: technology.sME,
+      enhancements: technology.enhancements,
+      upgradeDecisions: technology.upgradeDecisions,
+      upgradeFundingSource: technology.upgradeFundingSource,
+      upgradeImplementation: technology.upgradeImplementation,
+      browserCompatibility: browserCompatibility,
+      webAddress: technology.webAddress,
+    };
+
     return result;
   },
   getTechnologyComponents: async (sandbox, technologyId) => {

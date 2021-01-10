@@ -652,7 +652,7 @@ const repository = {
       integrationResponsibility: technology.integrationResponsibility,
       licensingResponsibility: technology.licensingResponsibility,
       reportWriting: technology.reportWriting,
-      security: technology.security,
+      userAccessControl: technology.userAccessControl,
       trainingDelivery: technology.trainingDelivery,
       applicationHelp: technology.applicationHelp,
       comments: technology.comments,

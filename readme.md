@@ -1,11 +1,12 @@
 # Hermetic #
+
+## Deprecation Notice ##
+This project is deprecated and will not be receiving any further open-source updates.
+
 ## Introduction ##
 Hermetic is a model driven architecture portal.
 
 Users define the model for their environment by editing [YAML](https://en.wikipedia.org/wiki/YAML) files, either directly or through a web UI.  Hermetic processes the YAML files to dynamically generate architectural views including value chains, health reports, network diagrams and more.
-
-## Demo Site ##
-https://hermetic.azurewebsites.net
 
 ## Screenshots ##
 
